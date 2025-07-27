@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jason Martin Portfolio</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #eee;
+    }
+    body {
+      background-color: #121212;
+      line-height: 1.5;
+    }
+    a {
+      color: #bbb;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    /* Header Section */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    header .intro {
+      max-width: 55%;
+    }
+    header h1 {
+      font-weight: 900;
+      font-size: 2.5rem;
+      letter-spacing: 6px;
+    }
+    header h1 span:last-child {
+      font-weight: 300;
+      letter-spacing: normal;
+      margin-left: 0.3rem;
+    }
+    header small {
+      color: #888;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .social-icons {
+      margin-top: 0.7rem;
+    }
+    .social-icons a {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+      color: #bbb;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #5ac8fa;
+    }
+    .header-right {
+      max-width: 40%;
+      background: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60') center/cover no-repeat;
+      border-radius: 8px;
+      height: 200px;
+      box-shadow: 0 3px 15px rgba(90, 200, 250, 0.5);
+    }
+
+    /* About Section */
+    #about {
+      background: #1a1a1a;
+      padding: 1.5rem 2rem;
+      border-radius: 7px;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    #about .about-text {
+      flex: 2;
+    }
+    #about h2 {
+      font-weight: 900;
+      letter-spacing: 4px;
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+    #about p {
+      opacity: 0.7;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    #about .about-photo {
+      flex: 1;
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(90, 200, 250, 0.5);
+    }
+    #about .about-photo img {
+      width: 100%;
+      display: block;
+      filter: grayscale(40%);
+      transition: filter 0.3s ease;
+    }
+    #about .about-photo img:hover {
+      filter: grayscale(0%);
+    }
+
+    /* Skills & Experience Section */
+    #skills-exp {
+      background: #1a1a1a;
+      padding: 1.5rem 2rem;
+      border-radius: 7px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .skill {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: #333;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .progress {
+      height: 6px;
+      background: #5ac8fa;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* Experience */
+    .experience {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      color: #bbb;
+    }
+    .exp-item {
+      border-left: 3px solid #5ac8fa;
+      padding-left: 10px;
+    }
+    .exp-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #5ac8fa;
+    }
+    .exp-meta {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* What Can I Do */
+    .what-can {
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+    .what-can h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+    }
+    .what-can ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .what-can ul li {
+      margin-bottom: 0.4rem;
+      padding-left: 17px;
+      position: relative;
+    }
+    .what-can ul li::before {
+      content: "•";
+      color: #5ac8fa;
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      header .intro, .header-right {
+        max-width: 100%;
+      }
+      #about {
+        flex-direction: column;
+      }
+      #skills-exp {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="intro">
+        <h1>JASON <span>MARTIN</span></h1>
+        <small>PORTFOLIO DESIGNER</small>
+        <div class="social-icons" aria-label="Social media links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="header-right"></div>
+    </header>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <div class="about-text">
+        <h2 id="about-title">ABOUT</h2>
+        <p>
+          People change with time. I have 6 years of experience working with different companies to build beautiful websites and user experiences. My approach is very user-centric, focusing on functionality, simplicity, and clarity.
+        </p>
+      </div>
+      <div class="about-photo" aria-hidden="true">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
+      </div>
+    </section>
+
+    <!-- Skills & Experience -->
+    <section id="skills-exp" aria-label="Skills and experience">
+      <!-- Software Skills -->
+      <div class="skills" aria-labelledby="skills-title">
+        <h3 id="skills-title" style="font-weight: 700; letter-spacing: 3px; margin-bottom: 1rem; color: #5ac8fa;">SOFTWARE SKILLS</h3>
+        <div class="skill">
+          <span>Photoshop</span>
+          <span>90%</span>
+        </div>
+        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+
+        <div class="skill">
+          <span>Illustrator</span>
+          <span>80%</span>
+        </div>
+        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+
+        <div class="skill">
+          <span>After Effects</span>
+          <span>70%</span>
+        </div>
+        <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+
+        <div class="skill">
+          <span>Adobe XD</span>
+          <span>85%</span>
+        </div>
+        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+      </div>
+
+      <!-- Experience -->
+      <div class="experience" aria-labelledby="experience-title">
+        <h3 id="experience-title" style="font-weight: 700; letter-spacing: 3px; margin-bottom: 1rem; color: #5ac8fa;">EXPERIENCE</h3>
+        <div class="exp-item">
+          <div class="exp-title">Web Designer at ABC Corp</div>
+          <div class="exp-meta">2018 - Present</div>
+          <p>Designing modern user interfaces and optimizing user experience across multiple platforms.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Graphic Designer at XYZ Studios</div>
+          <div class="exp-meta">2016 - 2018</div>
+          <p>Created branding and promotional materials for diverse clients.</p>
+        </div>
+      </div>
+
+      <!-- What Can I Do -->
+      <div class="what-can">
+        <h3>WHAT CAN I DO?</h3>
+        <ul>
+          <li>Elegant and modern design</li>
+          <li>UI & UX expertise</li>
+          <li>Responsive web design</li>
+          <li>Brand identity and logos</li>
+          <li>Animation and motion graphics</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+</body>
+  </html>
+  
