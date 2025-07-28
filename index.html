@@ -12,12 +12,14 @@
       --highlight: #5ac8fa;
       --text-color: #eee;
     }
+
     body.light-mode {
       --bg-color: #f2f2f2;
       --card-bg: #fff;
       --highlight: #0077cc;
       --text-color: #111;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -26,18 +28,22 @@
       color: var(--text-color);
       scroll-behavior: smooth;
     }
+
     body {
       background-color: var(--bg-color);
       line-height: 1.5;
     }
+
     a {
       color: #bbb;
       text-decoration: none;
       transition: color 0.3s;
     }
+
     a:hover {
       color: var(--highlight);
     }
+
     .topnav {
       position: fixed;
       top: 1rem;
@@ -51,15 +57,18 @@
       border-radius: 8px;
       z-index: 999;
     }
+
     .topnav a {
       font-weight: 600;
       font-size: 0.95rem;
     }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 6rem 2rem 2rem;
     }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -67,30 +76,37 @@
       margin-bottom: 2rem;
       flex-wrap: wrap;
     }
+
     header .intro {
       flex: 1;
     }
+
     header h1 {
       font-size: 3rem;
       font-weight: 900;
       letter-spacing: 6px;
     }
+
     header h1 span {
       font-weight: 300;
       margin-left: 0.5rem;
     }
+
     header small {
       color: #888;
       font-weight: 600;
       letter-spacing: 1px;
     }
+
     .social-icons {
       margin: 1rem 0;
     }
+
     .social-icons a {
       margin-right: 1rem;
       font-size: 1.2rem;
     }
+
     .dark-toggle {
       margin-left: 1rem;
       font-size: 1.2rem;
@@ -99,66 +115,75 @@
       border: none;
       color: var(--highlight);
     }
+
     .intro-buttons {
       margin-top: 1rem;
-      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem;
+      border-radius: 8px;
       display: inline-block;
     }
-    .intro-buttons .dropdown-btn {
+
+    .intro-buttons a {
+      display: inline-block;
+      margin-right: 1rem;
       padding: 0.5rem 1rem;
       border: 1px solid var(--highlight);
       border-radius: 5px;
       color: var(--highlight);
-      background: transparent;
-      cursor: pointer;
     }
-    .intro-buttons .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: var(--card-bg);
-      min-width: 160px;
-      z-index: 1;
-      border: 1px solid var(--highlight);
-      border-radius: 5px;
-      margin-top: 0.5rem;
+
+    .intro-buttons a:hover {
+      background: var(--highlight);
+      color: var(--bg-color);
     }
-    .intro-buttons .dropdown-content a {
-      padding: 0.5rem 1rem;
-      display: block;
-      color: var(--highlight);
-    }
-    .intro-buttons:hover .dropdown-content {
-      display: block;
-    }
-    #about, #resume-section {
+
+    #about {
       background: var(--card-bg);
       padding: 2rem;
       border-radius: 8px;
       margin-bottom: 2rem;
     }
-    #about h2, #resume-section h3 {
+
+    #about h2 {
       font-size: 1.7rem;
       margin-bottom: 1rem;
       color: var(--highlight);
     }
-    #resume-section {
-      display: none;
+
+    #about p {
+      opacity: 0.85;
     }
-    .skills ul, .what-can ul {
+
+    #skills-exp {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skills ul,
+    .what-can ul {
       list-style-type: disc;
       padding-left: 1.2rem;
     }
+
     .experience .exp-item {
       margin-bottom: 1.5rem;
     }
+
     .exp-title {
       font-weight: bold;
       color: var(--highlight);
     }
+
     .exp-meta {
       font-size: 0.85rem;
       opacity: 0.7;
     }
+
     @media (max-width: 768px) {
       .topnav {
         flex-direction: row;
@@ -171,7 +196,8 @@
   <nav class="topnav">
     <a href="#">Home</a>
     <a href="#about">About</a>
-    <a href="javascript:void(0);" onclick="toggleResume()">Resume</a>
+    <a href="resume.html">Resume</a>
+    <a href="resume.html#download">Download Resume</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="narrations.html">Narrations</a>
   </nav>
@@ -186,44 +212,42 @@
           <a href="https://instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
-          <button class="dark-toggle" onclick="toggleMode()"><i class="fas fa-moon" id="mode-icon"></i></button>
+          <button class="dark-toggle" onclick="toggleMode()">
+            <i class="fas fa-moon" id="mode-icon"></i>
+          </button>
         </div>
         <div class="intro-buttons">
-          <button class="dropdown-btn">Resume ▾</button>
-          <div class="dropdown-content">
-            <a href="javascript:void(0);" onclick="toggleResume()">Show Resume</a>
-            <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes" target="_blank">Download Resume</a>
-          </div>
+          <a href="resume.html">Resume</a>
+          <a href="portfolio.html">Portfolio</a>
         </div>
       </div>
     </header>
 
     <section id="about">
       <h2>ABOUT</h2>
-      <p>I am a passionate and goal-driven optometrist with a strong interest in both clinical practice and the optical retail industry. With a focus on integrating clinical expertise with strategic business approaches, I aim to deliver sustainable, patient-centered eye care. Known for my effective communication and collaborative mindset, I am committed to continuous learning and making a meaningful impact in the evolving field of eye care.</p>
+      <p>
+        I am a passionate and goal-driven optometrist with a strong interest in both clinical practice and the optical retail industry. With a focus on integrating clinical expertise with strategic business approaches, I aim to deliver sustainable, patient-centered eye care. Known for my effective communication and collaborative mindset, I am committed to continuous learning and making a meaningful impact in the evolving field of eye care.
+      </p>
     </section>
 
-    <section id="resume-section">
-      <h3>SKILLS</h3>
-      <ul>
-        <li>Clinical Optometry</li>
-        <li>Vision Therapy</li>
-        <li>Patient Education</li>
-        <li>Clinical Diagnostics (OCT, HVF)</li>
-        <li>Storytelling & Creative Content</li>
-      </ul>
+    <section id="skills-exp">
+      <div class="skills">
+        <h3 style="color: var(--highlight);">SKILLS</h3>
+        <ul>
+          <li>Clinical Optometry</li>
+          <li>Vision Therapy</li>
+          <li>Patient Education</li>
+          <li>Clinical Diagnostics (OCT, HVF)</li>
+          <li>Storytelling & Creative Content</li>
+        </ul>
+      </div>
 
-      <h3>EXPERIENCE</h3>
       <div class="experience">
+        <h3 style="color: var(--highlight);">EXPERIENCE</h3>
         <div class="exp-item">
-          <div class="exp-title">Intern – Clinical Optometry</div>
+          <div class="exp-title">Clinical Optometry Intern</div>
           <div class="exp-meta">2024 – 2025</div>
-          <p>Performed refractions, binocular vision assessments, and patient education across various departments.</p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Research Assistant</div>
-          <div class="exp-meta">2024 – 2025</div>
-          <p>Worked on visual search task performance and real-world scenario studies under thesis supervision. <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes" target="_blank">Thesis Link</a></p>
+          <p>Handled 400+ patients, conducted eye exams, managed BV anomalies, fitted specialty lenses (keratoconus, ortho-k, post-op care).</p>
         </div>
         <div class="exp-item">
           <div class="exp-title">Patient Counseling & Community Camps</div>
@@ -235,24 +259,31 @@
           <div class="exp-meta">2024 – 2025</div>
           <p>Performed OCT, HVF, fundus photography and maintained EMR documentation for surgical and medical referrals.</p>
         </div>
+        <div class="exp-item">
+          <div class="exp-title">Research Project</div>
+          <div class="exp-meta">2024 – 2025</div>
+          <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
+        </div>
       </div>
 
-      <h3>EDUCATION</h3>
-      <ul>
-        <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya – CGPA: 6.82</li>
-        <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
-        <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
-      </ul>
-
-      <h3>CERTIFICATIONS</h3>
-      <ul><li>Paathshaala by Zeiss – 86%</li></ul>
-
-      <h3>LANGUAGES</h3>
-      <ul>
-        <li>Tamil – Fluent</li>
-        <li>English – Fluent</li>
-        <li>Hindi – Professional Proficiency</li>
-      </ul>
+      <div class="what-can">
+        <h3 style="color: var(--highlight);">EDUCATION</h3>
+        <ul>
+          <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya</li>
+          <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
+          <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
+        </ul>
+        <h3 style="color: var(--highlight); margin-top:1rem;">CERTIFICATIONS</h3>
+        <ul>
+          <li>Paathshaala by Zeiss – 86%</li>
+        </ul>
+        <h3 style="color: var(--highlight); margin-top:1rem;">LANGUAGES</h3>
+        <ul>
+          <li>Tamil – Fluent</li>
+          <li>English – Fluent</li>
+          <li>Hindi – Professional</li>
+        </ul>
+      </div>
     </section>
   </div>
 
@@ -260,12 +291,13 @@
     function toggleMode() {
       document.body.classList.toggle("light-mode");
       const icon = document.getElementById("mode-icon");
-      icon.classList.toggle("fa-moon");
-      icon.classList.toggle("fa-sun");
-    }
-    function toggleResume() {
-      const section = document.getElementById("resume-section");
-      section.style.display = section.style.display === "none" ? "block" : "none";
+      if (document.body.classList.contains("light-mode")) {
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      } else {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
     }
   </script>
 </body>
