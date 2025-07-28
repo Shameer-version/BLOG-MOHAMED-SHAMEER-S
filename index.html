@@ -52,15 +52,42 @@
       display: flex;
       justify-content: flex-start;
       gap: 2rem;
-      background: rgba(18, 18, 18, 0.7);
+      background: rgba(18, 18, 18, 0.4);
       padding: 0.8rem 1.5rem;
       border-radius: 8px;
       z-index: 999;
+      backdrop-filter: blur(6px);
     }
 
     .topnav a {
       font-weight: 600;
       font-size: 0.95rem;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: var(--card-bg);
+      top: 120%;
+      left: 0;
+      min-width: 160px;
+      border: 1px solid #444;
+      border-radius: 6px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 8px 12px;
+      color: var(--text-color);
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
     }
 
     .container {
@@ -196,8 +223,13 @@
   <nav class="topnav">
     <a href="#">Home</a>
     <a href="#about">About</a>
-    <a href="resume.html">Resume</a>
-    <a href="resume.html#download">Download Resume</a>
+    <div class="dropdown">
+      <a href="resume.html">Resume ▾</a>
+      <div class="dropdown-content">
+        <a href="resume.html">Show</a>
+        <a href="resume.html#download">Download</a>
+      </div>
+    </div>
     <a href="portfolio.html">Portfolio</a>
     <a href="narrations.html">Narrations</a>
   </nav>
@@ -269,7 +301,7 @@
       <div class="what-can">
         <h3 style="color: var(--highlight);">EDUCATION</h3>
         <ul>
-          <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya</li>
+          <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya (CGPA: 6.82)</li>
           <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
           <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
         </ul>
@@ -291,13 +323,8 @@
     function toggleMode() {
       document.body.classList.toggle("light-mode");
       const icon = document.getElementById("mode-icon");
-      if (document.body.classList.contains("light-mode")) {
-        icon.classList.remove("fa-moon");
-        icon.classList.add("fa-sun");
-      } else {
-        icon.classList.remove("fa-sun");
-        icon.classList.add("fa-moon");
-      }
+      icon.classList.toggle("fa-moon");
+      icon.classList.toggle("fa-sun");
     }
   </script>
 </body>
