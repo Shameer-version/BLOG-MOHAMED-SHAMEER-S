@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mohamed Shameer S | Optometrist</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -10,349 +9,255 @@
       box-sizing: border-box;
       margin: 0; padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #eee;
-    }
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }:root {
+  --bg-color: #121212;
+  --card-bg: #1a1a1a;
+  --highlight: #5ac8fa;
+  --text-color: #eee;
+}
 
-    body {
-      background-color: #121212;
-      line-height: 1.5;
-    }
+body.light-mode {
+  --bg-color: #f2f2f2;
+  --card-bg: #fff;
+  --highlight: #0077cc;
+  --text-color: #111;
+}
 
-    a {
-      color: #bbb;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+body {
+  background-color: var(--bg-color);
+  line-height: 1.5;
+}
 
-    a:hover {
-      color: #5ac8fa;
-    }
+a {
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: var(--highlight);
+}
 
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
+.topnav {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 999;
+}
+.topnav a {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
 
-    .topnav {
-      display: flex;
-      justify-content: flex-end;
-      gap: 2rem;
-      padding: 1rem 2rem 0 2rem;
-      position: sticky;
-      top: 0;
-      background: #121212;
-      z-index: 10;
-    }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+}
 
-    .topnav a {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
+header .intro {
+  flex: 1;
+}
+header h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 6px;
+}
+header h1 span {
+  font-weight: 300;
+  margin-left: 0.5rem;
+}
+header small {
+  color: #888;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.social-icons {
+  margin: 1rem 0;
+}
+.social-icons a {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+}
+.intro-buttons {
+  margin-top: 1rem;
+}
+.intro-buttons a {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--highlight);
+  border-radius: 5px;
+  color: var(--highlight);
+}
+.intro-buttons a:hover {
+  background: var(--highlight);
+  color: var(--bg-color);
+}
 
-    header .intro {
-      max-width: 55%;
-    }
+#about {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+#about h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
+  color: var(--highlight);
+}
+#about p {
+  opacity: 0.85;
+}
 
-    header h1 {
-      font-weight: 900;
-      font-size: 2.5rem;
-      letter-spacing: 6px;
-    }
+#skills-exp {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
 
-    header h1 span:last-child {
-      font-weight: 300;
-      letter-spacing: normal;
-      margin-left: 0.3rem;
-    }
+.skills ul,
+.what-can ul {
+  list-style-type: disc;
+  padding-left: 1.2rem;
+}
 
-    header small {
-      color: #888;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+.experience .exp-item {
+  margin-bottom: 1.5rem;
+}
+.exp-title {
+  font-weight: bold;
+  color: var(--highlight);
+}
+.exp-meta {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
 
-    .social-icons {
-      margin-top: 0.7rem;
-    }
+.dark-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: 2px solid var(--highlight);
+  color: var(--highlight);
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-    .social-icons a {
-      margin-right: 1rem;
-      font-size: 1.2rem;
-    }
+@media (max-width: 768px) {
+  .topnav {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
 
-    .header-right {
-      max-width: 40%;
-      background: url('https://images.unsplash.com/photo-1620133891563-1e889ac7d2d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
-      border-radius: 8px;
-      height: 200px;
-      box-shadow: 0 3px 15px rgba(90, 200, 250, 0.5);
-    }
-
-    #about {
-      background: #1a1a1a;
-      padding: 1.5rem 2rem;
-      border-radius: 7px;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    #about .about-text {
-      flex: 2;
-    }
-
-    #about h2 {
-      font-weight: 900;
-      letter-spacing: 4px;
-      font-size: 1.7rem;
-      margin-bottom: 1rem;
-    }
-
-    #about p {
-      opacity: 0.7;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    #about .about-photo {
-      flex: 1;
-      border-radius: 7px;
-      overflow: hidden;
-      box-shadow: 0 3px 15px rgba(90, 200, 250, 0.5);
-    }
-
-    #about .about-photo img {
-      width: 100%;
-      display: block;
-      filter: grayscale(40%);
-      transition: filter 0.3s ease;
-    }
-
-    #about .about-photo img:hover {
-      filter: grayscale(0%);
-    }
-
-    #skills-exp {
-      background: #1a1a1a;
-      padding: 1.5rem 2rem;
-      border-radius: 7px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .skills, .experience, .what-can {
-      font-size: 0.9rem;
-    }
-
-    .skill {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .progress-bar {
-      height: 6px;
-      background: #333;
-      border-radius: 3px;
-      overflow: hidden;
-      margin-top: 4px;
-    }
-
-    .progress {
-      height: 6px;
-      background: #5ac8fa;
-      border-radius: 3px 0 0 3px;
-    }
-
-    .exp-item {
-      border-left: 3px solid #5ac8fa;
-      padding-left: 10px;
-      margin-bottom: 1rem;
-    }
-
-    .exp-title {
-      font-weight: 700;
-      color: #5ac8fa;
-    }
-
-    .exp-meta {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
-
-    .what-can ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .what-can ul li {
-      margin-bottom: 0.4rem;
-      padding-left: 17px;
-      position: relative;
-    }
-
-    .what-can ul li::before {
-      content: "•";
-      color: #5ac8fa;
-      position: absolute;
-      left: 0;
-      font-weight: 700;
-    }
-
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      header .intro, .header-right {
-        max-width: 100%;
-      }
-
-      #about {
-        flex-direction: column;
-      }
-
-      #skills-exp {
-        grid-template-columns: 1fr;
-      }
-
-      .topnav {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-    }
   </style>
 </head>
 <body>
-
-  <!-- Navigation -->
   <nav class="topnav">
     <a href="#">Home</a>
     <a href="#about">About</a>
-    <a href="resume.html">Resume</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="narrations.html">My Narrations</a>
+    <a href="#skills-exp">Experience</a>
   </nav>
-
-  <!-- Main Content -->
-  <div class="container">
-    <!-- Header -->
+  <button class="dark-toggle" onclick="toggleMode()">Toggle Mode</button>  <div class="container">
     <header>
       <div class="intro">
-        <h1>MOHAMED <span>SHAMEER S</span></h1>
+        <h1>MOHAMED<span> SHAMEER S</span></h1>
         <small>OPTOMETRIST</small>
         <div class="social-icons">
-          <a href="mailto:mohamedshameer12345@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://instagram.com/duh.its_mohamed" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="tel:+919345768563" title="Call"><i class="fas fa-phone"></i></a>
+          <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="https://instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
+        </div>
+        <div class="intro-buttons">
+          <a href="resume.html">Resume</a>
+          <a href="portfolio.html">Portfolio</a>
         </div>
       </div>
-      <div class="header-right"></div>
-    </header>
+    </header><section id="about">
+  <h2>ABOUT</h2>
+  <p>
+    I am an enthusiastic optometry student with a love for vision science, anime, storytelling, and music. My work blends creativity with clarity—whether through clinical experience, research, or visual design. I believe good vision goes beyond eyesight—it's about perception, balance, and insight.
+  </p>
+</section>
 
-    <!-- About -->
-    <section id="about">
-      <div class="about-text">
-        <h2>ABOUT</h2>
-        <p>
-          I am an enthusiastic optometry student with a love for vision science, anime, storytelling, and music. My work blends creativity with clarity—whether through clinical experience, research, or visual design. I believe good vision goes beyond eyesight—it's about perception, balance, and insight.
-        </p>
-      </div>
-      <div class="about-photo">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohamed Shameer S" />
-      </div>
-    </section>
-
-    <!-- Skills & Experience -->
-    <section id="skills-exp">
-      <!-- Skills -->
-      <div class="skills">
-        <h3 style="color:#5ac8fa; letter-spacing:2px;">SKILLS</h3>
-        <div class="skill"><span>Clinical Optometry</span><span>90%</span></div>
-        <div class="progress-bar"><div class="progress" style="width:90%"></div></div>
-        <div class="skill"><span>Vision Therapy</span><span>80%</span></div>
-        <div class="progress-bar"><div class="progress" style="width:80%"></div></div>
-        <div class="skill"><span>Patient Education</span><span>85%</span></div>
-        <div class="progress-bar"><div class="progress" style="width:85%"></div></div>
-        <div class="skill"><span>Clinical Diagnostics (OCT, HVF)</span><span>75%</span></div>
-        <div class="progress-bar"><div class="progress" style="width:75%"></div></div>
-        <div class="skill"><span>Storytelling & Content Creation</span><span>90%</span></div>
-        <div class="progress-bar"><div class="progress" style="width:90%"></div></div>
-      </div>
-
-      <!-- Experience -->
-      <div class="experience">
-        <h3 style="color:#5ac8fa; letter-spacing:2px;">EXPERIENCE</h3>
-        <div class="exp-item">
-          <div class="exp-title">Clinical Optometry Intern</div>
-          <div class="exp-meta">2024 – Present</div>
-          <p>
-            Conducted eye exams for 400+ patients, independently managed refractive errors, ocular diseases, and binocular vision anomalies. Fitted specialty lenses including for keratoconus, myopia control, and post-surgical care.
-          </p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Vision Care & Patient Education</div>
-          <div class="exp-meta">2023 – 2024</div>
-          <p>
-            Led sessions on eye health, hygiene, and preventive care. Participated in community outreach vision screenings and educational drives.
-          </p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Diagnostic Imaging & Documentation</div>
-          <div class="exp-meta">2023 – 2024</div>
-          <p>
-            Utilized HVF, OCT, and fundus cameras. Documented findings in Electronic Health Records (EHR), ensuring accuracy and protocol compliance.
-          </p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Research Assistant</div>
-          <div class="exp-meta">2023 – 2024</div>
-          <p>
-            Conducted a real-world visual search study: “Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance.”
-          </p>
-        </div>
-      </div>
-
-      <!-- Education -->
-      <div class="what-can">
-        <h3>EDUCATION</h3>
-        <ul>
-          <li><strong>Bachelor of Optometry</strong> – SASTRA University, Sankara Nethralaya, Chennai</li>
-          <li><strong>HSC</strong> – Amalraj Matriculation HSS, 2021 – 82%</li>
-          <li><strong>SSLC</strong> – Sri Srinivasa High School, 2018 – 75.8%</li>
-        </ul>
-      </div>
-
-      <!-- Certifications -->
-      <div class="what-can">
-        <h3>CERTIFICATIONS</h3>
-        <ul>
-          <li>Paathshaala by Zeiss – 86%</li>
-        </ul>
-      </div>
-
-      <!-- Languages -->
-      <div class="what-can">
-        <h3>LANGUAGES</h3>
-        <ul>
-          <li>Tamil – Fluent</li>
-          <li>English – Fluent</li>
-          <li>Hindi – Professional Proficiency</li>
-        </ul>
-      </div>
-    </section>
+<section id="skills-exp">
+  <div class="skills">
+    <h3 style="color: var(--highlight);">SKILLS</h3>
+    <ul>
+      <li>Clinical Optometry</li>
+      <li>Vision Therapy</li>
+      <li>Patient Education</li>
+      <li>Clinical Diagnostics (OCT, HVF)</li>
+      <li>Storytelling & Creative Content</li>
+    </ul>
   </div>
-</body>
+
+  <div class="experience">
+    <h3 style="color: var(--highlight);">EXPERIENCE</h3>
+    <div class="exp-item">
+      <div class="exp-title">Clinical Optometry Intern</div>
+      <div class="exp-meta">2024 – Present</div>
+      <p>Handled 400+ patients, conducted eye exams, managed BV anomalies, fitted specialty lenses (keratoconus, ortho-k, post-op care).</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-title">Patient Counseling & Community Camps</div>
+      <div class="exp-meta">2023 – 2024</div>
+      <p>Educated patients on preventive care and hygiene. Participated in occupational vision screenings and awareness events.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-title">Diagnostic & Documentation</div>
+      <div class="exp-meta">2023 – 2024</div>
+      <p>Performed OCT, HVF, fundus photography and maintained EHR documentation for surgical and medical referrals.</p>
+    </div>
+    <div class="exp-item">
+      <div class="exp-title">Research Project</div>
+      <div class="exp-meta">2023 – 2024</div>
+      <p><a href="https://docs.google.com/document/d/1aEBb9oXw99gUG9IlIMWWHCNGqq6ywXO8/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
+    </div>
+  </div>
+
+  <div class="what-can">
+    <h3 style="color: var(--highlight);">EDUCATION</h3>
+    <ul>
+      <li><strong>Bachelor of Optometry</strong> – SASTRA University & Sankara Nethralaya</li>
+      <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
+      <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
+    </ul>
+    <h3 style="color: var(--highlight); margin-top:1rem;">CERTIFICATIONS</h3>
+    <ul>
+      <li>Paathshaala by Zeiss – 86%</li>
+    </ul>
+    <h3 style="color: var(--highlight); margin-top:1rem;">LANGUAGES</h3>
+    <ul>
+      <li>Tamil – Fluent</li>
+      <li>English – Fluent</li>
+      <li>Hindi – Professional</li>
+    </ul>
+  </div>
+</section>
+
+  </div>  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+    }
+  </script></body>
 </html>
