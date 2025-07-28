@@ -119,11 +119,13 @@
 
     .intro-buttons {
       margin-top: 1rem;
-      display: inline-block;
+      display: flex;
+      gap: 1rem;
       position: relative;
+      flex-wrap: wrap;
     }
 
-    .resume-btn {
+    .resume-btn, .portfolio-btn {
       padding: 0.5rem 1rem;
       border: 1px solid var(--highlight);
       border-radius: 5px;
@@ -132,7 +134,7 @@
       cursor: pointer;
     }
 
-    .resume-btn:hover {
+    .resume-btn:hover, .portfolio-btn:hover {
       background: var(--highlight);
       color: var(--bg-color);
     }
@@ -154,7 +156,9 @@
       color: var(--text-color);
     }
 
-    .intro-buttons:hover .dropdown-content {
+    .intro-buttons:hover .dropdown-content,
+    .resume-btn:focus + .dropdown-content,
+    .dropdown-content:hover {
       display: block;
     }
 
@@ -195,6 +199,7 @@
   <nav class="topnav">
     <a href="#">Home</a>
     <a href="#about">About</a>
+    <a href="#skills-exp">Resume</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="narrations.html">Narrations</a>
   </nav>
@@ -207,18 +212,21 @@
         <div class="social-icons">
           <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>
           <a href="https://instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
           <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
           <button class="dark-toggle" onclick="toggleMode()">
             <i class="fas fa-moon" id="mode-icon"></i>
           </button>
         </div>
         <div class="intro-buttons">
-          <button class="resume-btn">Resume ▾</button>
-          <div class="dropdown-content">
-            <a href="#skills-exp">Show</a>
-            <a href="resume.html#download" target="_blank">Download</a>
+          <div style="position: relative;">
+            <button class="resume-btn">Resume ▾</button>
+            <div class="dropdown-content">
+              <a href="#skills-exp">Show</a>
+              <a href="resume.html#download" target="_blank">Download</a>
+            </div>
           </div>
+          <a href="portfolio.html"><button class="portfolio-btn">Portfolio</button></a>
         </div>
       </div>
     </header>
@@ -262,7 +270,7 @@
         <div class="exp-item">
           <div class="exp-title">Research Project</div>
           <div class="exp-meta">2024 – 2025</div>
-          <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
+          <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
         </div>
       </div>
 
