@@ -1,194 +1,208 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mohamed Shameer S | Optometrist</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <style>
+    :root {
+      --bg-color: #121212;
+      --card-bg: #1a1a1a;
+      --highlight: #5ac8fa;
+      --text-color: #eee;
+    }
+
+    body.light-mode {
+      --bg-color: #f2f2f2;
+      --card-bg: #fff;
+      --highlight: #0077cc;
+      --text-color: #111;
+    }
+
     * {
       box-sizing: border-box;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: var(--text-color);
       scroll-behavior: smooth;
-    }:root {
-  --bg-color: #121212;
-  --card-bg: #1a1a1a;
-  --highlight: #5ac8fa;
-  --text-color: #eee;
-}
+    }
 
-body.light-mode {
-  --bg-color: #f2f2f2;
-  --card-bg: #fff;
-  --highlight: #0077cc;
-  --text-color: #111;
-}
+    body {
+      background-color: var(--bg-color);
+      line-height: 1.5;
+    }
 
-body {
-  background-color: var(--bg-color);
-  line-height: 1.5;
-}
+    a {
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
 
-a {
-  color: #bbb;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-a:hover {
-  color: var(--highlight);
-}
+    a:hover {
+      color: var(--highlight);
+    }
 
-.topnav {
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  right: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  gap: 2rem;
-  background: rgba(18,18,18,0.7);
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  z-index: 999;
-}
-.topnav a {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
+    .topnav {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      right: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      gap: 2rem;
+      background: rgba(18, 18, 18, 0.7);
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      z-index: 999;
+    }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 6rem 2rem 2rem;
-}
+    .topnav a {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem 2rem;
+    }
 
-header .intro {
-  flex: 1;
-}
-header h1 {
-  font-size: 3rem;
-  font-weight: 900;
-  letter-spacing: 6px;
-}
-header h1 span {
-  font-weight: 300;
-  margin-left: 0.5rem;
-}
-header small {
-  color: #888;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-.social-icons {
-  margin: 1rem 0;
-}
-.social-icons a {
-  margin-right: 1rem;
-  font-size: 1.2rem;
-}
-.intro-buttons {
-  margin-top: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.5rem;
-  border-radius: 8px;
-  display: inline-block;
-}
-.intro-buttons a {
-  display: inline-block;
-  margin-right: 1rem;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--highlight);
-  border-radius: 5px;
-  color: var(--highlight);
-}
-.intro-buttons a:hover {
-  background: var(--highlight);
-  color: var(--bg-color);
-}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
 
-#about {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-}
-#about h2 {
-  font-size: 1.7rem;
-  margin-bottom: 1rem;
-  color: var(--highlight);
-}
-#about p {
-  opacity: 0.85;
-}
+    header .intro {
+      flex: 1;
+    }
 
-#skills-exp {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: 8px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
+    header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      letter-spacing: 6px;
+    }
 
-.skills ul,
-.what-can ul {
-  list-style-type: disc;
-  padding-left: 1.2rem;
-}
+    header h1 span {
+      font-weight: 300;
+      margin-left: 0.5rem;
+    }
 
-.experience .exp-item {
-  margin-bottom: 1.5rem;
-}
-.exp-title {
-  font-weight: bold;
-  color: var(--highlight);
-}
-.exp-meta {
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
+    header small {
+      color: #888;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
 
-.dark-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--highlight);
-}
+    .social-icons {
+      margin: 1rem 0;
+    }
 
-@media (max-width: 768px) {
-  .topnav {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-}
+    .social-icons a {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
 
+    .dark-toggle {
+      margin-left: 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--highlight);
+    }
+
+    .intro-buttons {
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    .intro-buttons a {
+      display: inline-block;
+      margin-right: 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--highlight);
+      border-radius: 5px;
+      color: var(--highlight);
+    }
+
+    .intro-buttons a:hover {
+      background: var(--highlight);
+      color: var(--bg-color);
+    }
+
+    #about {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    #about h2 {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      color: var(--highlight);
+    }
+
+    #about p {
+      opacity: 0.85;
+    }
+
+    #skills-exp {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .skills ul,
+    .what-can ul {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+    }
+
+    .experience .exp-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .exp-title {
+      font-weight: bold;
+      color: var(--highlight);
+    }
+
+    .exp-meta {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .topnav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
 <body>
   <nav class="topnav">
     <a href="#">Home</a>
     <a href="#about">About</a>
-    <a href="#skills-exp">Experience</a>
     <a href="resume.html">Resume</a>
+    <a href="resume.html#download">Download Resume</a>
     <a href="portfolio.html">Portfolio</a>
     <a href="narrations.html">Narrations</a>
   </nav>
-  <button class="dark-toggle" onclick="toggleMode()">
-    <i class="fas fa-moon" id="mode-icon"></i>
-  </button>  <div class="container">
+
+  <div class="container">
     <header>
       <div class="intro">
         <h1>MOHAMED<span> SHAMEER S</span></h1>
@@ -198,76 +212,82 @@ header small {
           <a href="https://instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
+          <button class="dark-toggle" onclick="toggleMode()">
+            <i class="fas fa-moon" id="mode-icon"></i>
+          </button>
         </div>
         <div class="intro-buttons">
           <a href="resume.html">Resume</a>
           <a href="portfolio.html">Portfolio</a>
         </div>
       </div>
-    </header><section id="about">
-  <h2>ABOUT</h2>
-  <p>
-    I am a passionate and goal-driven optometrist with a strong interest in both clinical practice and the optical retail industry. With a focus on integrating clinical expertise with strategic business approaches, I aim to deliver sustainable, patient-centered eye care. Known for my effective communication and collaborative mindset, I am committed to continuous learning and making a meaningful impact in the evolving field of eye care.
-  </p>
-</section>
+    </header>
 
-<section id="skills-exp">
-  <div class="skills">
-    <h3 style="color: var(--highlight);">SKILLS</h3>
-    <ul>
-      <li>Clinical Optometry</li>
-      <li>Vision Therapy</li>
-      <li>Patient Education</li>
-      <li>Clinical Diagnostics (OCT, HVF)</li>
-      <li>Storytelling & Creative Content</li>
-    </ul>
+    <section id="about">
+      <h2>ABOUT</h2>
+      <p>
+        I am a passionate and goal-driven optometrist with a strong interest in both clinical practice and the optical retail industry. With a focus on integrating clinical expertise with strategic business approaches, I aim to deliver sustainable, patient-centered eye care. Known for my effective communication and collaborative mindset, I am committed to continuous learning and making a meaningful impact in the evolving field of eye care.
+      </p>
+    </section>
+
+    <section id="skills-exp">
+      <div class="skills">
+        <h3 style="color: var(--highlight);">SKILLS</h3>
+        <ul>
+          <li>Clinical Optometry</li>
+          <li>Vision Therapy</li>
+          <li>Patient Education</li>
+          <li>Clinical Diagnostics (OCT, HVF)</li>
+          <li>Storytelling & Creative Content</li>
+        </ul>
+      </div>
+
+      <div class="experience">
+        <h3 style="color: var(--highlight);">EXPERIENCE</h3>
+        <div class="exp-item">
+          <div class="exp-title">Clinical Optometry Intern</div>
+          <div class="exp-meta">2024 – 2025</div>
+          <p>Handled 400+ patients, conducted eye exams, managed BV anomalies, fitted specialty lenses (keratoconus, ortho-k, post-op care).</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Patient Counseling & Community Camps</div>
+          <div class="exp-meta">2024 – 2025</div>
+          <p>Educated patients on preventive care and hygiene. Participated in occupational vision screenings and awareness events.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Diagnostic & Documentation</div>
+          <div class="exp-meta">2024 – 2025</div>
+          <p>Performed OCT, HVF, fundus photography and maintained EMR documentation for surgical and medical referrals.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Research Project</div>
+          <div class="exp-meta">2024 – 2025</div>
+          <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
+        </div>
+      </div>
+
+      <div class="what-can">
+        <h3 style="color: var(--highlight);">EDUCATION</h3>
+        <ul>
+          <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya</li>
+          <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
+          <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
+        </ul>
+        <h3 style="color: var(--highlight); margin-top:1rem;">CERTIFICATIONS</h3>
+        <ul>
+          <li>Paathshaala by Zeiss – 86%</li>
+        </ul>
+        <h3 style="color: var(--highlight); margin-top:1rem;">LANGUAGES</h3>
+        <ul>
+          <li>Tamil – Fluent</li>
+          <li>English – Fluent</li>
+          <li>Hindi – Professional</li>
+        </ul>
+      </div>
+    </section>
   </div>
 
-  <div class="experience">
-    <h3 style="color: var(--highlight);">EXPERIENCE</h3>
-    <div class="exp-item">
-      <div class="exp-title">Clinical Optometry Intern</div>
-      <div class="exp-meta">2024 – Present</div>
-      <p>Handled 400+ patients, conducted eye exams, managed BV anomalies, fitted specialty lenses (keratoconus, ortho-k, post-op care).</p>
-    </div>
-    <div class="exp-item">
-      <div class="exp-title">Patient Counseling & Community Camps</div>
-      <div class="exp-meta">2023 – 2024</div>
-      <p>Educated patients on preventive care and hygiene. Participated in occupational vision screenings and awareness events.</p>
-    </div>
-    <div class="exp-item">
-      <div class="exp-title">Diagnostic & Documentation</div>
-      <div class="exp-meta">2023 – 2024</div>
-      <p>Performed OCT, HVF, fundus photography and maintained EHR documentation for surgical and medical referrals.</p>
-    </div>
-    <div class="exp-item">
-      <div class="exp-title">Research Project</div>
-      <div class="exp-meta">2023 – 2024</div>
-      <p><a href="https://docs.google.com/document/d/1aEBb9oXw99gUG9IlIMWWHCNGqq6ywXO8/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
-    </div>
-  </div>
-
-  <div class="what-can">
-    <h3 style="color: var(--highlight);">EDUCATION</h3>
-    <ul>
-      <li><strong>Bachelor of Optometry</strong> – SASTRA University & Sankara Nethralaya</li>
-      <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
-      <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
-    </ul>
-    <h3 style="color: var(--highlight); margin-top:1rem;">CERTIFICATIONS</h3>
-    <ul>
-      <li>Paathshaala by Zeiss – 86%</li>
-    </ul>
-    <h3 style="color: var(--highlight); margin-top:1rem;">LANGUAGES</h3>
-    <ul>
-      <li>Tamil – Fluent</li>
-      <li>English – Fluent</li>
-      <li>Hindi – Professional</li>
-    </ul>
-  </div>
-</section>
-
-  </div>  <script>
+  <script>
     function toggleMode() {
       document.body.classList.toggle("light-mode");
       const icon = document.getElementById("mode-icon");
@@ -279,5 +299,6 @@ header small {
         icon.classList.add("fa-moon");
       }
     }
-  </script></body>
+  </script>
+</body>
 </html>
