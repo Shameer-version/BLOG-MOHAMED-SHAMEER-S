@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jason Martin Portfolio</title>
+  <title>Mohamed Shameer S | Optometrist</title>
   <style>
-    /* Reset & base */
     * {
       box-sizing: border-box;
       margin: 0; padding: 0;
@@ -19,15 +18,35 @@
     a {
       color: #bbb;
       text-decoration: none;
+      transition: color 0.3s;
     }
-
+    a:hover {
+      color: #5ac8fa;
+    }
     .container {
       max-width: 900px;
       margin: 2rem auto;
       padding: 1rem;
     }
 
-    /* Header Section */
+    /* Top Navbar */
+    .topnav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 2rem;
+      padding: 1rem 2rem 0 2rem;
+      position: sticky;
+      top: 0;
+      background: #121212;
+      z-index: 10;
+    }
+    .topnav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -58,11 +77,6 @@
     .social-icons a {
       margin-right: 1rem;
       font-size: 1.2rem;
-      color: #bbb;
-      transition: color 0.3s;
-    }
-    .social-icons a:hover {
-      color: #5ac8fa;
     }
     .header-right {
       max-width: 40%;
@@ -72,7 +86,7 @@
       box-shadow: 0 3px 15px rgba(90, 200, 250, 0.5);
     }
 
-    /* About Section */
+    /* About */
     #about {
       background: #1a1a1a;
       padding: 1.5rem 2rem;
@@ -112,7 +126,7 @@
       filter: grayscale(0%);
     }
 
-    /* Skills & Experience Section */
+    /* Skills & Experience */
     #skills-exp {
       background: #1a1a1a;
       padding: 1.5rem 2rem;
@@ -122,17 +136,13 @@
       gap: 1rem;
     }
 
-    /* Skills */
-    .skills {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .skills, .experience, .what-can {
+      font-size: 0.9rem;
     }
+
     .skill {
       display: flex;
       justify-content: space-between;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
     }
     .progress-bar {
       height: 6px;
@@ -147,21 +157,13 @@
       border-radius: 3px 0 0 3px;
     }
 
-    /* Experience */
-    .experience {
-      font-size: 0.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      color: #bbb;
-    }
     .exp-item {
       border-left: 3px solid #5ac8fa;
       padding-left: 10px;
+      margin-bottom: 1rem;
     }
     .exp-title {
       font-weight: 700;
-      font-size: 1rem;
       color: #5ac8fa;
     }
     .exp-meta {
@@ -169,16 +171,6 @@
       opacity: 0.7;
     }
 
-    /* What Can I Do */
-    .what-can {
-      font-size: 0.85rem;
-      color: #bbb;
-    }
-    .what-can h3 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: 2px;
-    }
     .what-can ul {
       list-style: none;
       padding-left: 0;
@@ -196,7 +188,6 @@
       font-weight: 700;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -211,23 +202,36 @@
       #skills-exp {
         grid-template-columns: 1fr;
       }
+      .topnav {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
   </style>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 
+  <!-- Top Navigation -->
+  <nav class="topnav" role="navigation">
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="resume.html">Resume</a>
+    <a href="portfolio.html">Portfolio</a>
+  </nav>
+
+  <!-- Main Container -->
   <div class="container">
     <!-- Header -->
     <header>
       <div class="intro">
-        <h1>JASON <span>MARTIN</span></h1>
-        <small>PORTFOLIO DESIGNER</small>
+        <h1>MOHAMED <span>SHAMEER S</span></h1>
+        <small>OPTOMETRIST</small>
         <div class="social-icons" aria-label="Social media links">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
       </div>
       <div class="header-right"></div>
@@ -238,56 +242,39 @@
       <div class="about-text">
         <h2 id="about-title">ABOUT</h2>
         <p>
-          People change with time. I have 6 years of experience working with different companies to build beautiful websites and user experiences. My approach is very user-centric, focusing on functionality, simplicity, and clarity.
+          I am an enthusiastic optometry student with a love for vision science, anime, storytelling, and music. My work blends creativity with clarity—whether it’s through clinical experience, research, or visual design. I believe good vision goes beyond eyesight—it's about perception, balance, and insight.
         </p>
       </div>
       <div class="about-photo" aria-hidden="true">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" />
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile photo" />
       </div>
     </section>
 
     <!-- Skills & Experience -->
     <section id="skills-exp" aria-label="Skills and experience">
-      <!-- Software Skills -->
-      <div class="skills" aria-labelledby="skills-title">
-        <h3 id="skills-title" style="font-weight: 700; letter-spacing: 3px; margin-bottom: 1rem; color: #5ac8fa;">SOFTWARE SKILLS</h3>
-        <div class="skill">
-          <span>Photoshop</span>
-          <span>90%</span>
-        </div>
-        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
-
-        <div class="skill">
-          <span>Illustrator</span>
-          <span>80%</span>
-        </div>
-        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-
-        <div class="skill">
-          <span>After Effects</span>
-          <span>70%</span>
-        </div>
-        <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
-
-        <div class="skill">
-          <span>Adobe XD</span>
-          <span>85%</span>
-        </div>
-        <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+      <!-- Skills -->
+      <div class="skills">
+        <h3 style="color:#5ac8fa; letter-spacing:2px;">SKILLS</h3>
+        <div class="skill"><span>Clinical Optometry</span><span>90%</span></div>
+        <div class="progress-bar"><div class="progress" style="width:90%"></div></div>
+        <div class="skill"><span>Vision Therapy</span><span>75%</span></div>
+        <div class="progress-bar"><div class="progress" style="width:75%"></div></div>
+        <div class="skill"><span>Storytelling & Content</span><span>85%</span></div>
+        <div class="progress-bar"><div class="progress" style="width:85%"></div></div>
       </div>
 
       <!-- Experience -->
-      <div class="experience" aria-labelledby="experience-title">
-        <h3 id="experience-title" style="font-weight: 700; letter-spacing: 3px; margin-bottom: 1rem; color: #5ac8fa;">EXPERIENCE</h3>
+      <div class="experience">
+        <h3 style="color:#5ac8fa; letter-spacing:2px;">EXPERIENCE</h3>
         <div class="exp-item">
-          <div class="exp-title">Web Designer at ABC Corp</div>
-          <div class="exp-meta">2018 - Present</div>
-          <p>Designing modern user interfaces and optimizing user experience across multiple platforms.</p>
+          <div class="exp-title">Intern – Clinical Optometry</div>
+          <div class="exp-meta">2024 – Present</div>
+          <p>Performed refractions, binocular vision assessments, and patient education across various departments.</p>
         </div>
         <div class="exp-item">
-          <div class="exp-title">Graphic Designer at XYZ Studios</div>
-          <div class="exp-meta">2016 - 2018</div>
-          <p>Created branding and promotional materials for diverse clients.</p>
+          <div class="exp-title">Research Assistant</div>
+          <div class="exp-meta">2023 – 2024</div>
+          <p>Worked on visual search task performance and real-world scenario studies under thesis supervision.</p>
         </div>
       </div>
 
@@ -295,16 +282,15 @@
       <div class="what-can">
         <h3>WHAT CAN I DO?</h3>
         <ul>
-          <li>Elegant and modern design</li>
-          <li>UI & UX expertise</li>
-          <li>Responsive web design</li>
-          <li>Brand identity and logos</li>
-          <li>Animation and motion graphics</li>
+          <li>Binocular vision testing</li>
+          <li>Refraction & dispensing</li>
+          <li>Case-based storytelling</li>
+          <li>Blog & creative content</li>
+          <li>Visual awareness campaigns</li>
         </ul>
       </div>
     </section>
   </div>
 
 </body>
-  </html>
-  
+</html>
