@@ -34,7 +34,6 @@
       padding: 1rem;
     }
 
-    /* Top Navbar */
     .topnav {
       display: flex;
       justify-content: flex-end;
@@ -52,7 +51,6 @@
       letter-spacing: 1px;
     }
 
-    /* Header */
     header {
       display: flex;
       justify-content: space-between;
@@ -99,7 +97,6 @@
       box-shadow: 0 3px 15px rgba(90, 200, 250, 0.5);
     }
 
-    /* About */
     #about {
       background: #1a1a1a;
       padding: 1.5rem 2rem;
@@ -145,7 +142,6 @@
       filter: grayscale(0%);
     }
 
-    /* Skills & Experience */
     #skills-exp {
       background: #1a1a1a;
       padding: 1.5rem 2rem;
@@ -240,8 +236,8 @@
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <nav class="topnav" role="navigation">
+  <!-- Navigation -->
+  <nav class="topnav">
     <a href="#">Home</a>
     <a href="#about">About</a>
     <a href="resume.html">Resume</a>
@@ -249,77 +245,114 @@
     <a href="narrations.html">My Narrations</a>
   </nav>
 
-  <!-- Main Container -->
+  <!-- Main Content -->
   <div class="container">
     <!-- Header -->
     <header>
       <div class="intro">
         <h1>MOHAMED <span>SHAMEER S</span></h1>
         <small>OPTOMETRIST</small>
-        <div class="social-icons" aria-label="Social media links">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="social-icons">
+          <a href="mailto:mohamedshameer12345@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://instagram.com/duh.its_mohamed" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="tel:+919345768563" title="Call"><i class="fas fa-phone"></i></a>
         </div>
       </div>
       <div class="header-right"></div>
     </header>
 
     <!-- About -->
-    <section id="about" aria-labelledby="about-title">
+    <section id="about">
       <div class="about-text">
-        <h2 id="about-title">ABOUT</h2>
+        <h2>ABOUT</h2>
         <p>
-          I am an enthusiastic optometry student with a love for vision science, anime, storytelling, and music. My work blends creativity with clarity—whether it’s through clinical experience, research, or visual design. I believe good vision goes beyond eyesight—it's about perception, balance, and insight.
+          I am an enthusiastic optometry student with a love for vision science, anime, storytelling, and music. My work blends creativity with clarity—whether through clinical experience, research, or visual design. I believe good vision goes beyond eyesight—it's about perception, balance, and insight.
         </p>
       </div>
-      <div class="about-photo" aria-hidden="true">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile photo" />
+      <div class="about-photo">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Mohamed Shameer S" />
       </div>
     </section>
 
     <!-- Skills & Experience -->
-    <section id="skills-exp" aria-label="Skills and experience">
+    <section id="skills-exp">
       <!-- Skills -->
       <div class="skills">
         <h3 style="color:#5ac8fa; letter-spacing:2px;">SKILLS</h3>
         <div class="skill"><span>Clinical Optometry</span><span>90%</span></div>
         <div class="progress-bar"><div class="progress" style="width:90%"></div></div>
-        <div class="skill"><span>Vision Therapy</span><span>75%</span></div>
-        <div class="progress-bar"><div class="progress" style="width:75%"></div></div>
-        <div class="skill"><span>Storytelling & Content</span><span>85%</span></div>
+        <div class="skill"><span>Vision Therapy</span><span>80%</span></div>
+        <div class="progress-bar"><div class="progress" style="width:80%"></div></div>
+        <div class="skill"><span>Patient Education</span><span>85%</span></div>
         <div class="progress-bar"><div class="progress" style="width:85%"></div></div>
+        <div class="skill"><span>Clinical Diagnostics (OCT, HVF)</span><span>75%</span></div>
+        <div class="progress-bar"><div class="progress" style="width:75%"></div></div>
+        <div class="skill"><span>Storytelling & Content Creation</span><span>90%</span></div>
+        <div class="progress-bar"><div class="progress" style="width:90%"></div></div>
       </div>
 
       <!-- Experience -->
       <div class="experience">
         <h3 style="color:#5ac8fa; letter-spacing:2px;">EXPERIENCE</h3>
         <div class="exp-item">
-          <div class="exp-title">Intern – Clinical Optometry</div>
+          <div class="exp-title">Clinical Optometry Intern</div>
           <div class="exp-meta">2024 – Present</div>
-          <p>Performed refractions, binocular vision assessments, and patient education across various departments.</p>
+          <p>
+            Conducted eye exams for 400+ patients, independently managed refractive errors, ocular diseases, and binocular vision anomalies. Fitted specialty lenses including for keratoconus, myopia control, and post-surgical care.
+          </p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Vision Care & Patient Education</div>
+          <div class="exp-meta">2023 – 2024</div>
+          <p>
+            Led sessions on eye health, hygiene, and preventive care. Participated in community outreach vision screenings and educational drives.
+          </p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-title">Diagnostic Imaging & Documentation</div>
+          <div class="exp-meta">2023 – 2024</div>
+          <p>
+            Utilized HVF, OCT, and fundus cameras. Documented findings in Electronic Health Records (EHR), ensuring accuracy and protocol compliance.
+          </p>
         </div>
         <div class="exp-item">
           <div class="exp-title">Research Assistant</div>
           <div class="exp-meta">2023 – 2024</div>
-          <p>Worked on visual search task performance and real-world scenario studies under thesis supervision.</p>
+          <p>
+            Conducted a real-world visual search study: “Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance.”
+          </p>
         </div>
       </div>
 
-      <!-- What Can I Do -->
+      <!-- Education -->
       <div class="what-can">
-        <h3>WHAT CAN I DO?</h3>
+        <h3>EDUCATION</h3>
         <ul>
-          <li>Binocular vision testing</li>
-          <li>Refraction & dispensing</li>
-          <li>Case-based storytelling</li>
-          <li>Blog & creative content</li>
-          <li>Visual awareness campaigns</li>
+          <li><strong>Bachelor of Optometry</strong> – SASTRA University, Sankara Nethralaya, Chennai</li>
+          <li><strong>HSC</strong> – Amalraj Matriculation HSS, 2021 – 82%</li>
+          <li><strong>SSLC</strong> – Sri Srinivasa High School, 2018 – 75.8%</li>
+        </ul>
+      </div>
+
+      <!-- Certifications -->
+      <div class="what-can">
+        <h3>CERTIFICATIONS</h3>
+        <ul>
+          <li>Paathshaala by Zeiss – 86%</li>
+        </ul>
+      </div>
+
+      <!-- Languages -->
+      <div class="what-can">
+        <h3>LANGUAGES</h3>
+        <ul>
+          <li>Tamil – Fluent</li>
+          <li>English – Fluent</li>
+          <li>Hindi – Professional Proficiency</li>
         </ul>
       </div>
     </section>
   </div>
-
 </body>
 </html>
