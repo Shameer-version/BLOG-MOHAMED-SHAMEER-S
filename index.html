@@ -162,7 +162,7 @@
       display: block;
     }
 
-    #about, #skills-exp {
+    #about, #skills-exp, #portfolio, #narrations {
       background: var(--card-bg);
       padding: 2rem;
       border-radius: 8px;
@@ -180,7 +180,7 @@
       padding-left: 1.2rem;
     }
 
-    .experience .exp-item {
+    .exp-item {
       margin-bottom: 1.5rem;
     }
 
@@ -193,6 +193,17 @@
       font-size: 0.85rem;
       opacity: 0.7;
     }
+
+    .resume-columns {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .resume-columns .column {
+      flex: 1;
+      min-width: 300px;
+    }
   </style>
 </head>
 <body>
@@ -200,8 +211,8 @@
     <a href="#">Home</a>
     <a href="#about">About</a>
     <a href="#skills-exp">Resume</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="narrations.html">Narrations</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#narrations">Narrations</a>
   </nav>
 
   <div class="container">
@@ -212,69 +223,66 @@
         <div class="social-icons">
           <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>
           <a href="https://instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
           <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
-          <button class="dark-toggle" onclick="toggleMode()">
-            <i class="fas fa-moon" id="mode-icon"></i>
-          </button>
+          <button class="dark-toggle" onclick="toggleMode()"><i class="fas fa-moon" id="mode-icon"></i></button>
         </div>
         <div class="intro-buttons">
           <div style="position: relative;">
             <button class="resume-btn">Resume ▾</button>
             <div class="dropdown-content">
               <a href="#skills-exp">Show</a>
-              <a href="resume.html#download" target="_blank">Download</a>
+              <a href="#skills-exp">Download</a> <!-- Simulated SPA action -->
             </div>
           </div>
-          <a href="portfolio.html"><button class="portfolio-btn">Portfolio</button></a>
+          <button class="portfolio-btn" onclick="document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });">Portfolio</button>
         </div>
       </div>
     </header>
 
     <section id="about">
       <h2>ABOUT</h2>
-      <p>
-        I am a passionate and goal-driven optometrist with a strong interest in both clinical practice and the optical retail industry. With a focus on integrating clinical expertise with strategic business approaches, I aim to deliver sustainable, patient-centered eye care. Known for my effective communication and collaborative mindset, I am committed to continuous learning and making a meaningful impact in the evolving field of eye care.
-      </p>
+      <p>I am a passionate and goal-driven optometrist with a strong interest in both clinical practice and the optical retail industry. With a focus on integrating clinical expertise with strategic business approaches, I aim to deliver sustainable, patient-centered eye care. Known for my effective communication and collaborative mindset, I am committed to continuous learning and making a meaningful impact in the evolving field of eye care.</p>
     </section>
 
     <section id="skills-exp">
-      <div class="skills">
-        <h3>SKILLS</h3>
-        <ul>
-          <li>Clinical Optometry</li>
-          <li>Vision Therapy</li>
-          <li>Patient Education</li>
-          <li>Clinical Diagnostics (OCT, HVF)</li>
-          <li>Storytelling & Creative Content</li>
-        </ul>
+      <div class="resume-columns">
+        <div class="column skills">
+          <h3>SKILLS</h3>
+          <ul>
+            <li>Clinical Optometry</li>
+            <li>Vision Therapy</li>
+            <li>Patient Education</li>
+            <li>Clinical Diagnostics (OCT, HVF)</li>
+            <li>Storytelling & Creative Content</li>
+          </ul>
+        </div>
+        <div class="column experience">
+          <h3>EXPERIENCE</h3>
+          <div class="exp-item">
+            <div class="exp-title">Clinical Optometry Intern</div>
+            <div class="exp-meta">2024 – 2025</div>
+            <p>Handled 400+ patients, conducted eye exams, managed BV anomalies, fitted specialty lenses (keratoconus, ortho-k, post-op care).</p>
+          </div>
+          <div class="exp-item">
+            <div class="exp-title">Patient Counseling & Community Camps</div>
+            <div class="exp-meta">2024 – 2025</div>
+            <p>Educated patients on preventive care and hygiene. Participated in occupational vision screenings and awareness events.</p>
+          </div>
+          <div class="exp-item">
+            <div class="exp-title">Diagnostic & Documentation</div>
+            <div class="exp-meta">2024 – 2025</div>
+            <p>Performed OCT, HVF, fundus photography and maintained EMR documentation for surgical and medical referrals.</p>
+          </div>
+          <div class="exp-item">
+            <div class="exp-title">Research Project</div>
+            <div class="exp-meta">2024 – 2025</div>
+            <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
+          </div>
+        </div>
       </div>
 
-      <div class="experience">
-        <h3>EXPERIENCE</h3>
-        <div class="exp-item">
-          <div class="exp-title">Clinical Optometry Intern</div>
-          <div class="exp-meta">2024 – 2025</div>
-          <p>Handled 400+ patients, conducted eye exams, managed BV anomalies, fitted specialty lenses (keratoconus, ortho-k, post-op care).</p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Patient Counseling & Community Camps</div>
-          <div class="exp-meta">2024 – 2025</div>
-          <p>Educated patients on preventive care and hygiene. Participated in occupational vision screenings and awareness events.</p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Diagnostic & Documentation</div>
-          <div class="exp-meta">2024 – 2025</div>
-          <p>Performed OCT, HVF, fundus photography and maintained EMR documentation for surgical and medical referrals.</p>
-        </div>
-        <div class="exp-item">
-          <div class="exp-title">Research Project</div>
-          <div class="exp-meta">2024 – 2025</div>
-          <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank" rel="noopener noreferrer">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
-        </div>
-      </div>
-
-      <div class="what-can">
+      <div class="what-can" style="margin-top: 2rem;">
         <h3>EDUCATION</h3>
         <ul>
           <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya (CGPA: 6.82)</li>
@@ -289,9 +297,19 @@
         <ul>
           <li>Tamil – Fluent</li>
           <li>English – Fluent</li>
-          <li>Hindi – Professional</li>
+          <li>Hindi – Professional Proficiency</li>
         </ul>
       </div>
+    </section>
+
+    <section id="portfolio">
+      <h2>PORTFOLIO</h2>
+      <p>Projects and creative works will be added here.</p>
+    </section>
+
+    <section id="narrations">
+      <h2>NARRATIONS</h2>
+      <p>Stories and personal content will be displayed here.</p>
     </section>
   </div>
 
