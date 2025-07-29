@@ -162,11 +162,12 @@
       display: block;
     }
 
-    #about, #skills-exp, #portfolio, #narrations {
+    section {
       background: var(--card-bg);
       padding: 2rem;
       border-radius: 8px;
       margin-bottom: 2rem;
+      display: block;
     }
 
     #about h2, .skills h3, .experience h3, .what-can h3 {
@@ -204,6 +205,10 @@
       flex: 1;
       min-width: 300px;
     }
+
+    .hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -231,8 +236,9 @@
           <div style="position: relative;">
             <button class="resume-btn">Resume ▾</button>
             <div class="dropdown-content">
-              <a href="#skills-exp">Show</a>
-              <a href="#skills-exp">Download</a> <!-- Simulated SPA action -->
+              <a href="#skills-exp" onclick="document.getElementById('skills-exp').classList.remove('hidden');">Show ↓</a>
+              <a href="#" onclick="document.getElementById('skills-exp').classList.add('hidden');">Hide ↑</a>
+              <a href="resume.html#download" target="_blank">Download</a>
             </div>
           </div>
           <button class="portfolio-btn" onclick="document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });">Portfolio</button>
@@ -247,7 +253,7 @@
 
     <section id="skills-exp">
       <div class="resume-columns">
-        <div class="column skills">
+        <div class="column">
           <h3>SKILLS</h3>
           <ul>
             <li>Clinical Optometry</li>
@@ -256,8 +262,28 @@
             <li>Clinical Diagnostics (OCT, HVF)</li>
             <li>Storytelling & Creative Content</li>
           </ul>
+
+          <h3 style="margin-top: 2rem;">EDUCATION</h3>
+          <ul>
+            <li><strong>Bachelor of Optometry</strong> – SASTRA & ESO, Sankara Nethralaya (CGPA: 6.82)</li>
+            <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
+            <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem;">CERTIFICATIONS</h3>
+          <ul>
+            <li>Paathshaala by Zeiss – 86%</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem;">LANGUAGES</h3>
+          <ul>
+            <li>Tamil – Fluent</li>
+            <li>English – Fluent</li>
+            <li>Hindi – Professional Proficiency</li>
+          </ul>
         </div>
-        <div class="column experience">
+
+        <div class="column">
           <h3>EXPERIENCE</h3>
           <div class="exp-item">
             <div class="exp-title">Clinical Optometry Intern</div>
@@ -280,25 +306,6 @@
             <p><a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/edit?usp=drivesdk" target="_blank">Grading Visual Search Tasks Based on Subjective Perception and Performance</a></p>
           </div>
         </div>
-      </div>
-
-      <div class="what-can" style="margin-top: 2rem;">
-        <h3>EDUCATION</h3>
-        <ul>
-          <li><strong>Bachelor of Optometry</strong> – SASTRA Deemed University & Elite School of Optometry, Sankara Nethralaya (CGPA: 6.82)</li>
-          <li><strong>HSC</strong> – Amalraj Matriculation HSS (82%)</li>
-          <li><strong>SSLC</strong> – Sri Srinivasa High School (75.8%)</li>
-        </ul>
-        <h3 style="margin-top:1rem;">CERTIFICATIONS</h3>
-        <ul>
-          <li>Paathshaala by Zeiss – 86%</li>
-        </ul>
-        <h3 style="margin-top:1rem;">LANGUAGES</h3>
-        <ul>
-          <li>Tamil – Fluent</li>
-          <li>English – Fluent</li>
-          <li>Hindi – Professional Proficiency</li>
-        </ul>
       </div>
     </section>
 
