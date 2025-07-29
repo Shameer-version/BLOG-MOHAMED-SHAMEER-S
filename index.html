@@ -156,9 +156,7 @@
       color: var(--text-color);
     }
 
-    .intro-buttons:hover .dropdown-content,
-    .resume-btn:focus + .dropdown-content,
-    .dropdown-content:hover {
+    .show-dropdown {
       display: block;
     }
 
@@ -234,10 +232,9 @@
         </div>
         <div class="intro-buttons">
           <div style="position: relative;">
-            <button class="resume-btn">Resume ▾</button>
-            <div class="dropdown-content">
+            <button class="resume-btn" onclick="toggleDropdown()">Resume ▾</button>
+            <div class="dropdown-content" id="resumeDropdown">
               <a href="#skills-exp" onclick="document.getElementById('skills-exp').classList.remove('hidden');">Show ↓</a>
-              <a href="#" onclick="document.getElementById('skills-exp').classList.add('hidden');">Hide ↑</a>
               <a href="resume.html#download" target="_blank">Download</a>
             </div>
           </div>
@@ -327,6 +324,20 @@
       icon.classList.toggle("fa-moon");
       icon.classList.toggle("fa-sun");
     }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById("resumeDropdown");
+      dropdown.classList.toggle("show-dropdown");
+    }
+
+    // Optional: Close dropdown if clicked outside
+    window.addEventListener("click", function(e) {
+      const btn = document.querySelector(".resume-btn");
+      const dropdown = document.getElementById("resumeDropdown");
+      if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove("show-dropdown");
+      }
+    });
   </script>
 </body>
 </html>
