@@ -232,10 +232,10 @@
         </div>
         <div class="intro-buttons">
           <div style="position: relative;">
-            <button class="resume-btn" onclick="toggleDropdown()">Resume ▾</button>
+            <button class="resume-btn" onclick="toggleDropdown()">Resume</button>
             <div class="dropdown-content" id="resumeDropdown">
-              <a href="#skills-exp" onclick="document.getElementById('skills-exp').classList.remove('hidden');">Show ↓</a>
-              <a href="resume.html#download" target="_blank">Download</a>
+              <a href="#skills-exp" onclick="showAndHideDropdown()">Show ↓</a>
+              <a href="resume.html#download" target="_blank" onclick="hideDropdown()">Download</a>
             </div>
           </div>
           <button class="portfolio-btn" onclick="document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });">Portfolio</button>
@@ -253,11 +253,22 @@
         <div class="column">
           <h3>SKILLS</h3>
           <ul>
-            <li>Clinical Optometry</li>
-            <li>Vision Therapy</li>
-            <li>Patient Education</li>
-            <li>Clinical Diagnostics (OCT, HVF)</li>
-            <li>Storytelling & Creative Content</li>
+            <li>Assist in CL selection and fitting, counseling and dispensing</li>
+            <li>Assist in diagnosing BV anomalies and providing vision therapy</li>
+            <li>Assist in Low vision care services</li>
+            <li>Communication</li>
+            <li>Empathy</li>
+            <li>Problem-solving</li>
+            <li>Patience</li>
+            <li>Clinical</li>
+            <li>Diagnosis</li>
+            <li>Attention-to-detail</li>
+            <li>Prescribing</li>
+            <li>Teamwork</li>
+            <li>Adaptability</li>
+            <li>Contact lenses</li>
+            <li>Low vision care</li>
+            <li>Orthoptics</li>
           </ul>
 
           <h3 style="margin-top: 2rem;">EDUCATION</h3>
@@ -277,6 +288,14 @@
             <li>Tamil – Fluent</li>
             <li>English – Fluent</li>
             <li>Hindi – Professional Proficiency</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem;">HOBBIES</h3>
+          <ul>
+            <li>Anime & Manga</li>
+            <li>Storytelling</li>
+            <li>Creating chill/lofi videos</li>
+            <li>Music</li>
           </ul>
         </div>
 
@@ -330,7 +349,15 @@
       dropdown.classList.toggle("show-dropdown");
     }
 
-    // Optional: Close dropdown if clicked outside
+    function hideDropdown() {
+      document.getElementById("resumeDropdown").classList.remove("show-dropdown");
+    }
+
+    function showAndHideDropdown() {
+      document.getElementById("skills-exp").classList.remove("hidden");
+      hideDropdown();
+    }
+
     window.addEventListener("click", function(e) {
       const btn = document.querySelector(".resume-btn");
       const dropdown = document.getElementById("resumeDropdown");
