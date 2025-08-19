@@ -30,14 +30,9 @@
       line-height: 1.6;
       transition: background 0.4s, color 0.4s;
     }
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: var(--highlight);
-    }
+    a { color: inherit; text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--highlight); }
+
     /* Navigation */
     .topnav {
       position: fixed;
@@ -51,14 +46,9 @@
       z-index: 999;
       backdrop-filter: blur(6px);
     }
-    .topnav a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      position: relative;
-    }
-    .topnav a.active {
-      color: var(--highlight);
-    }
+    .topnav a { font-weight: 600; font-size: 0.95rem; }
+    .topnav a.active { color: var(--highlight); }
+
     /* Toggle */
     .dark-toggle {
       position: fixed;
@@ -72,36 +62,20 @@
       transition: transform 0.3s;
       z-index: 1000;
     }
-    .dark-toggle:hover {
-      transform: rotate(20deg) scale(1.1);
-    }
+    .dark-toggle:hover { transform: rotate(20deg) scale(1.1); }
+
     /* Layout */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 6rem 1.5rem 2rem;
     }
-    header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    header h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      letter-spacing: 6px;
-    }
-    header h1 span {
-      font-weight: 300;
-      margin-left: 0.5rem;
-    }
-    header small {
-      color: #aaa;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    .btn-group {
-      margin-top: 1.5rem;
-    }
+    header { text-align: center; margin-bottom: 4rem; }
+    header h1 { font-size: 3rem; font-weight: 900; letter-spacing: 6px; }
+    header h1 span { font-weight: 300; margin-left: 0.5rem; }
+    header small { color: #aaa; font-weight: 600; letter-spacing: 1px; }
+
+    .btn-group { margin-top: 1.5rem; }
     .btn-group a {
       display: inline-block;
       margin: 0.5rem;
@@ -112,12 +86,9 @@
       color: #fff;
       transition: transform 0.3s;
     }
-    .btn-group a:hover {
-      transform: translateY(-2px);
-    }
-    .social-icons {
-      margin-top: 1.5rem;
-    }
+    .btn-group a:hover { transform: translateY(-2px); }
+
+    .social-icons { margin-top: 1.5rem; }
     .social-icons a {
       margin: 0 0.6rem;
       font-size: 1.3rem;
@@ -127,6 +98,7 @@
       transform: scale(1.2);
       color: var(--highlight);
     }
+
     section {
       margin-bottom: 3.5rem;
       padding: 2rem;
@@ -137,31 +109,68 @@
       transform: translateY(40px);
       transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     }
-    section.reveal {
-      opacity: 1;
-      transform: translateY(0);
+    section.reveal { opacity: 1; transform: translateY(0); }
+    section h2 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--highlight); }
+    ul { list-style: disc inside; margin-top: 0.8rem; }
+
+    /* Box buttons */
+    .link-box {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
     }
-    section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--highlight);
-    }
-    ul {
-      list-style: disc inside;
-      margin-top: 0.8rem;
-    }
-    .resume-links a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      border-radius: 20px;
+    .link-box a {
+      flex: 1;
+      min-width: 160px;
+      text-align: center;
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
       background: var(--highlight);
       color: #fff;
       font-weight: 600;
       transition: transform 0.3s;
     }
-    .resume-links a:hover {
-      transform: scale(1.05);
+    .link-box a:hover { transform: scale(1.05); }
+
+    /* Portfolio grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .portfolio-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      transition: transform 0.3s;
+    }
+    .portfolio-card:hover { transform: translateY(-6px); }
+    .portfolio-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .portfolio-card .content {
+      padding: 1rem;
+    }
+    .portfolio-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--highlight);
+    }
+    .portfolio-card p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    .portfolio-card a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: var(--highlight);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
     }
   </style>
 </head>
@@ -227,21 +236,42 @@
     <!-- Resume -->
     <section id="resume">
       <h2>Resume</h2>
-      <p>You can view or download my resume using the links below:</p>
-      <div class="resume-links">
-        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">
-          📄 View Resume
-        </a>
-        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">
-          ⬇️ Download Resume
-        </a>
+      <p>You can view or download my resume using the buttons below:</p>
+      <div class="link-box">
+        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">📄 View Resume</a>
+        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">⬇️ Download Resume</a>
       </div>
     </section>
 
     <!-- Portfolio -->
     <section id="portfolio">
       <h2>Portfolio</h2>
-      <p>A collection of my academic and clinical projects will go here. Stay tuned for updates!</p>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="https://via.placeholder.com/400x200" alt="Project 1">
+          <div class="content">
+            <h3>Case Study: Binocular Vision</h3>
+            <p>A detailed case study on binocular vision anomalies and therapy outcomes.</p>
+            <a href="#">View More</a>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="https://via.placeholder.com/400x200" alt="Project 2">
+          <div class="content">
+            <h3>Myopia Control Research</h3>
+            <p>Exploring the effects of interventions like Ortho-K and Atropine on myopia progression.</p>
+            <a href="#">View More</a>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="https://via.placeholder.com/400x200" alt="Project 3">
+          <div class="content">
+            <h3>Optical Retail Integration</h3>
+            <p>Project on merging clinical optometry with retail optics for better patient care.</p>
+            <a href="#">View More</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Narrations -->
@@ -254,9 +284,9 @@
     <section id="project">
       <h2>Project</h2>
       <p>Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
-      <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view" target="_blank">
-        📑 Open Project (Request Access)
-      </a>
+      <div class="link-box">
+        <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view" target="_blank">📑 Request Access to Project</a>
+      </div>
     </section>
   </div>
 
@@ -273,14 +303,14 @@
       }
     });
 
-    // Scroll reveal with staggered delays
+    // Scroll reveal with stagger
     const sections = document.querySelectorAll('section');
     function revealSections() {
       const trigger = window.innerHeight * 0.85;
       let delay = 0;
       sections.forEach(sec => {
         const rect = sec.getBoundingClientRect();
-        if (rect.top < trigger) {
+        if (rect.top < trigger && !sec.classList.contains('reveal')) {
           setTimeout(() => sec.classList.add('reveal'), delay);
           delay += 200;
         }
