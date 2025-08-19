@@ -1,185 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mohamed Shameer S | Optometrist</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Font Awesome (solid + brands) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+
   <style>
-    :root {
-      --bg-color: #121212;
-      --card-bg: #1a1a1a;
-      --highlight: #5ac8fa;
-      --text-color: #eee;
+    :root{
+      --bg-color:#121212;
+      --card-bg:#1a1a1a;
+      --text-color:#eee;
+      --muted:#aaa;
+      --highlight:#5ac8fa;
+      --ring:rgba(90,200,250,.35);
     }
-    body.light-mode {
-      --bg-color: #f2f2f2;
-      --card-bg: #fff;
-      --highlight: #0077cc;
-      --text-color: #111;
-    }
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: var(--text-color);
-      scroll-behavior: smooth;
-    }
-    body {
-      background: var(--bg-color);
-      line-height: 1.6;
-      transition: background 0.4s, color 0.4s;
-    }
-    a { color: inherit; text-decoration: none; transition: color 0.3s; }
-    a:hover { color: var(--highlight); }
-
-    /* Navigation */
-    .topnav {
-      position: fixed;
-      top: 1rem; left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 1.5rem;
-      background: rgba(18, 18, 18, 0.6);
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px;
-      z-index: 999;
-      backdrop-filter: blur(6px);
-    }
-    .topnav a { font-weight: 600; font-size: 0.95rem; }
-    .topnav a.active { color: var(--highlight); }
-
-    /* Toggle */
-    .dark-toggle {
-      position: fixed;
-      top: 1rem; right: 1rem;
-      background: var(--card-bg);
-      border: none;
-      border-radius: 50%;
-      padding: 0.5rem;
-      cursor: pointer;
-      font-size: 1.3rem;
-      transition: transform 0.3s;
-      z-index: 1000;
-    }
-    .dark-toggle:hover { transform: rotate(20deg) scale(1.1); }
-
-    /* Layout */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 1.5rem 2rem;
-    }
-    header { text-align: center; margin-bottom: 4rem; }
-    header h1 { font-size: 3rem; font-weight: 900; letter-spacing: 6px; }
-    header h1 span { font-weight: 300; margin-left: 0.5rem; }
-    header small { color: #aaa; font-weight: 600; letter-spacing: 1px; }
-
-    .btn-group { margin-top: 1.5rem; }
-    .btn-group a {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.7rem 1.4rem;
-      border-radius: 25px;
-      font-weight: 600;
-      background: var(--highlight);
-      color: #fff;
-      transition: transform 0.3s;
-    }
-    .btn-group a:hover { transform: translateY(-2px); }
-
-    .social-icons { margin-top: 1.5rem; }
-    .social-icons a {
-      margin: 0 0.6rem;
-      font-size: 1.3rem;
-      transition: transform 0.3s, color 0.3s;
-    }
-    .social-icons a:hover {
-      transform: scale(1.2);
-      color: var(--highlight);
+    body.light-mode{
+      --bg-color:#f6f7fb;
+      --card-bg:#ffffff;
+      --text-color:#101114;
+      --muted:#4f5563;
+      --highlight:#0077cc;
+      --ring:rgba(0,119,204,.22);
     }
 
-    section {
-      margin-bottom: 3.5rem;
-      padding: 2rem;
-      background: var(--card-bg);
-      border-radius: 10px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:var(--bg-color);
+      color:var(--text-color);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      line-height:1.6;
+      scroll-behavior:smooth;
+      transition:background .35s,color .35s;
     }
-    section.reveal { opacity: 1; transform: translateY(0); }
-    section h2 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--highlight); }
-    ul { list-style: disc inside; margin-top: 0.8rem; }
+    a{color:inherit;text-decoration:none;transition:color .25s,opacity .25s}
+    a:hover{color:var(--highlight)}
 
-    /* Box buttons */
-    .link-box {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
+    /* Top nav */
+    .topnav{
+      position:fixed; top:1rem; left:50%; transform:translateX(-50%);
+      display:flex; gap:1rem; padding:.7rem 1rem; border-radius:12px;
+      background:rgba(18,18,18,.55); backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.06);
+      z-index:1000;
     }
-    .link-box a {
-      flex: 1;
-      min-width: 160px;
-      text-align: center;
-      padding: 0.8rem 1.2rem;
-      border-radius: 10px;
-      background: var(--highlight);
-      color: #fff;
-      font-weight: 600;
-      transition: transform 0.3s;
-    }
-    .link-box a:hover { transform: scale(1.05); }
+    body.light-mode .topnav{background:rgba(255,255,255,.7)}
+    .topnav a{font-weight:600;font-size:.95rem;opacity:.9;padding:.25rem .35rem;border-radius:8px}
+    .topnav a.active{color:var(--highlight);opacity:1}
 
-    /* Portfolio grid */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+    /* Dark/Light toggle */
+    .dark-toggle{
+      position:fixed; top:1rem; right:1rem; z-index:1001;
+      border:none; cursor:pointer; border-radius:999px; padding:.6rem .75rem;
+      background:var(--card-bg); color:var(--text-color);
+      box-shadow:0 6px 20px rgba(0,0,0,.25), inset 0 0 0 2px var(--ring);
+      transition:transform .25s;
     }
-    .portfolio-card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      transition: transform 0.3s;
+    .dark-toggle:hover{transform:translateY(-1px) scale(1.03)}
+
+    .container{max-width:1120px;margin:0 auto;padding:6.2rem 1.25rem 2.5rem}
+
+    /* Header / hero */
+    header{text-align:center;margin-bottom:3.2rem}
+    header h1{font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0}
+    header h1 span{font-weight:300;margin-left:.35rem;opacity:.85}
+    header small{color:var(--muted);font-weight:700;letter-spacing:3px}
+
+    .btn-group{margin-top:1.2rem}
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.7rem 1.2rem; border-radius:999px; font-weight:700;
+      background:var(--highlight); color:#fff;
+      box-shadow:0 12px 30px var(--ring);
+      transition:transform .2s, box-shadow .2s, opacity .2s;
     }
-    .portfolio-card:hover { transform: translateY(-6px); }
-    .portfolio-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
+    .btn:hover{transform:translateY(-2px)}
+    .btn.secondary{background:transparent;color:var(--highlight);box-shadow:inset 0 0 0 2px var(--highlight)}
+
+    .social-icons{margin-top:1rem}
+    .social-icons a{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:40px;height:40px;border-radius:10px;margin:0 .25rem;
+      background:var(--card-bg); box-shadow:inset 0 0 0 2px var(--ring);
+      transition:transform .2s, box-shadow .2s, color .2s;
     }
-    .portfolio-card .content {
-      padding: 1rem;
+    .social-icons a:hover{transform:translateY(-2px) scale(1.05); color:var(--highlight); box-shadow:0 10px 24px var(--ring), inset 0 0 0 2px var(--highlight)}
+
+    /* Sections */
+    section{
+      margin:0 0 2rem; padding:1.6rem; background:var(--card-bg); border-radius:14px;
+      box-shadow:0 12px 34px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
+      opacity:0; transform:translateY(42px); transition:opacity .8s ease, transform .8s ease;
     }
-    .portfolio-card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--highlight);
+    section.reveal{opacity:1; transform:none}
+    section h2{margin:0 0 .65rem; font-size:1.65rem; color:var(--highlight)}
+    .muted{color:var(--muted)}
+
+    /* Lists / chips */
+    ul{padding-left:1rem; margin:.4rem 0}
+    li{margin:.25rem 0}
+    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem}
+    .chip{
+      padding:.4rem .7rem; border-radius:999px; font-size:.9rem; font-weight:600;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
+      box-shadow:inset 0 0 0 2px var(--ring);
     }
-    .portfolio-card p {
-      font-size: 0.9rem;
-      margin-bottom: 0.8rem;
+
+    /* Link button rows */
+    .link-box{
+      display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.8rem
     }
-    .portfolio-card a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      background: var(--highlight);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.85rem;
+    .link{
+      flex:1; min-width:180px; text-align:center; padding:.85rem 1rem; border-radius:12px;
+      background:var(--highlight); color:#fff; font-weight:800;
+      box-shadow:0 12px 28px var(--ring);
+      transition:transform .2s, opacity .2s;
     }
+    .link:hover{transform:translateY(-2px)}
+    .link.ghost{
+      background:transparent; color:var(--highlight);
+      box-shadow:inset 0 0 0 2px var(--highlight)
+    }
+
+    /* Footer/Contact small box */
+    .contact-box{
+      display:grid; grid-template-columns:1fr; gap:.6rem; margin-top:.6rem;
+    }
+    .contact-row{display:flex; align-items:center; gap:.6rem}
+    .contact-row i{width:22px;text-align:center; opacity:.9}
   </style>
 </head>
 <body>
-  <button class="dark-toggle" id="modeToggle">
+  <!-- Theme toggle -->
+  <button class="dark-toggle" id="modeToggle" aria-label="Toggle theme">
     <i class="fas fa-moon"></i>
   </button>
 
-  <nav class="topnav">
+  <!-- Top Navigation -->
+  <nav class="topnav" id="topnav">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
@@ -187,147 +148,183 @@
     <a href="#portfolio">Portfolio</a>
     <a href="#narrations">Narrations</a>
     <a href="#project">Project</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <div class="container">
-    <!-- Home -->
+    <!-- Hero -->
     <header id="home">
-      <h1>Mohamed Shameer <span>S</span></h1>
       <small>OPTOMETRIST</small>
+      <h1>Mohamed Shameer <span>S</span></h1>
+
       <div class="btn-group">
-        <a href="#resume">View Resume</a>
-        <a href="#project">View Project</a>
+        <a class="btn" href="#resume"><i class="fa-solid fa-file-lines"></i> View Resume</a>
+        <a class="btn secondary" href="#project"><i class="fa-solid fa-diagram-project"></i> View Project</a>
       </div>
-      <div class="social-icons">
-        <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
-        <a href="https://www.instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin"></i></a>
+
+      <div class="social-icons" aria-label="Social links">
+        <a href="mailto:mohamedshameer12345@gmail.com" target="_blank" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+919345768563" aria-label="Phone">
+          <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://www.instagram.com/duh.its_mohamed" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
       </div>
     </header>
 
     <!-- About -->
     <section id="about">
       <h2>About Me</h2>
-      <p>I am a student optometrist from India, passionate about clinical vision sciences, optical retail integration, and patient-centered care. My journey blends hands-on experience, academic research, and empathetic communication to deliver personalized eye care solutions.</p>
+      <p>
+        I’m a student optometrist from India with a strong interest in clinical vision science,
+        contact lens practice, binocular vision, and low-vision care. I value empathetic,
+        patient-centric communication and evidence-based practice—bridging research,
+        clinic, and optical retail to deliver clear, comfortable vision.
+      </p>
+      <div class="chips">
+        <span class="chip"><i class="fa-solid fa-stethoscope"></i> Patient-first care</span>
+        <span class="chip"><i class="fa-solid fa-glasses"></i> Optical retail integration</span>
+        <span class="chip"><i class="fa-solid fa-book"></i> Research-oriented</span>
+      </div>
     </section>
 
     <!-- Experience -->
     <section id="experience">
       <h2>Experience</h2>
       <ul>
-        <li>Contact lens selection, fitting & dispensing</li>
-        <li>Binocular vision assessment & therapy</li>
-        <li>Low vision evaluation & rehabilitation</li>
-        <li>Clinical diagnosis & prescribing</li>
-        <li>Patient counseling & communication</li>
-        <li>Documentation & attention to detail</li>
-        <li>Empathy, patience & problem-solving skills</li>
-        <li>Collaboration in clinical & research environments</li>
+        <li><strong>Contact Lens Practice:</strong> selection, fitting, dispensing, after-care counseling.</li>
+        <li><strong>Binocular Vision:</strong> assessment, vision therapy planning, follow-ups.</li>
+        <li><strong>Low Vision Care:</strong> evaluation, device trials, adaptation strategies.</li>
+        <li><strong>Clinical Assessment:</strong> refraction, ocular health screening, documentation.</li>
+        <li><strong>Patient Communication:</strong> empathetic counseling & adherence education.</li>
+        <li><strong>Teamwork:</strong> collaboration across clinical and research environments.</li>
       </ul>
     </section>
 
     <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
-      <p>Contact Lens Practice • Vision Therapy • Low Vision Care • Clinical Assessment • Patient Communication • Research & Documentation</p>
+      <div class="chips">
+        <span class="chip">Contact Lenses</span>
+        <span class="chip">Refraction</span>
+        <span class="chip">Binocular Vision</span>
+        <span class="chip">Low Vision Rehab</span>
+        <span class="chip">Case Documentation</span>
+        <span class="chip">Patient Counseling</span>
+        <span class="chip">Basic Research Methods</span>
+      </div>
     </section>
 
     <!-- Resume -->
     <section id="resume">
       <h2>Resume</h2>
-      <p>You can view or download my resume using the buttons below:</p>
+      <p class="muted">You can view the resume directly, or use the download link.</p>
       <div class="link-box">
-        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">📄 View Resume</a>
-        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">⬇️ Download Resume</a>
+        <!-- View (Drive viewer) -->
+        <a class="link" target="_blank" rel="noopener"
+           href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk">
+          📄 View Resume
+        </a>
+        <!-- Direct download (Drive) -->
+        <a class="link ghost" target="_blank" rel="noopener"
+           href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">
+          ⬇️ Download Resume
+        </a>
       </div>
     </section>
 
-    <!-- Portfolio -->
+    <!-- Portfolio (simple placeholder) -->
     <section id="portfolio">
       <h2>Portfolio</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-card">
-          <img src="https://via.placeholder.com/400x200" alt="Project 1">
-          <div class="content">
-            <h3>Case Study: Binocular Vision</h3>
-            <p>A detailed case study on binocular vision anomalies and therapy outcomes.</p>
-            <a href="#">View More</a>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <img src="https://via.placeholder.com/400x200" alt="Project 2">
-          <div class="content">
-            <h3>Myopia Control Research</h3>
-            <p>Exploring the effects of interventions like Ortho-K and Atropine on myopia progression.</p>
-            <a href="#">View More</a>
-          </div>
-        </div>
-        <div class="portfolio-card">
-          <img src="https://via.placeholder.com/400x200" alt="Project 3">
-          <div class="content">
-            <h3>Optical Retail Integration</h3>
-            <p>Project on merging clinical optometry with retail optics for better patient care.</p>
-            <a href="#">View More</a>
-          </div>
-        </div>
-      </div>
+      <p class="muted">I’ll be adding case studies, posters, and mini-projects here soon.</p>
     </section>
 
     <!-- Narrations -->
     <section id="narrations">
       <h2>Narrations</h2>
-      <p>A space for personal and professional stories—blending clinical insights, patient encounters, and research reflections. Coming soon...</p>
+      <p class="muted">
+        Personal notes and reflections from clinic, classroom, and community outreach—coming soon.
+      </p>
     </section>
 
     <!-- Project -->
     <section id="project">
       <h2>Project</h2>
-      <p>Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
+      <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
+      <p class="muted">
+        The project document is kept private. Click the button below and your access request will be sent to me.
+        (Keep your Google account signed in.)
+      </p>
       <div class="link-box">
-        <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view" target="_blank">📑 Request Access to Project</a>
+        <!-- Use /view to trigger Drive's request access flow if file is Restricted -->
+        <a class="link" target="_blank" rel="noopener"
+           href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
+          📑 Request Access to Project
+        </a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-box">
+        <div class="contact-row"><i class="fa-solid fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
+        <div class="contact-row"><i class="fa-solid fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
+        <div class="contact-row"><i class="fa-brands fa-instagram"></i> <a target="_blank" rel="noopener" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
+        <div class="contact-row"><i class="fa-brands fa-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">LinkedIn Profile</a></div>
       </div>
     </section>
   </div>
 
   <script>
-    // Dark/Light mode toggle
+    // Theme toggle
     const toggleBtn = document.getElementById('modeToggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
       const icon = toggleBtn.querySelector('i');
       if (document.body.classList.contains('light-mode')) {
-        icon.classList.replace('fa-moon', 'fa-sun');
+        icon.classList.replace('fa-moon','fa-sun');
       } else {
-        icon.classList.replace('fa-sun', 'fa-moon');
+        icon.classList.replace('fa-sun','fa-moon');
       }
     });
 
-    // Scroll reveal with stagger
+    // Reveal on scroll
     const sections = document.querySelectorAll('section');
-    function revealSections() {
+    function reveal() {
       const trigger = window.innerHeight * 0.85;
       let delay = 0;
       sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < trigger && !sec.classList.contains('reveal')) {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger && !sec.classList.contains('reveal')) {
           setTimeout(() => sec.classList.add('reveal'), delay);
-          delay += 200;
+          delay += 180;
         }
       });
     }
-    window.addEventListener('scroll', revealSections);
-    window.addEventListener('load', revealSections);
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
 
-    // Active nav highlight
+    // Active nav link
     const navLinks = document.querySelectorAll('.topnav a');
     function setActiveLink() {
-      let index = sections.length;
-      while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
-      navLinks.forEach(link => link.classList.remove('active'));
-      navLinks[index].classList.add('active');
+      let idx = sections.length;
+      while (--idx && window.scrollY + 120 < sections[idx].offsetTop) {}
+      navLinks.forEach(l => l.classList.remove('active'));
+      // Map section index to nav (skip header)
+      const anchors = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
+      const current = sections[idx]?.id;
+      const active = Array.from(navLinks).find(a => a.getAttribute('href') === '#' + current);
+      if (active) active.classList.add('active');
     }
     window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
   </script>
 </body>
 </html>
