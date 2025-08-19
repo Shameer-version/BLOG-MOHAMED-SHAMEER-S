@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mohamed Shameer S | Optometrist</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
       --bg-color: #121212;
@@ -12,205 +12,183 @@
       --highlight: #5ac8fa;
       --text-color: #eee;
     }
-
     body.light-mode {
       --bg-color: #f2f2f2;
       --card-bg: #fff;
       --highlight: #0077cc;
       --text-color: #111;
     }
-
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: var(--text-color);
       scroll-behavior: smooth;
     }
-
     body {
-      background-color: var(--bg-color);
-      line-height: 1.5;
-      transition: background 0.4s ease, color 0.4s ease;
+      background: var(--bg-color);
+      line-height: 1.6;
+      transition: background 0.4s, color 0.4s;
     }
-
     a {
-      color: #bbb;
+      color: inherit;
       text-decoration: none;
       transition: color 0.3s;
     }
-
     a:hover {
       color: var(--highlight);
     }
-
-    /* Navigation Bar */
+    /* Navigation */
     .topnav {
       position: fixed;
-      top: 1rem;
-      left: 50%;
+      top: 1rem; left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       background: rgba(18, 18, 18, 0.6);
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1.2rem;
       border-radius: 8px;
       z-index: 999;
       backdrop-filter: blur(6px);
-      animation: slideDown 1s ease;
     }
-
     .topnav a {
       font-weight: 600;
       font-size: 0.95rem;
+      position: relative;
     }
-
-    /* Container */
+    .topnav a.active {
+      color: var(--highlight);
+    }
+    /* Toggle */
+    .dark-toggle {
+      position: fixed;
+      top: 1rem; right: 1rem;
+      background: var(--card-bg);
+      border: none;
+      border-radius: 50%;
+      padding: 0.5rem;
+      cursor: pointer;
+      font-size: 1.3rem;
+      transition: transform 0.3s;
+      z-index: 1000;
+    }
+    .dark-toggle:hover {
+      transform: rotate(20deg) scale(1.1);
+    }
+    /* Layout */
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 6rem 2rem 2rem;
+      padding: 6rem 1.5rem 2rem;
     }
-
     header {
       text-align: center;
       margin-bottom: 4rem;
-      animation: fadeUp 1.2s ease;
     }
-
     header h1 {
       font-size: 3rem;
       font-weight: 900;
       letter-spacing: 6px;
     }
-
     header h1 span {
       font-weight: 300;
       margin-left: 0.5rem;
     }
-
     header small {
-      color: #888;
+      color: #aaa;
       font-weight: 600;
       letter-spacing: 1px;
     }
-
-    .btns {
+    .btn-group {
       margin-top: 1.5rem;
     }
-
-    .btns a {
+    .btn-group a {
       display: inline-block;
-      padding: 0.6rem 1.2rem;
-      margin: 0 0.5rem;
+      margin: 0.5rem;
+      padding: 0.7rem 1.4rem;
       border-radius: 25px;
       font-weight: 600;
       background: var(--highlight);
       color: #fff;
       transition: transform 0.3s;
     }
-
-    .btns a:hover {
-      transform: scale(1.05);
+    .btn-group a:hover {
+      transform: translateY(-2px);
     }
-
-    /* Social icons */
     .social-icons {
       margin-top: 1.5rem;
     }
-
     .social-icons a {
-      margin: 0 0.5rem;
+      margin: 0 0.6rem;
       font-size: 1.3rem;
-      transition: transform 0.3s;
+      transition: transform 0.3s, color 0.3s;
     }
-
     .social-icons a:hover {
       transform: scale(1.2);
       color: var(--highlight);
     }
-
-    /* Sections */
     section {
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
       padding: 2rem;
       background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s ease, transform 1s ease;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     }
-
     section.reveal {
       opacity: 1;
       transform: translateY(0);
     }
-
     section h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
       color: var(--highlight);
     }
-
-    /* Dark/Light Toggle */
-    .dark-toggle {
-      position: fixed;
-      top: 1.2rem;
-      right: 1.2rem;
-      font-size: 1.3rem;
-      background: var(--card-bg);
-      border: none;
-      border-radius: 50%;
-      padding: 0.6rem;
-      cursor: pointer;
+    ul {
+      list-style: disc inside;
+      margin-top: 0.8rem;
+    }
+    .resume-links a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      background: var(--highlight);
+      color: #fff;
+      font-weight: 600;
       transition: transform 0.3s;
-      z-index: 1000;
     }
-
-    .dark-toggle:hover {
-      transform: rotate(20deg) scale(1.1);
-    }
-
-    /* Animations */
-    @keyframes slideDown {
-      from { transform: translate(-50%, -50px); opacity: 0; }
-      to { transform: translate(-50%, 0); opacity: 1; }
-    }
-
-    @keyframes fadeUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    .resume-links a:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <!-- Toggle -->
-  <button class="dark-toggle" id="darkToggle">
+  <button class="dark-toggle" id="modeToggle">
     <i class="fas fa-moon"></i>
   </button>
 
-  <!-- Navigation -->
   <nav class="topnav">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
     <a href="#resume">Resume</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#narrations">Narrations</a>
     <a href="#project">Project</a>
   </nav>
 
   <div class="container">
-    <!-- Header -->
-    <header>
+    <!-- Home -->
+    <header id="home">
       <h1>Mohamed Shameer <span>S</span></h1>
       <small>OPTOMETRIST</small>
-
-      <div class="btns">
-        <a href="#resume">Resume</a>
-        <a href="#project">Portfolio</a>
+      <div class="btn-group">
+        <a href="#resume">View Resume</a>
+        <a href="#project">View Project</a>
       </div>
-
       <div class="social-icons">
         <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>
         <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
@@ -222,48 +200,69 @@
     <!-- About -->
     <section id="about">
       <h2>About Me</h2>
-      <p>I am an aspiring Optometrist passionate about integrating clinical expertise with optical retail practice. My journey combines academic knowledge, hands-on experience, and a strong focus on patient-centered care. I aim to contribute to the advancement of vision science while ensuring personalized eye care solutions.</p>
+      <p>I am a student optometrist from India, passionate about clinical vision sciences, optical retail integration, and patient-centered care. My journey blends hands-on experience, academic research, and empathetic communication to deliver personalized eye care solutions.</p>
     </section>
 
     <!-- Experience -->
     <section id="experience">
       <h2>Experience</h2>
       <ul>
-        <li>Assisted in Contact Lens selection, fitting, and dispensing</li>
-        <li>Assisted in Binocular vision assessment & vision therapy</li>
-        <li>Assisted in Low vision evaluation and rehabilitation</li>
-        <li>Patient counseling & communication</li>
+        <li>Contact lens selection, fitting & dispensing</li>
+        <li>Binocular vision assessment & therapy</li>
+        <li>Low vision evaluation & rehabilitation</li>
         <li>Clinical diagnosis & prescribing</li>
-        <li>Attention to detail & documentation</li>
-        <li>Empathy, patience & problem-solving</li>
-        <li>Team collaboration in clinical and research settings</li>
+        <li>Patient counseling & communication</li>
+        <li>Documentation & attention to detail</li>
+        <li>Empathy, patience & problem-solving skills</li>
+        <li>Collaboration in clinical & research environments</li>
       </ul>
     </section>
 
     <!-- Skills -->
     <section id="skills">
       <h2>Skills</h2>
-      <p>Clinical Optometry • Vision Therapy • Low Vision Care • Contact Lens Practice • Communication • Research & Documentation</p>
+      <p>Contact Lens Practice • Vision Therapy • Low Vision Care • Clinical Assessment • Patient Communication • Research & Documentation</p>
     </section>
 
     <!-- Resume -->
     <section id="resume">
       <h2>Resume</h2>
-      <p>You can directly view my resume here:</p>
-      <a href="https://docs.google.com/document/d/1knmof8VNcU7le_lqtF5YbWZcvzT7I7ZMlPOioOoCQKQ/preview" target="_blank">📄 View Resume</a>
+      <p>You can view or download my resume using the links below:</p>
+      <div class="resume-links">
+        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">
+          📄 View Resume
+        </a>
+        <a href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">
+          ⬇️ Download Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <p>A collection of my academic and clinical projects will go here. Stay tuned for updates!</p>
+    </section>
+
+    <!-- Narrations -->
+    <section id="narrations">
+      <h2>Narrations</h2>
+      <p>A space for personal and professional stories—blending clinical insights, patient encounters, and research reflections. Coming soon...</p>
     </section>
 
     <!-- Project -->
     <section id="project">
       <h2>Project</h2>
-      <p>Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception and Performance in Real-World Scenarios.</p>
-      <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view" target="_blank">📑 View Project (Request Access)</a>
+      <p>Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
+      <a href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view" target="_blank">
+        📑 Open Project (Request Access)
+      </a>
     </section>
   </div>
 
   <script>
-    // Dark/Light toggle
-    const toggleBtn = document.getElementById('darkToggle');
+    // Dark/Light mode toggle
+    const toggleBtn = document.getElementById('modeToggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
       const icon = toggleBtn.querySelector('i');
@@ -274,19 +273,31 @@
       }
     });
 
-    // Reveal effect on scroll
+    // Scroll reveal with staggered delays
+    const sections = document.querySelectorAll('section');
     function revealSections() {
-      const sections = document.querySelectorAll("section");
-      const triggerBottom = window.innerHeight * 0.85;
+      const trigger = window.innerHeight * 0.85;
+      let delay = 0;
       sections.forEach(sec => {
-        const boxTop = sec.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          sec.classList.add("reveal");
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < trigger) {
+          setTimeout(() => sec.classList.add('reveal'), delay);
+          delay += 200;
         }
       });
     }
-    window.addEventListener("scroll", revealSections);
-    window.addEventListener("load", revealSections);
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('load', revealSections);
+
+    // Active nav highlight
+    const navLinks = document.querySelectorAll('.topnav a');
+    function setActiveLink() {
+      let index = sections.length;
+      while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+      navLinks.forEach(link => link.classList.remove('active'));
+      navLinks[index].classList.add('active');
+    }
+    window.addEventListener('scroll', setActiveLink);
   </script>
 </body>
 </html>
