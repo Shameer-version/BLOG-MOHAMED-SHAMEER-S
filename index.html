@@ -2,373 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mohamed Shameer S | Optometrist</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Portfolio of Mohamed Shameer S, Optometrist. Includes resume, projects, clinical experience, and research work.">
-  <meta name="keywords" content="Optometrist, Vision Science, Contact Lens, Binocular Vision, Portfolio">
-  <meta name="author" content="Mohamed Shameer S">
-  <meta name="theme-color" content="#0b0b0d">
-
-  <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-
   <style>
-    :root{
-      --bg:#0b0b0d;
-      --panel:#121216;
-      --muted:#a1a1aa;
-      --text:#eaeaf0;
-      --brand:#5ac8fa;
-      --ring:rgba(90,200,250,.28);
-      --card:#18181d;
+    /* ====== Global Styles ====== */
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: #0d0d0d;
+      color: #f5f5f5;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0}
-    html{scroll-behavior:smooth}
-    body{
-      background:radial-gradient(1200px 800px at 80% -20%,rgba(90,200,250,.06),transparent 60%),
-                 radial-gradient(900px 700px at -10% 20%,rgba(250,90,140,.05),transparent 60%),
-                 var(--bg);
-      color:var(--text);
-      font:16px/1.7 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    /* NAV (sticky, transparent like Jeffrey) */
-    .nav{
-      position:sticky; top:0; z-index:1000;
-      backdrop-filter:blur(10px);
-      background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0));
-      border-bottom:1px solid rgba(255,255,255,.04);
+    img {
+      max-width: 100%;
+      border-radius: 50%;
     }
-    .nav-inner{
-      max-width:1120px; margin:0 auto; padding:.9rem 1rem;
-      display:flex; align-items:center; justify-content:space-between; gap:1rem;
+    section {
+      min-height: 100vh;
+      padding: 80px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
     }
-    .brand{
-      font-weight:800; letter-spacing:.6px; opacity:.95
-    }
-    .brand small{opacity:.7; font-weight:600; margin-left:.4rem; color:var(--muted)}
-    .links{display:flex; gap:1.1rem; align-items:center}
-    .links a{
-      font-weight:600; opacity:.85; padding:.4rem .55rem; border-radius:10px
-    }
-    .links a:hover{opacity:1; color:var(--brand)}
-    .links a.active{
-      color:var(--brand);
-      box-shadow:inset 0 0 0 1.6px var(--brand);
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* CONTAINER */
-    .wrap{max-width:1120px; margin:0 auto; padding:2rem 1rem 4rem}
+    /* ====== Navbar ====== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+    }
+    nav a {
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #f5f5f5;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #00d4ff;
+    }
 
-    /* HERO */
-    .hero{
-      display:grid; grid-template-columns:1fr 1.2fr; gap:2rem; align-items:center;
-      padding:4rem 0 3rem;
+    /* ====== Hero ====== */
+    #home {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 120px;
     }
-    .avatar{
-      width:min(360px,85vw); aspect-ratio:1/1; border-radius:22px; overflow:hidden;
-      box-shadow:0 20px 70px rgba(0,0,0,.55), inset 0 0 0 2px var(--ring);
-      background:var(--panel);
-      margin:auto;
+    #home img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 4px solid #00d4ff;
+      margin-bottom: 20px;
     }
-    .title small{color:var(--muted); font-weight:800; letter-spacing:3px}
-    .title h1{font-size:clamp(2.2rem,5vw,3.4rem); margin:.35rem 0 .35rem; letter-spacing:2px}
-    .subtitle{color:#b9b9c3; font-weight:500}
-    .cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:1.2rem}
-    .btn{
-      display:inline-flex; align-items:center; gap:.55rem;
-      padding:.78rem 1.2rem; border-radius:999px; font-weight:800;
-      background:var(--brand); color:#051018;
-      box-shadow:0 14px 30px var(--ring);
-      transition:transform .18s ease;
+    #home h1 {
+      font-size: 2.5rem;
+      margin: 10px 0;
     }
-    .btn:hover{transform:translateY(-2px)}
-    .btn.ghost{
-      background:transparent; color:var(--brand);
-      box-shadow:inset 0 0 0 2px var(--brand)
+    #home h3 {
+      font-weight: 400;
+      color: #00d4ff;
     }
-    .social{
-      display:flex; gap:.6rem; margin-top:1rem; flex-wrap:wrap;
+    .buttons {
+      margin-top: 20px;
     }
-    .social a{
-      width:40px; height:40px; display:grid; place-items:center; border-radius:12px;
-      background:var(--card); box-shadow:inset 0 0 0 2px var(--ring);
-      transition:transform .18s ease, color .18s ease, box-shadow .18s ease;
+    .buttons a {
+      display: inline-block;
+      padding: 12px 20px;
+      margin: 5px;
+      background: #00d4ff;
+      color: #0d0d0d;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: 0.3s;
     }
-    .social a:hover{transform:translateY(-2px); color:var(--brand); box-shadow:0 12px 24px var(--ring), inset 0 0 0 2px var(--brand)}
+    .buttons a:hover {
+      background: #008fb3;
+      color: #fff;
+    }
 
-    /* SECTIONS */
-    section{margin:0 0 2rem; padding:1.6rem; background:var(--panel); border-radius:16px;
-      box-shadow:0 20px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
-      opacity:0; transform:translateY(40px); transition:opacity .7s ease, transform .7s ease;
+    /* ====== Section Headings ====== */
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #00d4ff;
     }
-    section.reveal{opacity:1; transform:none}
-    section h2{margin:.2rem 0 1rem; color:var(--brand); font-size:1.6rem}
 
-    /* ABOUT */
-    .muted{color:var(--muted)}
-    .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.6rem}
-    .chip{padding:.42rem .7rem; border-radius:999px; background:linear-gradient(180deg, rgba(255,255,255,.06), transparent);
-      box-shadow:inset 0 0 0 2px var(--ring); font-weight:600; font-size:.92rem}
-
-    /* SKILLS + EXPERIENCE (two columns like Jeffrey) */
-    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
-    .card{background:var(--card); border-radius:14px; padding:1rem; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
-    .list{margin:.5rem 0 0; padding-left:1.1rem}
-    .list li{margin:.35rem 0}
-    .timeline{display:flex; flex-direction:column; gap:.9rem}
-    .tl{
-      padding:.9rem; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,.04), transparent);
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)
-    }
-    .tl .when{font-weight:800; color:#cbd5e1; letter-spacing:.3px}
-    .tl .what{font-weight:700}
-    .tl .desc{color:#b5b5be}
-
-    /* PROJECT CARDS */
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1rem}
-    .project{
-      background:var(--card); border-radius:14px; padding:1rem; display:flex; flex-direction:column; gap:.6rem;
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.04);
-    }
-    .project h3{margin:.2rem 0}
-    .project p{color:#b8b8c2; margin:0}
-    .project .row{display:flex; gap:.6rem; margin-top:.4rem; flex-wrap:wrap}
-    .tag{font-size:.82rem; padding:.3rem .55rem; border-radius:999px; background:rgba(255,255,255,.06)}
-    .project .actions{margin-top:auto; display:flex; gap:.6rem; flex-wrap:wrap}
-
-    /* CONTACT */
-    .contact-row{display:flex; align-items:center; gap:.6rem; margin:.35rem 0}
-    .contact-row i{width:22px; text-align:center; opacity:.95}
-
-    /* FOOTER */
-    footer{opacity:.75; text-align:center; padding:2rem 1rem}
-
-    /* RESPONSIVE */
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr; text-align:center}
-      .avatar{margin:0 auto}
-      .two-col{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr 1fr}
-      .nav-inner{padding:.8rem .9rem}
-    }
-    @media (max-width: 600px){
-      .grid{grid-template-columns:1fr}
-      .links{gap:.6rem; flex-wrap:wrap; justify-content:flex-end}
+    /* ====== Footer ====== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      background: #111;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="brand">Shameer <small>Optometrist</small></div>
-      <nav class="links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills & Experience</a>
-        <a href="#projects">Portfolio</a>
-        <a href="#narrations">Narrations</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- ====== Navbar ====== -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#resume">Resume</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#narrations">Narrations</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- ====== Hero Section ====== -->
+  <section id="home" class="show">
+    <img src="profile.jpg" alt="Profile Picture">
+    <h1>Mohamed Shameer S</h1>
+    <h3>Optometrist</h3>
+    <div class="buttons">
+      <a href="resume.pdf" target="_blank">Resume</a>
+      <a href="abstract.pdf" target="_blank">Project</a>
     </div>
-  </header>
+  </section>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section id="home" class="reveal" style="background:transparent; box-shadow:none; padding-top:2rem; padding-bottom:0;">
-      <div class="hero">
-        <div class="avatar">
-          <!-- Replace with your photo path -->
-          <img src="assets/profile.jpg" alt="Photo of Mohamed Shameer S">
-        </div>
-        <div>
-          <div class="title">
-            <small>HELLO, I’M</small>
-            <h1>Mohamed Shameer <span style="font-weight:300; opacity:.9">S</span></h1>
-            <div class="subtitle">Student Optometrist — clinical vision science, contact lenses, binocular vision & low-vision care.</div>
-          </div>
+  <!-- ====== About Section ====== -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am an aspiring optometrist with clinical experience and a passion for integrating
+      optical retail with healthcare delivery. I have assisted in contact lens fitting,
+      binocular vision assessment, low vision rehabilitation, and patient counseling.
+    </p>
+  </section>
 
-          <div class="cta">
-            <!-- Resume (Drive viewer & download) -->
-            <a class="btn" target="_blank" rel="noopener"
-               href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk">
-              <i class="fa-solid fa-file-lines"></i> View Resume
-            </a>
-            <a class="btn ghost" target="_blank" rel="noopener"
-               href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">
-              <i class="fa-solid fa-download"></i> Download
-            </a>
-            <!-- Project (restricted view triggers request access) -->
-            <a class="btn ghost" target="_blank" rel="noopener"
-               href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
-              <i class="fa-solid fa-diagram-project"></i> Project
-            </a>
-          </div>
+  <!-- ====== Resume Section ====== -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>
+      Experienced in comprehensive eye examinations, visual therapy, and
+      optical dispensing. Skilled in patient communication, clinical diagnosis,
+      and interdisciplinary teamwork. <br>
+      <strong>Languages:</strong> English, Tamil, Hindi (Professional Proficiency)
+    </p>
+  </section>
 
-          <div class="social" aria-label="Social links">
-            <a href="mailto:mohamedshameer12345@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            <a href="tel:+919345768563" aria-label="Phone"><i class="fas fa-phone"></i></a>
-            <a href="https://www.instagram.com/duh.its_mohamed" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- ====== Portfolio Section ====== -->
+  <section id="portfolio">
+    <h2>Portfolio</h2>
+    <p>
+      Thesis: <em>Grading Visual Search Tasks Based on Task Characteristics, Subjective
+      Perception and Performance in Real-World Scenarios</em>.
+    </p>
+    <p><a href="abstract.pdf" target="_blank">View Abstract</a></p>
+  </section>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I’m a student optometrist from India with a strong interest in clinical vision science,
-        contact lens practice, binocular vision, and low-vision care. I value empathetic,
-        patient-centric communication and evidence-based practice—bridging research, clinic,
-        and optical retail to deliver clear, comfortable vision.
-      </p>
-      <div class="chips">
-        <span class="chip"><i class="fa-solid fa-stethoscope"></i> Patient-first care</span>
-        <span class="chip"><i class="fa-solid fa-glasses"></i> Optical retail integration</span>
-        <span class="chip"><i class="fa-solid fa-book"></i> Research-oriented</span>
-      </div>
-    </section>
+  <!-- ====== Narrations Section ====== -->
+  <section id="narrations">
+    <h2>Narrations</h2>
+    <p>
+      A space where I share my stories, experiences, and reflections as a student optometrist.
+      Narratives include research journeys, patient cases, and creative insights.
+    </p>
+  </section>
 
-    <!-- SKILLS + EXPERIENCE -->
-    <section id="skills">
-      <h2>Skills & Experience</h2>
-      <div class="two-col">
-        <div class="card">
-          <h3>Skills</h3>
-          <ul class="list">
-            <li>Refraction & clinical assessment</li>
-            <li>Contact lens selection, fitting & after-care</li>
-            <li>Binocular vision assessment & therapy planning</li>
-            <li>Low vision evaluation & device trials</li>
-            <li>Case documentation & patient counseling</li>
-            <li>Basic research methods</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Experience Timeline</h3>
-          <div class="timeline">
-            <div class="tl">
-              <div class="when">2025</div>
-              <div class="what">Clinical Rotations & Research Focus</div>
-              <div class="desc">Advanced contact lens practice, binocular vision case follow-ups, low-vision device adaptation.</div>
-            </div>
-            <div class="tl">
-              <div class="when">2024</div>
-              <div class="what">Visual Search Project</div>
-              <div class="desc">Thesis on grading visual search tasks by set size, eccentricity & subjective perception.</div>
-            </div>
-            <div class="tl">
-              <div class="when">2023</div>
-              <div class="what">Foundations</div>
-              <div class="desc">Core clinical training, patient communication, documentation discipline.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- ====== Contact Section ====== -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></p>
+    <p>Instagram: <a href="https://instagram.com/duh.its_mohamed" target="_blank">@duh.its_mohamed</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank">Profile</a></p>
+    <p>Phone: <a href="tel:+919345768563">+91 93457 68563</a></p>
+  </section>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2>Portfolio</h2>
-      <div class="grid">
-        <article class="project">
-          <h3>Thesis Abstract</h3>
-          <p>Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception & Performance in Real-World Scenarios.</p>
-          <div class="row">
-            <span class="tag">Visual Search</span>
-            <span class="tag">Research</span>
-            <span class="tag">Human Factors</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="ABSTRACT.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-pdf"></i> View PDF</a>
-          </div>
-        </article>
+  <!-- ====== Footer ====== -->
+  <footer>
+    © 2025 Mohamed Shameer S | Optometrist
+  </footer>
 
-        <article class="project">
-          <h3>Resume (PDF)</h3>
-          <p>Detailed clinical/academic profile, experience, and skills.</p>
-          <div class="row">
-            <span class="tag">PDF</span>
-            <span class="tag">Profile</span>
-          </div>
-          <div class="actions">
-            <a class="btn" target="_blank" rel="noopener"
-               href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk">
-               <i class="fa-solid fa-file-lines"></i> View
-            </a>
-            <a class="btn ghost" target="_blank" rel="noopener"
-               href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">
-               <i class="fa-solid fa-download"></i> Download
-            </a>
-          </div>
-        </article>
-
-        <article class="project">
-          <h3>Project Document</h3>
-          <p>Full project document (access restricted). Request access with your Google account.</p>
-          <div class="row">
-            <span class="tag">Google Doc</span>
-            <span class="tag">Restricted</span>
-          </div>
-          <div class="actions">
-            <a class="btn ghost" target="_blank" rel="noopener"
-               href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
-               <i class="fa-solid fa-lock"></i> Request Access
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- NARRATIONS -->
-    <section id="narrations">
-      <h2>Narrations</h2>
-      <p class="muted">Personal notes and reflections from clinic, classroom, and community outreach—coming soon.</p>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-row"><i class="fa-solid fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
-      <div class="contact-row"><i class="fa-solid fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
-      <div class="contact-row"><i class="fa-brands fa-instagram"></i> <a target="_blank" rel="noopener" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
-      <div class="contact-row"><i class="fa-brands fa-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">LinkedIn Profile</a></div>
-    </section>
-
-    <footer>© 2025 Mohamed Shameer S — All rights reserved.</footer>
-  </main>
-
+  <!-- ====== Scroll Animation Script ====== -->
   <script>
-    // Reveal on scroll
-    const sections = document.querySelectorAll('section');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('reveal'); }
+    const sections = document.querySelectorAll("section");
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const secTop = sec.getBoundingClientRect().top;
+        if (secTop < triggerBottom) {
+          sec.classList.add("show");
+        }
       });
-    },{threshold:.15});
-    sections.forEach(s=>io.observe(s));
-
-    // Active nav link highlight
-    const navLinks = [...document.querySelectorAll('#navLinks a')];
-    function setActive(){
-      let curId = 'home';
-      sections.forEach(sec=>{
-        const top = sec.getBoundingClientRect().top;
-        if(top <= 120) curId = sec.id || curId;
-      });
-      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + curId));
-    }
-    window.addEventListener('scroll', setActive);
-    window.addEventListener('load', setActive);
+    };
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
   </script>
+
 </body>
 </html>
