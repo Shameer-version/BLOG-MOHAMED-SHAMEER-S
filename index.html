@@ -39,18 +39,6 @@
     a{color:inherit;text-decoration:none;transition:color .25s,opacity .25s}
     a:hover{color:var(--highlight)}
 
-    /* Top nav */
-    .topnav{
-      position:fixed; top:1rem; left:50%; transform:translateX(-50%);
-      display:flex; gap:1rem; padding:.7rem 1rem; border-radius:12px;
-      background:rgba(18,18,18,.55); backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.06);
-      z-index:1000;
-    }
-    body.light-mode .topnav{background:rgba(255,255,255,.7)}
-    .topnav a{font-weight:600;font-size:.95rem;opacity:.9;padding:.25rem .35rem;border-radius:8px}
-    .topnav a.active{color:var(--highlight);opacity:1}
-
     /* Dark/Light toggle */
     .dark-toggle{
       position:fixed; top:1rem; right:1rem; z-index:1001;
@@ -63,52 +51,57 @@
 
     .container{max-width:1120px;margin:0 auto;padding:6.2rem 1.25rem 2.5rem}
 
-    /* Header / hero */
+    /* Hero */
     header{text-align:center;margin-bottom:3.2rem}
-    header h1{font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0; opacity:0}
+    header h1{font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0; transition:transform .2s ease-out;}
     header h1 span{font-weight:300;margin-left:.35rem;opacity:.85}
-    header small{color:var(--muted);font-weight:700;letter-spacing:3px;opacity:0}
+    header small{color:var(--muted);font-weight:700;letter-spacing:3px; transition:transform .2s ease-out}
 
-    .btn-group{margin-top:1.2rem;opacity:0}
+    .btn-group{margin-top:1.2rem; transition:transform .2s ease-out}
     .btn{
       display:inline-flex; align-items:center; gap:.5rem;
       padding:.7rem 1.2rem; border-radius:999px; font-weight:700;
       background:var(--highlight); color:#fff;
       box-shadow:0 12px 30px var(--ring);
-      transition:transform .2s, box-shadow .2s, opacity .2s;
+      transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
     }
-    .btn:hover{transform:translateY(-2px)}
+    .btn:hover, .btn:active{transform:translateY(-4px) scale(1.05) rotate(-1deg); box-shadow:0 12px 28px var(--ring)}
     .btn.secondary{background:transparent;color:var(--highlight);box-shadow:inset 0 0 0 2px var(--highlight)}
 
-    .social-icons{margin-top:1rem;opacity:0}
+    .social-icons{margin-top:1rem}
     .social-icons a{
       display:inline-flex; align-items:center; justify-content:center;
       width:40px;height:40px;border-radius:10px;margin:0 .25rem;
       background:var(--card-bg); box-shadow:inset 0 0 0 2px var(--ring);
-      transition:transform .2s, box-shadow .2s, color .2s;
+      transition:transform .25s ease, box-shadow .25s ease, color .25s ease;
     }
-    .social-icons a:hover{animation: float 2s ease-in-out infinite; color:var(--highlight); box-shadow:0 10px 24px var(--ring), inset 0 0 0 2px var(--highlight)}
+    .social-icons a:hover, .social-icons a:active{
+      transform:translateY(-4px) scale(1.05);
+      box-shadow:0 12px 28px var(--ring);
+      color:var(--highlight);
+    }
 
     /* Sections */
     section{
       margin:0 0 2rem; padding:1.6rem; background:var(--card-bg); border-radius:14px;
       box-shadow:0 12px 34px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
-      opacity:0; transform:translateY(42px);
+      opacity:0; transform:translateY(42px); transition:opacity .8s ease, transform .8s ease;
     }
-    section.reveal{animation: fadeUp .9s cubic-bezier(.25,.8,.25,1) forwards;}
+    section.reveal{opacity:1; transform:none}
     section h2{margin:0 0 .65rem; font-size:1.65rem; color:var(--highlight)}
     .muted{color:var(--muted)}
 
     /* Lists / chips */
     ul{padding-left:1rem; margin:.4rem 0}
-    li{margin:.25rem 0;opacity:0}
+    li{margin:.25rem 0}
     .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem}
     .chip{
       padding:.4rem .7rem; border-radius:999px; font-size:.9rem; font-weight:600;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
       box-shadow:inset 0 0 0 2px var(--ring);
-      opacity:0;
+      transition:transform .25s ease, box-shadow .25s ease, color .25s ease;
     }
+    .chip:hover, .chip:active{transform:translateY(-4px) scale(1.05); color:var(--highlight)}
 
     /* Link button rows */
     .link-box{
@@ -118,50 +111,60 @@
       flex:1; min-width:180px; text-align:center; padding:.85rem 1rem; border-radius:12px;
       background:var(--highlight); color:#fff; font-weight:800;
       box-shadow:0 12px 28px var(--ring);
-      transition:transform .2s, opacity .2s;
+      transition:transform .25s ease, opacity .25s ease;
+    }
+    .link:hover, .link:active{transform:translateY(-4px) scale(1.05)}
+    .link.ghost{background:transparent; color:var(--highlight); box-shadow:inset 0 0 0 2px var(--highlight)}
+
+    /* Footer / Contact */
+    footer{
+      padding:2rem 1.25rem;
+      text-align:center;
+      background: var(--card-bg);
+      box-shadow:0 -4px 20px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.04);
+      border-radius:14px 14px 0 0;
       opacity:0;
+      transform:translateY(40px);
     }
-    .link:hover{transform:translateY(-2px)}
-    .link.ghost{
-      background:transparent; color:var(--highlight);
-      box-shadow:inset 0 0 0 2px var(--highlight)
+    footer.reveal{
+      animation:fadeUp .9s cubic-bezier(.25,.8,.25,1) forwards;
+    }
+    footer .contact-row{
+      display:flex; justify-content:center; align-items:center; gap:.6rem; margin:.4rem 0;
+      transition:transform .25s ease, color .25s ease;
+    }
+    footer .contact-row a:hover, footer .contact-row i:hover{
+      transform:translateY(-3px) scale(1.05);
+      color: var(--highlight);
     }
 
-    /* Footer/Contact small box */
-    .contact-box{
-      display:grid; grid-template-columns:1fr; gap:.6rem; margin-top:.6rem;
+    /* Floating keyframes */
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
     }
-    .contact-row{display:flex; align-items:center; gap:.6rem; opacity:0}
-    .contact-row i{width:22px;text-align:center; opacity:.9}
 
-    /* Animations */
-    @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(40px) scale(0.98);}
-      to {opacity: 1; transform: translateY(0) scale(1);}
-    }
-    @keyframes float {
-      0%,100% { transform: translateY(0);}
-      50% { transform: translateY(-6px);}
+    /* Floating effect */
+    header h1 { animation: floatUpDown 6s ease-in-out infinite; }
+    header small { animation: floatUpDown 5s ease-in-out infinite; }
+    header .btn-group { animation: floatUpDown 5.5s ease-in-out infinite; }
+    header .social-icons a:nth-child(1) { animation: floatUpDown 6.2s ease-in-out infinite; }
+    header .social-icons a:nth-child(2) { animation: floatUpDown 5.7s ease-in-out infinite; }
+    header .social-icons a:nth-child(3) { animation: floatUpDown 6.5s ease-in-out infinite; }
+    header .social-icons a:nth-child(4) { animation: floatUpDown 5.9s ease-in-out infinite; }
+
+    @keyframes fadeUp{
+      0%{opacity:0; transform:translateY(40px)}
+      100%{opacity:1; transform:translateY(0)}
     }
   </style>
 </head>
 <body>
+
   <!-- Theme toggle -->
   <button class="dark-toggle" id="modeToggle" aria-label="Toggle theme">
     <i class="fas fa-moon"></i>
   </button>
-
-  <!-- Top Navigation -->
-  <nav class="topnav" id="topnav">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#resume">Resume</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#narrations">Narrations</a>
-    <a href="#project">Project</a>
-    <a href="#contact">Contact</a>
-  </nav>
 
   <div class="container">
     <!-- Hero -->
@@ -249,28 +252,10 @@
       </div>
     </section>
 
-    <!-- Portfolio -->
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <p class="muted">I’ll be adding case studies, posters, and mini-projects here soon.</p>
-    </section>
-
-    <!-- Narrations -->
-    <section id="narrations">
-      <h2>Narrations</h2>
-      <p class="muted">
-        Personal notes and reflections from clinic, classroom, and community outreach—coming soon.
-      </p>
-    </section>
-
     <!-- Project -->
     <section id="project">
       <h2>Project</h2>
       <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
-      <p class="muted">
-        The project document is kept private. Click the button below and your access request will be sent to me.
-        (Keep your Google account signed in.)
-      </p>
       <div class="link-box">
         <a class="link" target="_blank" rel="noopener"
            href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
@@ -278,18 +263,15 @@
         </a>
       </div>
     </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-box">
-        <div class="contact-row"><i class="fa-solid fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
-        <div class="contact-row"><i class="fa-solid fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
-        <div class="contact-row"><i class="fa-brands fa-instagram"></i> <a target="_blank" rel="noopener" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
-        <div class="contact-row"><i class="fa-brands fa-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">LinkedIn Profile</a></div>
-      </div>
-    </section>
   </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="contact-row"><i class="fa-solid fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
+    <div class="contact-row"><i class="fa-solid fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
+    <div class="contact-row"><i class="fa-brands fa-instagram"></i> <a target="_blank" rel="noopener" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
+    <div class="contact-row"><i class="fa-brands fa-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">LinkedIn Profile</a></div>
+  </footer>
 
   <script>
     // Theme toggle
@@ -297,52 +279,24 @@
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
       const icon = toggleBtn.querySelector('i');
-      if (document.body.classList.contains('light-mode')) {
-        icon.classList.replace('fa-moon','fa-sun');
-      } else {
-        icon.classList.replace('fa-sun','fa-moon');
-      }
+      icon.classList.contains('fa-moon') ? icon.classList.replace('fa-moon','fa-sun') : icon.classList.replace('fa-sun','fa-moon');
     });
 
-    // Hero intro animation
-    window.addEventListener('load', () => {
-      document.querySelector('header small').style.animation = "fadeUp 1s ease forwards .2s";
-      document.querySelector('header h1').style.animation = "fadeUp 1s ease forwards .4s";
-      document.querySelector('.btn-group').style.animation = "fadeUp 1s ease forwards .7s";
-      document.querySelector('.social-icons').style.animation = "fadeUp 1s ease forwards 1s";
-    });
-
-    // Reveal on scroll with stagger
-    const sections = document.querySelectorAll('section');
+    // Reveal on scroll
+    const sections = document.querySelectorAll('section, footer');
     function reveal() {
       const trigger = window.innerHeight * 0.85;
+      let delay = 0;
       sections.forEach(sec => {
         const top = sec.getBoundingClientRect().top;
         if (top < trigger && !sec.classList.contains('reveal')) {
-          sec.classList.add('reveal');
-          // Stagger child animations
-          const children = sec.querySelectorAll('li, .chip, .link, .contact-row');
-          children.forEach((el, i) => {
-            el.style.animation = `fadeUp .7s ease forwards ${i * 0.15 + 0.2}s`;
-          });
+          setTimeout(() => sec.classList.add('reveal'), delay);
+          delay += 180;
         }
       });
     }
     window.addEventListener('scroll', reveal);
     window.addEventListener('load', reveal);
-
-    // Active nav link
-    const navLinks = document.querySelectorAll('.topnav a');
-    function setActiveLink() {
-      let idx = sections.length;
-      while (--idx && window.scrollY + 120 < sections[idx].offsetTop) {}
-      navLinks.forEach(l => l.classList.remove('active'));
-      const current = sections[idx]?.id;
-      const active = Array.from(navLinks).find(a => a.getAttribute('href') === '#' + current);
-      if (active) active.classList.add('active');
-    }
-    window.addEventListener('scroll', setActiveLink);
-    window.addEventListener('load', setActiveLink);
   </script>
 </body>
 </html>
