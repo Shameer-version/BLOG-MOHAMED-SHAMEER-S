@@ -1,146 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mohamed Shameer S | Optometrist</title>
-
-  <!-- Font Awesome (solid + brands) -->
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-
   <style>
-    :root{
-      --bg-color:#121212;
-      --card-bg:#1a1a1a;
-      --text-color:#eee;
-      --muted:#aaa;
-      --highlight:#5ac8fa;
-      --ring:rgba(90,200,250,.35);
+    :root {
+      --bg:#121212; --card:#1a1a1a; --text:#eee; --muted:#aaa; --open:#5ac8fa;
     }
-    body.light-mode{
-      --bg-color:#f6f7fb;
-      --card-bg:#ffffff;
-      --text-color:#101114;
-      --muted:#4f5563;
-      --highlight:#0077cc;
-      --ring:rgba(0,119,204,.22);
+    body.light-mode {
+      --bg:#f6f7fb; --card:#fff; --text:#111; --muted:#555; --open:#0077cc;
     }
-
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      background:var(--bg-color);
-      color:var(--text-color);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-      line-height:1.6;
-      scroll-behavior:smooth;
-      transition:background .35s,color .35s;
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    body {
+      background:var(--bg); color:var(--text);
+      font-family:Segoe UI,sans-serif; scroll-behavior:smooth;
+      transition:background .4s,color .4s;
     }
-    a{color:inherit;text-decoration:none;transition:color .25s,opacity .25s}
-    a:hover{color:var(--highlight)}
-
-    /* Top nav */
-    .topnav{
+    a{color:inherit;text-decoration:none;transition:color .3s;} a:hover{color:var(--open);}
+    .topnav {
       position:fixed; top:1rem; left:50%; transform:translateX(-50%);
-      display:flex; gap:1rem; padding:.7rem 1rem; border-radius:12px;
-      background:rgba(18,18,18,.55); backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.06);
-      z-index:1000;
+      background:rgba(18,18,18,.6);backdrop-filter:blur(6px);padding:.7rem 1rem;
+      border-radius:8px;display:flex;gap:.9rem;z-index:1000;
     }
-    body.light-mode .topnav{background:rgba(255,255,255,.7)}
-    .topnav a{font-weight:600;font-size:.95rem;opacity:.9;padding:.25rem .35rem;border-radius:8px}
-    .topnav a.active{color:var(--highlight);opacity:1}
-
-    /* Dark/Light toggle */
-    .dark-toggle{
-      position:fixed; top:1rem; right:1rem; z-index:1001;
-      border:none; cursor:pointer; border-radius:999px; padding:.6rem .75rem;
-      background:var(--card-bg); color:var(--text-color);
-      box-shadow:0 6px 20px rgba(0,0,0,.25), inset 0 0 0 2px var(--ring);
-      transition:transform .25s;
+    .topnav a{font-weight:600;opacity:.8;} .topnav a.active{color:var(--open);opacity:1;}
+    .dark-toggle {
+      position:fixed; top:1rem; right:1rem; padding:.5rem; font-size:1.3rem;
+      background:var(--card); border:none; border-radius:50%;
+      box-shadow:0 0 0 2px rgba(90,200,250,.35); cursor:pointer;transition:transform .3s;
+      z-index:1001;
     }
-    .dark-toggle:hover{transform:translateY(-1px) scale(1.03)}
-
-    .container{max-width:1120px;margin:0 auto;padding:6.2rem 1.25rem 2.5rem}
-
-    /* Header / hero */
-    header{text-align:center;margin-bottom:3.2rem}
-    header h1{font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0}
-    header h1 span{font-weight:300;margin-left:.35rem;opacity:.85}
-    header small{color:var(--muted);font-weight:700;letter-spacing:3px}
-
-    .btn-group{margin-top:1.2rem}
-    .btn{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.7rem 1.2rem; border-radius:999px; font-weight:700;
-      background:var(--highlight); color:#fff;
-      box-shadow:0 12px 30px var(--ring);
-      transition:transform .2s, box-shadow .2s, opacity .2s;
+    .dark-toggle:hover{transform:scale(1.1);}
+    .container{max-width:1100px;margin:0 auto;padding:6rem 1.5rem 2rem;}
+    header.hero {
+      position:relative; height:100vh; display:flex;
+      flex-direction:column; align-items:center; justify-content:center;
+      background: url("https://drive.google.com/uc?export=view&id=180LtrJbD0ZyPs_P7d0CXhTCmOIAtOmMa") center/cover no-repeat;
+      color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.7);
     }
-    .btn:hover{transform:translateY(-2px)}
-    .btn.secondary{background:transparent;color:var(--highlight);box-shadow:inset 0 0 0 2px var(--highlight)}
-
-    .social-icons{margin-top:1rem}
-    .social-icons a{
-      display:inline-flex; align-items:center; justify-content:center;
-      width:40px;height:40px;border-radius:10px;margin:0 .25rem;
-      background:var(--card-bg); box-shadow:inset 0 0 0 2px var(--ring);
-      transition:transform .2s, box-shadow .2s, color .2s;
+    header.hero h1 {
+      font-size:clamp(2.5rem,6vw,4rem); letter-spacing:4px;
     }
-    .social-icons a:hover{transform:translateY(-2px) scale(1.05); color:var(--highlight); box-shadow:0 10px 24px var(--ring), inset 0 0 0 2px var(--highlight)}
-
-    /* Sections */
-    section{
-      margin:0 0 2rem; padding:1.6rem; background:var(--card-bg); border-radius:14px;
-      box-shadow:0 12px 34px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
-      opacity:0; transform:translateY(42px); transition:opacity .8s ease, transform .8s ease;
+    header.hero h1 span{font-weight:300;margin-left:.5rem;opacity:.9;}
+    header.hero .btn-group {margin-top:1.5rem; display:flex; gap:1rem;}
+    header.hero .btn {
+      padding:.8rem 1.6rem; border-radius:999px; font-weight:700;
+      background:var(--open); color:#fff; box-shadow:0 12px 30px rgba(90,200,250,.35);
+      display:flex; align-items:center; gap:.5rem; transition:transform .2s;
     }
-    section.reveal{opacity:1; transform:none}
-    section h2{margin:0 0 .65rem; font-size:1.65rem; color:var(--highlight)}
-    .muted{color:var(--muted)}
-
-    /* Lists / chips */
-    ul{padding-left:1rem; margin:.4rem 0}
-    li{margin:.25rem 0}
-    .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem}
+    header.hero .btn:hover{transform:translateY(-3px);}
+    header.hero .social {
+      position:absolute; bottom:2rem; display:flex; gap:.8rem;
+    }
+    header.hero .social a{
+      font-size:1.3rem; width:48px; height:48px; background:rgba(0,0,0,.4);
+      display:flex; align-items:center; justify-content:center; border-radius:8px;
+      transition:transform .3s, background .3s;
+    }
+    header.hero .social a:hover{
+      transform:scale(1.1); background:rgba(0,0,0,.7);
+    }
+    .about {
+      display:flex; align-items:center; gap:2rem; margin-bottom:3rem;
+      flex-wrap:wrap;
+    }
+    .about img {
+      flex:1; max-width:300px; width:100%;
+      border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,.3);
+    }
+    .about .text {
+      flex:2; font-size:1rem;
+    }
+    section {
+      margin-bottom:2.5rem; padding:1.8rem; background:var(--card);
+      border-radius:12px; box-shadow:0 8px 26px rgba(0,0,0,.3);
+      opacity:0; transform:translateY(30px); transition:opacity .8s,transform .8s;
+    }
+    section.reveal {opacity:1; transform:none;}
+    section h2 {font-size:1.7rem; color:var(--open); margin-bottom:.8rem;}
+    ul{list-style:disc inside;}
+    .chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.6rem;}
     .chip{
-      padding:.4rem .7rem; border-radius:999px; font-size:.9rem; font-weight:600;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-      box-shadow:inset 0 0 0 2px var(--ring);
+      padding:.4rem .8rem;border-radius:999px;
+      background:linear-gradient(to bottom,rgba(255,255,255,.07),transparent);
+      box-shadow:inset 0 0 0 2px rgba(90,200,250,.35);
+      font-size:.9rem;font-weight:600;
     }
-
-    /* Link button rows */
-    .link-box{
-      display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.8rem
-    }
+    .link-box{display:flex;gap:1rem;flex-wrap:wrap;margin-top:.8rem;}
     .link{
-      flex:1; min-width:180px; text-align:center; padding:.85rem 1rem; border-radius:12px;
-      background:var(--highlight); color:#fff; font-weight:800;
-      box-shadow:0 12px 28px var(--ring);
-      transition:transform .2s, opacity .2s;
+      flex:1;min-width:160px;text-align:center;padding:.8rem;
+      border-radius:12px;font-weight:600;color:#fff;
+      background:var(--open);transition:transform .2s;
+      box-shadow:0 10px 28px rgba(90,200,250,.35);
     }
-    .link:hover{transform:translateY(-2px)}
-    .link.ghost{
-      background:transparent; color:var(--highlight);
-      box-shadow:inset 0 0 0 2px var(--highlight)
-    }
-
-    /* Footer/Contact small box */
-    .contact-box{
-      display:grid; grid-template-columns:1fr; gap:.6rem; margin-top:.6rem;
-    }
-    .contact-row{display:flex; align-items:center; gap:.6rem}
-    .contact-row i{width:22px;text-align:center; opacity:.9}
+    .link:hover{transform:translateY(-2px);}
   </style>
 </head>
 <body>
-  <!-- Theme toggle -->
-  <button class="dark-toggle" id="modeToggle" aria-label="Toggle theme">
-    <i class="fas fa-moon"></i>
-  </button>
-
-  <!-- Top Navigation -->
-  <nav class="topnav" id="topnav">
+  <button class="dark-toggle" id="modeToggle"><i class="fa-solid fa-moon"></i></button>
+  <nav class="topnav">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
@@ -151,180 +110,124 @@
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Mohamed Shameer <span>S</span></h1>
+    <small>OPTOMETRIST</small>
+    <div class="btn-group">
+      <a class="btn" href="#resume"><i class="fa-solid fa-file-lines"></i> Resume</a>
+      <a class="btn" href="#portfolio"><i class="fa-solid fa-diagram-project"></i> Portfolio</a>
+    </div>
+    <div class="social">
+      <a href="mailto:mohamedshameer12345@gmail.com" target="_blank"><i class="fa-solid fa-envelope"></i></a>
+      <a href="tel:+919345768563"><i class="fa-solid fa-phone"></i></a>
+      <a href="https://www.instagram.com/duh.its_mohamed" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+  </header>
+
   <div class="container">
-    <!-- Hero -->
-    <header id="home">
-      <small>OPTOMETRIST</small>
-      <h1>Mohamed Shameer <span>S</span></h1>
-
-      <div class="btn-group">
-        <a class="btn" href="#resume"><i class="fa-solid fa-file-lines"></i> View Resume</a>
-        <a class="btn secondary" href="#project"><i class="fa-solid fa-diagram-project"></i> View Project</a>
-      </div>
-
-      <div class="social-icons" aria-label="Social links">
-        <a href="mailto:mohamedshameer12345@gmail.com" target="_blank" aria-label="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="tel:+919345768563" aria-label="Phone">
-          <i class="fas fa-phone"></i>
-        </a>
-        <a href="https://www.instagram.com/duh.its_mohamed" target="_blank" aria-label="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </div>
-    </header>
-
     <!-- About -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        I’m a student optometrist from India with a strong interest in clinical vision science,
-        contact lens practice, binocular vision, and low-vision care. I value empathetic,
-        patient-centric communication and evidence-based practice—bridging research,
-        clinic, and optical retail to deliver clear, comfortable vision.
-      </p>
-      <div class="chips">
-        <span class="chip"><i class="fa-solid fa-stethoscope"></i> Patient-first care</span>
-        <span class="chip"><i class="fa-solid fa-glasses"></i> Optical retail integration</span>
-        <span class="chip"><i class="fa-solid fa-book"></i> Research-oriented</span>
+    <section id="about" class="about">
+      <img src="https://drive.google.com/uc?export=view&id=17x5PfBe1OsvrSaAyfIGIRluWsOT0Als9" alt="Mohamed Shameer Portrait">
+      <div class="text">
+        <h2>About Me</h2>
+        <p>I’m Mohamed Shameer S, a student optometrist from India with a strong interest in clinical optometry, binocular vision, contact lenses, and low vision rehabilitation. I integrate academic knowledge with practical experience in optical retail and clinical environments. My goal is to provide comprehensive patient-centered eye care while growing in the field of vision science.</p>
+        <div class="chips">
+          <span class="chip">Clinical Practice</span>
+          <span class="chip">Contact Lenses</span>
+          <span class="chip">Binocular Vision</span>
+          <span class="chip">Low Vision</span>
+          <span class="chip">Patient Care</span>
+        </div>
       </div>
     </section>
 
     <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Contact Lens Practice:</strong> selection, fitting, dispensing, after-care counseling.</li>
-        <li><strong>Binocular Vision:</strong> assessment, vision therapy planning, follow-ups.</li>
-        <li><strong>Low Vision Care:</strong> evaluation, device trials, adaptation strategies.</li>
-        <li><strong>Clinical Assessment:</strong> refraction, ocular health screening, documentation.</li>
-        <li><strong>Patient Communication:</strong> empathetic counseling & adherence education.</li>
-        <li><strong>Teamwork:</strong> collaboration across clinical and research environments.</li>
-      </ul>
-    </section>
+    <section id="experience"><h2>Experience</h2><ul>
+      <li>Assisted in contact lens selection, fitting, and dispensing</li>
+      <li>Assisted in binocular vision assessment & therapy</li>
+      <li>Assisted in low vision evaluation & rehabilitation</li>
+      <li>Clinical diagnosis & prescribing</li>
+      <li>Patient counseling, communication & documentation</li>
+    </ul></section>
 
     <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
+    <section id="skills"><h2>Skills</h2>
       <div class="chips">
-        <span class="chip">Contact Lenses</span>
+        <span class="chip">Contact Lens</span>
         <span class="chip">Refraction</span>
-        <span class="chip">Binocular Vision</span>
-        <span class="chip">Low Vision Rehab</span>
-        <span class="chip">Case Documentation</span>
+        <span class="chip">Vision Therapy</span>
+        <span class="chip">Low Vision</span>
+        <span class="chip">Communication</span>
+        <span class="chip">Teamwork</span>
         <span class="chip">Patient Counseling</span>
-        <span class="chip">Basic Research Methods</span>
       </div>
     </section>
 
     <!-- Resume -->
-    <section id="resume">
-      <h2>Resume</h2>
-      <p class="muted">You can view the resume directly, or use the download link.</p>
+    <section id="resume"><h2>Resume</h2>
       <div class="link-box">
-        <!-- View (Drive viewer) -->
-        <a class="link" target="_blank" rel="noopener"
-           href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk">
-          📄 View Resume
-        </a>
-        <!-- Direct download (Drive) -->
-        <a class="link ghost" target="_blank" rel="noopener"
-           href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">
-          ⬇️ Download Resume
-        </a>
+        <a class="link" href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk" target="_blank">📄 View Resume</a>
+        <a class="link" href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">⬇️ Download Resume</a>
       </div>
     </section>
 
-    <!-- Portfolio (simple placeholder) -->
-    <section id="portfolio">
-      <h2>Portfolio</h2>
-      <p class="muted">I’ll be adding case studies, posters, and mini-projects here soon.</p>
+    <!-- Portfolio -->
+    <section id="portfolio"><h2>Portfolio</h2>
+      <p>A visual collection of clinical and academic work coming soon.</p>
     </section>
 
     <!-- Narrations -->
-    <section id="narrations">
-      <h2>Narrations</h2>
-      <p class="muted">
-        Personal notes and reflections from clinic, classroom, and community outreach—coming soon.
-      </p>
+    <section id="narrations"><h2>Narrations</h2>
+      <p>Personal stories from my journey in optometry—clinic experiences, insights, and growth.</p>
     </section>
 
     <!-- Project -->
-    <section id="project">
-      <h2>Project</h2>
-      <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
-      <p class="muted">
-        The project document is kept private. Click the button below and your access request will be sent to me.
-        (Keep your Google account signed in.)
-      </p>
+    <section id="project"><h2>Project</h2>
+      <p><b>Thesis:</b> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception and Performance in Real-World Scenarios.</p>
       <div class="link-box">
-        <!-- Use /view to trigger Drive's request access flow if file is Restricted -->
-        <a class="link" target="_blank" rel="noopener"
-           href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
-          📑 Request Access to Project
-        </a>
+        <a class="link" href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view" target="_blank">📑 Request Access</a>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-box">
-        <div class="contact-row"><i class="fa-solid fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
-        <div class="contact-row"><i class="fa-solid fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
-        <div class="contact-row"><i class="fa-brands fa-instagram"></i> <a target="_blank" rel="noopener" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
-        <div class="contact-row"><i class="fa-brands fa-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">LinkedIn Profile</a></div>
+    <section id="contact"><h2>Contact</h2>
+      <div class="link-box">
+        <a class="link" href="mailto:mohamedshameer12345@gmail.com">Email Me</a>
+        <a class="link" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank">LinkedIn Profile</a>
+        <a class="link" href="https://www.instagram.com/duh.its_mohamed" target="_blank">Instagram</a>
+        <a class="link" href="tel:+919345768563">Call Me</a>
       </div>
     </section>
   </div>
 
   <script>
-    // Theme toggle
-    const toggleBtn = document.getElementById('modeToggle');
-    toggleBtn.addEventListener('click', () => {
+    document.getElementById('modeToggle').onclick = () => {
       document.body.classList.toggle('light-mode');
-      const icon = toggleBtn.querySelector('i');
-      if (document.body.classList.contains('light-mode')) {
-        icon.classList.replace('fa-moon','fa-sun');
-      } else {
-        icon.classList.replace('fa-sun','fa-moon');
-      }
-    });
-
-    // Reveal on scroll
-    const sections = document.querySelectorAll('section');
-    function reveal() {
-      const trigger = window.innerHeight * 0.85;
-      let delay = 0;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger && !sec.classList.contains('reveal')) {
-          setTimeout(() => sec.classList.add('reveal'), delay);
-          delay += 180;
+      const i = document.querySelector('.dark-toggle i');
+      i.classList.toggle('fa-sun'); i.classList.toggle('fa-moon');
+    };
+    const secs = document.querySelectorAll('section'), navs = document.querySelectorAll('.topnav a');
+    const reveal = () => {
+      const t = innerHeight * 0.85;
+      let d = 0;
+      secs.forEach(s => {
+        if(s.getBoundingClientRect().top < t && !s.classList.contains('reveal')){
+          setTimeout(()=>s.classList.add('reveal'), d);
+          d+=150;
         }
       });
-    }
-    window.addEventListener('scroll', reveal);
-    window.addEventListener('load', reveal);
-
-    // Active nav link
-    const navLinks = document.querySelectorAll('.topnav a');
-    function setActiveLink() {
-      let idx = sections.length;
-      while (--idx && window.scrollY + 120 < sections[idx].offsetTop) {}
-      navLinks.forEach(l => l.classList.remove('active'));
-      // Map section index to nav (skip header)
-      const anchors = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
-      const current = sections[idx]?.id;
-      const active = Array.from(navLinks).find(a => a.getAttribute('href') === '#' + current);
-      if (active) active.classList.add('active');
-    }
-    window.addEventListener('scroll', setActiveLink);
-    window.addEventListener('load', setActiveLink);
+    };
+    const setActive = () => {
+      let idx = secs.length;
+      while (--idx && scrollY + 120 < secs[idx].offsetTop) {}
+      navs.forEach(a=>a.classList.remove('active'));
+      const act = document.querySelector(`.topnav a[href="#${secs[idx].id}"]`);
+      if(act) act.classList.add('active');
+    };
+    window.addEventListener('scroll', reveal); window.addEventListener('load', reveal);
+    window.addEventListener('scroll', setActive); window.addEventListener('load', setActive);
   </script>
 </body>
 </html>
