@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mohamed Shameer S | Optometrist</title>
 
-  <!-- Font Awesome (solid + brands) -->
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
 
   <style>
@@ -65,11 +65,11 @@
 
     /* Header / hero */
     header{text-align:center;margin-bottom:3.2rem}
-    header h1{font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0}
+    header h1{font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0; opacity:0}
     header h1 span{font-weight:300;margin-left:.35rem;opacity:.85}
-    header small{color:var(--muted);font-weight:700;letter-spacing:3px}
+    header small{color:var(--muted);font-weight:700;letter-spacing:3px;opacity:0}
 
-    .btn-group{margin-top:1.2rem}
+    .btn-group{margin-top:1.2rem;opacity:0}
     .btn{
       display:inline-flex; align-items:center; gap:.5rem;
       padding:.7rem 1.2rem; border-radius:999px; font-weight:700;
@@ -80,33 +80,34 @@
     .btn:hover{transform:translateY(-2px)}
     .btn.secondary{background:transparent;color:var(--highlight);box-shadow:inset 0 0 0 2px var(--highlight)}
 
-    .social-icons{margin-top:1rem}
+    .social-icons{margin-top:1rem;opacity:0}
     .social-icons a{
       display:inline-flex; align-items:center; justify-content:center;
       width:40px;height:40px;border-radius:10px;margin:0 .25rem;
       background:var(--card-bg); box-shadow:inset 0 0 0 2px var(--ring);
       transition:transform .2s, box-shadow .2s, color .2s;
     }
-    .social-icons a:hover{transform:translateY(-2px) scale(1.05); color:var(--highlight); box-shadow:0 10px 24px var(--ring), inset 0 0 0 2px var(--highlight)}
+    .social-icons a:hover{animation: float 2s ease-in-out infinite; color:var(--highlight); box-shadow:0 10px 24px var(--ring), inset 0 0 0 2px var(--highlight)}
 
     /* Sections */
     section{
       margin:0 0 2rem; padding:1.6rem; background:var(--card-bg); border-radius:14px;
       box-shadow:0 12px 34px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
-      opacity:0; transform:translateY(42px); transition:opacity .8s ease, transform .8s ease;
+      opacity:0; transform:translateY(42px);
     }
-    section.reveal{opacity:1; transform:none}
+    section.reveal{animation: fadeUp .9s cubic-bezier(.25,.8,.25,1) forwards;}
     section h2{margin:0 0 .65rem; font-size:1.65rem; color:var(--highlight)}
     .muted{color:var(--muted)}
 
     /* Lists / chips */
     ul{padding-left:1rem; margin:.4rem 0}
-    li{margin:.25rem 0}
+    li{margin:.25rem 0;opacity:0}
     .chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem}
     .chip{
       padding:.4rem .7rem; border-radius:999px; font-size:.9rem; font-weight:600;
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
       box-shadow:inset 0 0 0 2px var(--ring);
+      opacity:0;
     }
 
     /* Link button rows */
@@ -118,6 +119,7 @@
       background:var(--highlight); color:#fff; font-weight:800;
       box-shadow:0 12px 28px var(--ring);
       transition:transform .2s, opacity .2s;
+      opacity:0;
     }
     .link:hover{transform:translateY(-2px)}
     .link.ghost{
@@ -129,8 +131,18 @@
     .contact-box{
       display:grid; grid-template-columns:1fr; gap:.6rem; margin-top:.6rem;
     }
-    .contact-row{display:flex; align-items:center; gap:.6rem}
+    .contact-row{display:flex; align-items:center; gap:.6rem; opacity:0}
     .contact-row i{width:22px;text-align:center; opacity:.9}
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(40px) scale(0.98);}
+      to {opacity: 1; transform: translateY(0) scale(1);}
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0);}
+      50% { transform: translateY(-6px);}
+    }
   </style>
 </head>
 <body>
@@ -226,12 +238,10 @@
       <h2>Resume</h2>
       <p class="muted">You can view the resume directly, or use the download link.</p>
       <div class="link-box">
-        <!-- View (Drive viewer) -->
         <a class="link" target="_blank" rel="noopener"
            href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk">
           📄 View Resume
         </a>
-        <!-- Direct download (Drive) -->
         <a class="link ghost" target="_blank" rel="noopener"
            href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">
           ⬇️ Download Resume
@@ -239,7 +249,7 @@
       </div>
     </section>
 
-    <!-- Portfolio (simple placeholder) -->
+    <!-- Portfolio -->
     <section id="portfolio">
       <h2>Portfolio</h2>
       <p class="muted">I’ll be adding case studies, posters, and mini-projects here soon.</p>
@@ -262,7 +272,6 @@
         (Keep your Google account signed in.)
       </p>
       <div class="link-box">
-        <!-- Use /view to trigger Drive's request access flow if file is Restricted -->
         <a class="link" target="_blank" rel="noopener"
            href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
           📑 Request Access to Project
@@ -295,16 +304,27 @@
       }
     });
 
-    // Reveal on scroll
+    // Hero intro animation
+    window.addEventListener('load', () => {
+      document.querySelector('header small').style.animation = "fadeUp 1s ease forwards .2s";
+      document.querySelector('header h1').style.animation = "fadeUp 1s ease forwards .4s";
+      document.querySelector('.btn-group').style.animation = "fadeUp 1s ease forwards .7s";
+      document.querySelector('.social-icons').style.animation = "fadeUp 1s ease forwards 1s";
+    });
+
+    // Reveal on scroll with stagger
     const sections = document.querySelectorAll('section');
     function reveal() {
       const trigger = window.innerHeight * 0.85;
-      let delay = 0;
       sections.forEach(sec => {
         const top = sec.getBoundingClientRect().top;
         if (top < trigger && !sec.classList.contains('reveal')) {
-          setTimeout(() => sec.classList.add('reveal'), delay);
-          delay += 180;
+          sec.classList.add('reveal');
+          // Stagger child animations
+          const children = sec.querySelectorAll('li, .chip, .link, .contact-row');
+          children.forEach((el, i) => {
+            el.style.animation = `fadeUp .7s ease forwards ${i * 0.15 + 0.2}s`;
+          });
         }
       });
     }
@@ -317,8 +337,6 @@
       let idx = sections.length;
       while (--idx && window.scrollY + 120 < sections[idx].offsetTop) {}
       navLinks.forEach(l => l.classList.remove('active'));
-      // Map section index to nav (skip header)
-      const anchors = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
       const current = sections[idx]?.id;
       const active = Array.from(navLinks).find(a => a.getAttribute('href') === '#' + current);
       if (active) active.classList.add('active');
