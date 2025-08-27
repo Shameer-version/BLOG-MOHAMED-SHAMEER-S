@@ -64,10 +64,8 @@
       background:var(--highlight); color:#fff;
       box-shadow:0 12px 30px var(--ring);
       transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
-      cursor:pointer;
     }
-    /* Touch / click / hover animation */
-    .btn:hover, .btn:active{transform:translateY(-4px) scale(1.05) rotate(-1deg); box-shadow:0 12px 28px var(--ring);}
+    .btn:hover, .btn:active{transform:translateY(-4px) scale(1.05) rotate(-1deg); box-shadow:0 12px 28px var(--ring)}
     .btn.secondary{background:transparent;color:var(--highlight);box-shadow:inset 0 0 0 2px var(--highlight)}
 
     .social-icons{margin-top:1rem}
@@ -76,7 +74,6 @@
       width:40px;height:40px;border-radius:10px;margin:0 .25rem;
       background:var(--card-bg); box-shadow:inset 0 0 0 2px var(--ring);
       transition:transform .25s ease, box-shadow .25s ease, color .25s ease;
-      cursor:pointer;
     }
     .social-icons a:hover, .social-icons a:active{
       transform:translateY(-4px) scale(1.05);
@@ -103,7 +100,6 @@
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
       box-shadow:inset 0 0 0 2px var(--ring);
       transition:transform .25s ease, box-shadow .25s ease, color .25s ease;
-      cursor:pointer;
     }
     .chip:hover, .chip:active{transform:translateY(-4px) scale(1.05); color:var(--highlight)}
 
@@ -116,7 +112,6 @@
       background:var(--highlight); color:#fff; font-weight:800;
       box-shadow:0 12px 28px var(--ring);
       transition:transform .25s ease, opacity .25s ease;
-      cursor:pointer;
     }
     .link:hover, .link:active{transform:translateY(-4px) scale(1.05)}
     .link.ghost{background:transparent; color:var(--highlight); box-shadow:inset 0 0 0 2px var(--highlight)}
@@ -149,6 +144,7 @@
       50% { transform: translateY(-6px); }
     }
 
+    /* Floating effect */
     header h1 { animation: floatUpDown 6s ease-in-out infinite; }
     header small { animation: floatUpDown 5s ease-in-out infinite; }
     header .btn-group { animation: floatUpDown 5.5s ease-in-out infinite; }
@@ -178,7 +174,7 @@
 
       <div class="btn-group">
         <a class="btn" href="#resume"><i class="fa-solid fa-file-lines"></i> View Resume</a>
-        <a class="btn secondary" href="#abstract"><i class="fa-solid fa-file-lines"></i> View Abstract</a>
+        <a class="btn secondary" href="#project"><i class="fa-solid fa-diagram-project"></i> View Project</a>
       </div>
 
       <div class="social-icons" aria-label="Social links">
@@ -256,18 +252,14 @@
       </div>
     </section>
 
-    <!-- Abstract -->
-    <section id="abstract">
-      <h2>Abstract</h2>
+    <!-- Project -->
+    <section id="project">
+      <h2>Project</h2>
       <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
       <div class="link-box">
         <a class="link" target="_blank" rel="noopener"
-           href="https://drive.google.com/file/d/1EXAMPLEABSTRACT/view?usp=drivesdk">
-          📄 View Abstract
-        </a>
-        <a class="link ghost" target="_blank" rel="noopener"
-           href="https://drive.google.com/uc?export=download&id=1EXAMPLEABSTRACT">
-          ⬇️ Download Abstract
+           href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">
+          📑 Request Access to Project
         </a>
       </div>
     </section>
@@ -292,3 +284,19 @@
 
     // Reveal on scroll
     const sections = document.querySelectorAll('section, footer');
+    function reveal() {
+      const trigger = window.innerHeight * 0.85;
+      let delay = 0;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger && !sec.classList.contains('reveal')) {
+          setTimeout(() => sec.classList.add('reveal'), delay);
+          delay += 180;
+        }
+      });
+    }
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+  </script>
+</body>
+</html>
