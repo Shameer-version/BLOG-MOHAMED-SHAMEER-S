@@ -4,236 +4,98 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mohamed Shameer S | Optometrist</title>
-
-<!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-
 <style>
 :root{
-  --bg-color:#121212;
-  --card-bg:#1a1a1a;
-  --text-color:#eee;
+  --bg:#121212;
+  --card:#1a1a1a;
+  --text:#eee;
   --muted:#aaa;
   --highlight:#5ac8fa;
   --ring:rgba(90,200,250,.35);
 }
 body.light-mode{
-  --bg-color:#f6f7fb;
-  --card-bg:#ffffff;
-  --text-color:#101114;
+  --bg:#f6f7fb;
+  --card:#fff;
+  --text:#101114;
   --muted:#4f5563;
   --highlight:#0077cc;
   --ring:rgba(0,119,204,.22);
 }
-
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0}
 body{
-  background:var(--bg-color);
-  color:var(--text-color);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-  line-height:1.6;
-  scroll-behavior:smooth;
-  transition:background .35s,color .35s;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui, sans-serif;
+  margin:0; line-height:1.6; scroll-behavior:smooth;
 }
-a{color:inherit;text-decoration:none;transition:color .25s,opacity .25s}
-a:hover{color:var(--highlight)}
-
-/* Dark/Light toggle */
-.dark-toggle{
-  position:fixed; top:1rem; right:1rem; z-index:1001;
-  border:none; cursor:pointer; border-radius:999px; padding:.6rem .75rem;
-  background:var(--card-bg); color:var(--text-color);
-  box-shadow:0 6px 20px rgba(0,0,0,.25), inset 0 0 0 2px var(--ring);
-  transition:transform .25s;
-}
-.dark-toggle:hover{transform:translateY(-1px) scale(1.03)}
-
-/* Container */
-.container{max-width:1120px;margin:0 auto;padding:6.2rem 1.25rem 2.5rem; position:relative; z-index:1;}
-
-/* Hero */
-header{text-align:center;margin-bottom:3.2rem; position:relative;}
-header h1{
-  font-size:clamp(2.2rem,4vw,3.2rem);letter-spacing:4px;margin:.25rem 0 0;
-  transition:transform .2s ease-out;
-  animation: floatUpDown 6s ease-in-out infinite;
-}
-header h1 span{font-weight:300;margin-left:.35rem;opacity:.85}
-header small{
-  color:var(--muted);
-  font-weight:700;letter-spacing:3px;
-  animation: floatUpDown 5s ease-in-out infinite;
-}
-
-/* Typing Wave Hero */
-.hero-wave span{display:inline-block; animation: wave 1.2s ease-in-out infinite;}
-.hero-wave span:nth-child(2){animation-delay:.1s;}
-.hero-wave span:nth-child(3){animation-delay:.2s;}
-.hero-wave span:nth-child(4){animation-delay:.3s;}
-.hero-wave span:nth-child(5){animation-delay:.4s;}
-@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-/* Buttons */
-.btn-group{margin-top:1.2rem; animation: floatUpDown 5.5s ease-in-out infinite;}
-.btn{
-  display:inline-flex; align-items:center; gap:.5rem;
-  padding:.7rem 1.2rem; border-radius:999px; font-weight:700;
-  background:var(--highlight); color:#fff;
-  box-shadow:0 12px 30px var(--ring);
-  transition:transform .25s ease, box-shadow .25s ease, opacity .25s ease;
-}
-.btn:hover, .btn:active{transform:translateY(-4px) scale(1.05) rotate(-1deg); box-shadow:0 12px 28px var(--ring)}
-.btn.secondary{background:transparent;color:var(--highlight);box-shadow:inset 0 0 0 2px var(--highlight)}
-
-/* Social icons */
-.social-icons{margin-top:1rem}
-.social-icons a{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:40px;height:40px;border-radius:10px;margin:0 .25rem;
-  background:var(--card-bg); box-shadow:inset 0 0 0 2px var(--ring);
-  transition:transform .25s ease, box-shadow .25s ease, color .25s ease;
-}
-.social-icons a:hover, .social-icons a:active{
-  transform:translateY(-4px) scale(1.05);
-  box-shadow:0 12px 28px var(--ring);
-  color:var(--highlight);
-}
-
-/* Sections */
-section{
-  margin:0 0 2rem; padding:1.6rem; background:var(--card-bg); border-radius:14px;
-  box-shadow:0 12px 34px rgba(0,0,0,.22), inset 0 0 0 1px rgba(255,255,255,.04);
-  opacity:0; transform:translateY(42px);
-  transition:opacity .8s ease, transform .8s ease, filter .8s ease;
-  filter: blur(8px);
-}
+a{color:inherit; text-decoration:none; transition:0.25s;}
+a:hover{color:var(--highlight);}
+.container{max-width:1120px;margin:0 auto;padding:5rem 1rem;}
+section{background:var(--card); margin-bottom:2rem; padding:1.5rem; border-radius:14px; opacity:0; transform:translateY(40px); transition:all 0.8s ease; filter:blur(5px);}
 section.reveal{opacity:1; transform:none; filter:blur(0);}
-section h2{margin:0 0 .65rem; font-size:1.65rem; color:var(--highlight)}
-.muted{color:var(--muted)}
-
-/* Chips */
-.chips{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem}
-.chip{
-  padding:.4rem .7rem; border-radius:999px; font-size:.9rem; font-weight:600;
-  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));
-  box-shadow:inset 0 0 0 2px var(--ring);
-  transition:transform .25s ease, box-shadow .25s ease, color .25s ease;
-}
-.chip:hover, .chip:active{transform:translateY(-4px) scale(1.05); color:var(--highlight);}
-
-/* Links */
-.link-box{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.8rem}
-.link{
-  flex:1; min-width:180px; text-align:center; padding:.85rem 1rem; border-radius:12px;
-  background:var(--highlight); color:#fff; font-weight:800;
-  box-shadow:0 12px 28px var(--ring);
-  transition:transform .25s ease, opacity .25s ease;
-}
-.link:hover, .link:active{transform:translateY(-4px) scale(1.05)}
-.link.ghost{background:transparent; color:var(--highlight); box-shadow:inset 0 0 0 2px var(--highlight)}
-
-/* Footer */
-footer{
-  padding:2rem 1.25rem; text-align:center;
-  background: var(--card-bg);
-  box-shadow:0 -4px 20px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.04);
-  border-radius:14px 14px 0 0;
-  opacity:0; transform:translateY(40px);
-}
-footer.reveal{
-  animation:fadeUp .9s cubic-bezier(.25,.8,.25,1) forwards;
-}
-footer .contact-row{
-  display:flex; justify-content:center; align-items:center; gap:.6rem; margin:.4rem 0;
-  transition:transform .25s ease, color .25s ease;
-}
-footer .contact-row a:hover, footer .contact-row i:hover{
-  transform:translateY(-3px) scale(1.05);
-  color: var(--highlight);
-}
-
-/* Floating keyframes */
-@keyframes floatUpDown {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
-}
-@keyframes fadeUp{
-  0%{opacity:0; transform:translateY(40px)}
-  100%{opacity:1; transform:translateY(0)}
-}
-
-/* Typing animation */
-.hero-typing{overflow:hidden; white-space:nowrap; border-right:3px solid var(--highlight); width:14ch; animation: typing 3s steps(14) 1s forwards, blink 0.5s step-end infinite;}
-@keyframes typing{from{width:0}to{width:14ch}}
-@keyframes blink{50%{border-color:transparent}}
-
-/* Tilt card hover */
-.tilt-card{transition:transform .2s ease;}
+h2{color:var(--highlight);}
+.btn{padding:.7rem 1.2rem;border-radius:999px;font-weight:700; background:var(--highlight); color:#fff; margin:.5rem; display:inline-block; transition:0.25s;}
+.btn:hover{transform:scale(1.05) translateY(-3px);}
+.btn.secondary{background:transparent;color:var(--highlight);border:2px solid var(--highlight);}
+.dark-toggle{position:fixed;top:1rem;right:1rem;z-index:100; border:none; cursor:pointer; border-radius:999px; padding:.6rem .75rem; background:var(--card); color:var(--text);}
+.social-icons a{display:inline-flex; justify-content:center; align-items:center; width:40px; height:40px; border-radius:10px; margin:0 .25rem; background:var(--card); transition:0.25s;}
+.social-icons a:hover{transform:scale(1.1) translateY(-3px); color:var(--highlight);}
+.chips{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;}
+.chip{padding:.4rem .7rem;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)); box-shadow:inset 0 0 0 2px var(--ring);}
+.chip:hover{color:var(--highlight); transform:scale(1.05) translateY(-2px);}
+.hero-wave span{display:inline-block; animation:wave 1.2s infinite;}
+.hero-wave span:nth-child(2){animation-delay:.1s;} 
+.hero-wave span:nth-child(3){animation-delay:.2s;}
+@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+footer{background:var(--card); text-align:center; padding:2rem 1rem; opacity:0; transform:translateY(40px); transition:0.8s;}
+footer.reveal{opacity:1; transform:none;}
 </style>
 </head>
 <body>
 
-<!-- Theme toggle -->
-<button class="dark-toggle" id="modeToggle" aria-label="Toggle theme">
-  <i class="fas fa-moon"></i>
-</button>
+<button class="dark-toggle" id="modeToggle"><i class="fas fa-moon"></i></button>
 
 <div class="container">
-  <!-- Hero -->
-  <header id="home">
+  <header>
     <small class="hero-wave">
       <span>O</span><span>P</span><span>T</span><span>O</span><span>M</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span><span>T</span>
     </small>
-    <h1 class="hero-typing">Mohamed Shameer S</h1>
-
-    <div class="btn-group">
-      <a class="btn" href="#resume"><i class="fa-solid fa-file-lines"></i> View Resume</a>
-      <a class="btn secondary" href="#project"><i class="fa-solid fa-diagram-project"></i> View Project</a>
+    <h1>Mohamed Shameer S</h1>
+    <div>
+      <a class="btn" href="#resume">View Resume</a>
+      <a class="btn secondary" href="#project">View Project</a>
     </div>
-
-    <div class="social-icons" aria-label="Social links">
-      <a href="mailto:mohamedshameer12345@gmail.com" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="tel:+919345768563" aria-label="Phone"><i class="fas fa-phone"></i></a>
-      <a href="https://www.instagram.com/duh.its_mohamed" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <div class="social-icons">
+      <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>
+      <a href="https://www.instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin"></i></a>
     </div>
   </header>
 
-  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
-    <p>
-      I'm Mohamed Shameer S, a licensed Optometrist with proven expertise in comprehensive 
-      eye care and vision management. My professional practice encompasses detailed eye examinations,
-      precise refractive error correction, binocular vision evaluation, and advanced optical dispensing. 
-      I am committed to delivering accurate clinical outcomes and exceptional patient care, guided by the principles of precision, 
-      integrity, and excellence.
-    </p>
-    <p>
-      With a strong foundation in both clinical and optical practice, I bring a results-driven approach to optometry, ensuring high standards of care and contributing to the advancement of eye health services.
-    </p>
+    <p>I'm Mohamed Shameer S, a licensed Optometrist with expertise in eye care, refractive error correction, binocular vision, and optical dispensing. Committed to accurate outcomes and patient care.</p>
+    <p>With a strong foundation in clinical and optical practice, I ensure high standards of care and contribute to advancing eye health services.</p>
     <div class="chips">
-      <span class="chip"><i class="fa-solid fa-stethoscope"></i> Patient-first care</span>
-      <span class="chip"><i class="fa-solid fa-glasses"></i> Optical retail integration</span>
-      <span class="chip"><i class="fa-solid fa-book"></i> Research-oriented</span>
+      <span class="chip">Patient-first care</span>
+      <span class="chip">Optical retail integration</span>
+      <span class="chip">Research-oriented</span>
     </div>
   </section>
 
-  <!-- Experience -->
   <section id="experience">
     <h2>Experience</h2>
     <ul>
-      <li><strong>Contact Lens Practice:</strong> selection, fitting, dispensing, after-care counseling.</li>
-      <li><strong>Binocular Vision:</strong> assessment, vision therapy planning, follow-ups.</li>
-      <li><strong>Low Vision Care:</strong> evaluation, device trials, adaptation strategies.</li>
-      <li><strong>Clinical Assessment:</strong> refraction, ocular health screening, documentation.</li>
-      <li><strong>Patient Communication:</strong> empathetic counseling & adherence education.</li>
-      <li><strong>Teamwork:</strong> collaboration across clinical and research environments.</li>
+      <li>Contact Lens Practice: selection, fitting, dispensing, after-care counseling.</li>
+      <li>Binocular Vision: assessment, vision therapy planning, follow-ups.</li>
+      <li>Low Vision Care: evaluation, device trials, adaptation strategies.</li>
+      <li>Clinical Assessment: refraction, ocular health screening, documentation.</li>
+      <li>Patient Communication: counseling & adherence education.</li>
+      <li>Teamwork: collaboration in clinical and research environments.</li>
     </ul>
   </section>
 
-  <!-- Skills -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="chips">
@@ -243,89 +105,54 @@ footer .contact-row a:hover, footer .contact-row i:hover{
       <span class="chip">Low Vision Rehab</span>
       <span class="chip">Case Documentation</span>
       <span class="chip">Patient Counseling</span>
-      <span class="chip">Basic Research Methods</span>
+      <span class="chip">Research Methods</span>
     </div>
   </section>
 
-  <!-- Resume -->
   <section id="resume">
     <h2>Resume</h2>
-    <p class="muted">You can view the resume directly, or use the download link.</p>
-    <div class="link-box">
-      <a class="link" target="_blank" rel="noopener" href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view?usp=drivesdk">📄 View Resume</a>
-      <a class="link ghost" target="_blank" rel="noopener" href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">⬇️ Download Resume</a>
+    <div>
+      <a class="btn" target="_blank" href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view">View Resume</a>
+      <a class="btn secondary" target="_blank" href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">Download Resume</a>
     </div>
   </section>
 
-  <!-- Project -->
   <section id="project">
     <h2>Project</h2>
     <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
-    <div class="link-box">
-      <a class="link" target="_blank" rel="noopener" href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">📑 Request Access to Project</a>
-    </div>
+    <a class="btn" target="_blank" href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">Request Access</a>
   </section>
 </div>
 
-<!-- Footer -->
-<footer id="contact">
-  <div class="contact-row"><i class="fa-solid fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
-  <div class="contact-row"><i class="fa-solid fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
-  <div class="contact-row"><i class="fa-brands fa-instagram"></i> <a target="_blank" rel="noopener" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
-  <div class="contact-row"><i class="fa-brands fa-linkedin"></i> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">LinkedIn Profile</a></div>
+<footer>
+  <div>Email: <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
+  <div>Phone: <a href="tel:+919345768563">+91 93457 68563</a></div>
+  <div>Instagram: <a target="_blank" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
+  <div>LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">Profile</a></div>
 </footer>
 
 <script>
 // Theme toggle
 const toggleBtn = document.getElementById('modeToggle');
-toggleBtn.addEventListener('click', () => {
+toggleBtn.addEventListener('click',()=>{
   document.body.classList.toggle('light-mode');
-  const icon = toggleBtn.querySelector('i');
-  icon.classList.contains('fa-moon') ? icon.classList.replace('fa-moon','fa-sun') : icon.classList.replace('fa-sun','fa-moon');
+  toggleBtn.querySelector('i').classList.toggle('fa-moon');
+  toggleBtn.querySelector('i').classList.toggle('fa-sun');
 });
 
-// Reveal sections and About Me paragraphs
+// Scroll reveal
 const sections = document.querySelectorAll('section, footer');
-function reveal() {
-  const trigger = window.innerHeight * 0.85;
-  let delay = 0;
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if(top < trigger && !sec.classList.contains('reveal')){
-      setTimeout(()=> sec.classList.add('reveal'), delay);
-      delay += 180;
-    }
-  });
-}
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
+function reveal(){ sections.forEach(s=>{
+  if(s.getBoundingClientRect().top < window.innerHeight*0.85){ s.classList.add('reveal'); }
+}); }
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
 
-document.querySelectorAll("#about p").forEach(p => {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add("show-once");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.7});
-  observer.observe(p);
+// Touch button tap effect
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('touchstart',()=> btn.style.transform='scale(0.95)');
+  btn.addEventListener('touchend',()=> btn.style.transform='scale(1)');
 });
-
-// Touch swipe scroll
-let touchStartY = 0, touchEndY = 0;
-document.addEventListener('touchstart', e => { touchStartY = e.changedTouches[0].screenY; });
-document.addEventListener('touchend', e => {
-  touchEndY = e.changedTouches[0].screenY;
-  const diff = touchEndY - touchStartY;
-  if(diff > 50) window.scrollBy({top:-150, behavior:'smooth'});
-  else if(diff < -50) window.scrollBy({top:150, behavior:'smooth'});
-});
-
-// Tilt card effect (desktop & touch)
-document.querySelectorAll('.tilt-card').forEach(card=>{
-  card.addEventListener('mousemove', e=>{
-    const rect=card.getBoundingClientRect();
-    const x=(e.clientX-rect.left)/rect.width -0.5;
-    const y=(e.clientY-rect.top)/rect.height -0.5;
-    card.style.transform=`rotateY(${x*20}
+</script>
+</body>
+</html>
