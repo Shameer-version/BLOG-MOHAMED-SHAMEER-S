@@ -29,17 +29,23 @@ body{
   margin:0;
   line-height:1.6;
   scroll-behavior:smooth;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 a{color:inherit;text-decoration:none;transition:0.25s;}
 a:hover{color:var(--highlight);}
 .container{max-width:1120px;margin:0 auto;padding:5rem 1rem;}
 section{background:var(--card); margin-bottom:2rem; padding:1.5rem; border-radius:14px; opacity:0; transform:translateY(40px); transition:all 0.8s ease; filter:blur(5px);}
 section.reveal{opacity:1; transform:none; filter:blur(0);}
-h2{color:var(--highlight);}
+h2{color:var(--highlight);position:relative;margin-bottom:1rem;}
+h2::after{
+  content:"";position:absolute;bottom:-6px;left:0;width:60px;height:3px;
+  background:var(--highlight);animation:grow 1s ease forwards;
+}
+@keyframes grow{from{width:0;}to{width:60px;}}
 .btn{padding:.7rem 1.2rem;border-radius:999px;font-weight:700;background:var(--highlight);color:#fff;margin:.5rem;display:inline-block;transition:0.25s;text-align:center;}
 .btn:hover{transform:scale(1.05) translateY(-3px);text-shadow:0 0 6px var(--highlight),0 0 12px var(--highlight);box-shadow:0 0 20px var(--highlight);}
 .btn.secondary{background:transparent;color:var(--highlight);border:2px solid var(--highlight);}
-.dark-toggle{position:fixed;top:1rem;right:1rem;z-index:100;border:none;cursor:pointer;border-radius:999px;padding:.6rem .75rem;background:var(--card);color:var(--text);}
+.dark-toggle{position:fixed;top:1rem;right:1rem;z-index:200;border:none;cursor:pointer;border-radius:999px;padding:.6rem .75rem;background:var(--card);color:var(--text);}
 .social-icons a{display:inline-flex;justify-content:center;align-items:center;width:40px;height:40px;border-radius:10px;margin:0 .25rem;background:var(--card);transition:0.25s;}
 .social-icons a:hover{transform:scale(1.1) translateY(-3px);color:var(--highlight);text-shadow:0 0 6px var(--highlight),0 0 12px var(--highlight);box-shadow:0 0 20px var(--highlight);}
 .chips{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;}
@@ -55,9 +61,44 @@ footer.reveal{opacity:1; transform:none;}
 .tilt-inner{background:var(--card);padding:1.5rem;border-radius:14px;transition:transform 0.3s ease, box-shadow 0.3s ease;}
 .tilt-inner:hover{transform:scale(1.05);box-shadow:0 20px 40px rgba(90,200,250,0.35),0 0 20px rgba(90,200,250,0.2) inset;}
 [data-speed]{transition:transform 0.2s ease-out;}
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;width:100%;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);padding:.8rem 2rem;display:flex;gap:1.5rem;z-index:150;}
+.navbar a{color:var(--text);font-weight:600;}
+.navbar a.active{color:var(--highlight);text-shadow:0 0 6px var(--highlight);}
+body{padding-top:70px;}
+/* Timeline for Experience */
+.timeline{position:relative;padding-left:2rem;}
+.timeline::before{content:"";position:absolute;top:0;left:15px;width:3px;height:100%;background:var(--highlight);}
+.timeline-item{margin-bottom:1.5rem;position:relative;}
+.timeline-item::before{content:"";position:absolute;left:-6px;top:5px;width:15px;height:15px;border-radius:50%;background:var(--highlight);}
+.timeline-item h4{margin:0;color:var(--text);}
+.timeline-item p{margin:.2rem 0 0;color:var(--muted);}
+/* Tagline typing */
+.tagline{font-size:1.2rem;color:var(--muted);height:1.5rem;overflow:hidden;border-right:2px solid var(--highlight);white-space:nowrap;width:0;animation:typing 3s steps(40,end) forwards,blink .8s infinite;}
+@keyframes typing{to{width:100%;}}
+@keyframes blink{50%{border-color:transparent;}}
+/* Back to top */
+#topBtn{position:fixed;bottom:20px;right:20px;z-index:150;background:var(--highlight);color:#fff;border:none;padding:.8rem 1rem;border-radius:50%;cursor:pointer;display:none;}
+#topBtn:hover{transform:scale(1.1);}
+/* Certificates grid */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
+.cert-card{background:var(--card);padding:1rem;border-radius:10px;text-align:center;transition:0.25s;}
+.cert-card:hover{transform:scale(1.05);box-shadow:0 0 15px var(--highlight);}
 </style>
 </head>
 <body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#skills">Skills</a>
+  <a href="#languages">Languages</a>
+  <a href="#resume">Resume</a>
+  <a href="#project">Project</a>
+  <a href="#narrations">Narrations</a>
+  <a href="#certificates">Certificates</a>
+</nav>
 
 <button class="dark-toggle" id="modeToggle"><i class="fas fa-moon"></i></button>
 
@@ -67,6 +108,7 @@ footer.reveal{opacity:1; transform:none;}
       <span>O</span><span>P</span><span>T</span><span>O</span><span>M</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span><span>T</span>
     </small>
     <h1>Mohamed Shameer S</h1>
+    <p class="tagline">Focused on advancing vision care & research</p>
     <div>
       <a class="btn" href="#resume">View Resume</a>
       <a class="btn secondary" href="#project">View Project</a>
@@ -96,16 +138,30 @@ footer.reveal{opacity:1; transform:none;}
 
   <section id="experience">
     <h2>Experience</h2>
-    <div class="tilt-card" data-speed="0.03">
-      <div class="tilt-inner">
-        <ul>
-          <li>Contact Lens Practice: selection, fitting, dispensing, after-care counseling.</li>
-          <li>Binocular Vision: assessment, vision therapy planning, follow-ups.</li>
-          <li>Low Vision Care: evaluation, device trials, adaptation strategies.</li>
-          <li>Clinical Assessment: refraction, ocular health screening, documentation.</li>
-          <li>Patient Communication: counseling & adherence education.</li>
-          <li>Teamwork: collaboration in clinical and research environments.</li>
-        </ul>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h4>Contact Lens Practice</h4>
+        <p>Selection, fitting, dispensing, after-care counseling</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Binocular Vision</h4>
+        <p>Assessment, therapy planning, follow-ups</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Low Vision Care</h4>
+        <p>Evaluation, device trials, adaptation strategies</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Clinical Assessment</h4>
+        <p>Refraction, ocular health screening, documentation</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Patient Communication</h4>
+        <p>Counseling & adherence education</p>
+      </div>
+      <div class="timeline-item">
+        <h4>Teamwork</h4>
+        <p>Collaboration in clinical & research environments</p>
       </div>
     </div>
   </section>
@@ -127,6 +183,19 @@ footer.reveal{opacity:1; transform:none;}
     </div>
   </section>
 
+  <section id="languages">
+    <h2>Languages</h2>
+    <div class="tilt-card" data-speed="0.03">
+      <div class="tilt-inner">
+        <div class="chips">
+          <span class="chip">English – Fluent</span>
+          <span class="chip">Hindi – Professional Proficiency</span>
+          <span class="chip">Tamil – Native</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="resume">
     <h2>Resume</h2>
     <div class="tilt-card" data-speed="0.03">
@@ -142,24 +211,52 @@ footer.reveal{opacity:1; transform:none;}
     <div class="tilt-card" data-speed="0.04">
       <div class="tilt-inner">
         <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>
-        <a class="btn" target="_blank" href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">Request Access</a>
+        <a class="btn" target="_blank" href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">View Abstract</a>
       </div>
+    </div>
+  </section>
+
+  <section id="narrations">
+    <h2>Narrations</h2>
+    <div class="tilt-card" data-speed="0.05">
+      <div class="tilt-inner">
+        <p>Here I share case discussions, personal insights, and narrated experiences in optometry.</p>
+        <div class="chips">
+          <span class="chip">Case Study</span>
+          <span class="chip">Clinical Reflection</span>
+          <span class="chip">Storytelling</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div class="cert-grid">
+      <div class="cert-card">CME Participation – 2024</div>
+      <div class="cert-card">Workshop on Myopia Control</div>
+      <div class="cert-card">Low Vision Rehab Training</div>
     </div>
   </section>
 </div>
 
 <footer>
-  <div>Email: <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>
-  <div>Phone: <a href="tel:+919345768563">+91 93457 68563</a></div>
-  <div>Instagram: <a target="_blank" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
-  <div>LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">Profile</a></div>
+  <div><i class="fas fa-envelope"></i> <a href="mailto:mohamedshameer12345@gmail.com">Email</a></div>
+  <div><i class="fas fa-phone"></i> <a href="tel:+919345768563">+91 93457 68563</a></div>
+  <div><i class="fab fa-instagram"></i> <a target="_blank" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>
+  <div><i class="fab fa-linkedin"></i> <a target="_blank" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">Profile</a></div>
 </footer>
 
+<button id="topBtn"><i class="fas fa-arrow-up"></i></button>
+
 <script>
-// Theme toggle
+// Theme toggle with memory
 const toggleBtn = document.getElementById('modeToggle');
+if(localStorage.getItem("theme") === "light"){document.body.classList.add("light-mode");toggleBtn.querySelector("i").classList.replace("fa-moon","fa-sun");}
 toggleBtn.addEventListener('click',()=>{
   document.body.classList.toggle('light-mode');
+  if(document.body.classList.contains("light-mode")){localStorage.setItem("theme","light");}
+  else{localStorage.setItem("theme","dark");}
   toggleBtn.querySelector('i').classList.toggle('fa-moon');
   toggleBtn.querySelector('i').classList.toggle('fa-sun');
 });
@@ -202,6 +299,14 @@ document.querySelectorAll('.btn').forEach(btn=>{
   btn.addEventListener('touchstart',()=> btn.style.transform='scale(0.95)');
   btn.addEventListener('touchend',()=> btn.style.transform='scale(1)');
 });
-</script>
-</body>
-</html>
+
+// Navbar active link
+const navLinks=document.querySelectorAll('.navbar a');
+function setActive(){
+  let fromTop=window.scrollY+100;
+  navLinks.forEach(link=>{
+    let section=document.querySelector(link.getAttribute("href"));
+    if(section.offsetTop <= fromTop && section.offsetTop+section.offsetHeight > fromTop){
+      link.classList.add("
+
+                         
