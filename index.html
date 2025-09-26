@@ -1,287 +1,189 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohamed Shameer S - Portfolio</title>
-  <style>
-    /* Base Colors */
-    :root {
-      --bg: #121212;
-      --text: #ffffff;
-      --muted: #cccccc;
-      --highlight: #00ffc6;
-      --card-bg: rgba(255,255,255,0.05);
-    }
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --text: #000000;
-      --muted: #555555;
-      --highlight: #007bff;
-      --card-bg: rgba(0,0,0,0.05);
-    }
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8" />  
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>Mohamed Shameer S | Optometrist</title>  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />  
+<style>  
+:root{  
+  --bg:#121212;  
+  --card:#1a1a1a;  
+  --text:#eee;  
+  --muted:#aaa;  
+  --highlight:#5ac8fa;  
+  --ring:rgba(90,200,250,.35);  
+}  
+body.light-mode{  
+  --bg:#f6f7fb;  
+  --card:#fff;  
+  --text:#101114;  
+  --muted:#4f5563;  
+  --highlight:#0077cc;  
+  --ring:rgba(0,119,204,.22);  
+}  
+body{  
+  background:var(--bg);  
+  color:var(--text);  
+  font-family:system-ui, sans-serif;  
+  margin:0;  
+  line-height:1.6;  
+  scroll-behavior:smooth;  
+}  
+a{color:inherit;text-decoration:none;transition:0.25s;}  
+a:hover{color:var(--highlight);}  
+.container{max-width:1120px;margin:0 auto;padding:5rem 1rem;}  
+section{background:var(--card); margin-bottom:2rem; padding:1.5rem; border-radius:14px; opacity:0; transform:translateY(40px); transition:all 0.8s ease; filter:blur(5px);}  
+section.reveal{opacity:1; transform:none; filter:blur(0);}  
+h2{color:var(--highlight);}  
+.btn{padding:.7rem 1.2rem;border-radius:999px;font-weight:700;background:var(--highlight);color:#fff;margin:.5rem;display:inline-block;transition:0.25s;text-align:center;}  
+.btn:hover{transform:scale(1.05) translateY(-3px);text-shadow:0 0 6px var(--highlight),0 0 12px var(--highlight);box-shadow:0 0 20px var(--highlight);}  
+.btn.secondary{background:transparent;color:var(--highlight);border:2px solid var(--highlight);}  
+.dark-toggle{position:fixed;top:1rem;right:1rem;z-index:100;border:none;cursor:pointer;border-radius:999px;padding:.6rem .75rem;background:var(--card);color:var(--text);}  
+.social-icons a{display:inline-flex;justify-content:center;align-items:center;width:40px;height:40px;border-radius:10px;margin:0 .25rem;background:var(--card);transition:0.25s;}  
+.social-icons a:hover{transform:scale(1.1) translateY(-3px);color:var(--highlight);text-shadow:0 0 6px var(--highlight),0 0 12px var(--highlight);box-shadow:0 0 20px var(--highlight);}  
+.chips{display:flex; gap:.5rem; flex-wrap:wrap; margin-top:.5rem;}  
+.chip{padding:.4rem .7rem;border-radius:999px;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));box-shadow:inset 0 0 0 2px var(--ring);transition:0.25s;}  
+.chip:hover{color:var(--highlight);transform:scale(1.05) translateY(-2px);text-shadow:0 0 6px var(--highlight);}  
+.hero-wave span{display:inline-block;animation:wave 1.2s infinite;}  
+.hero-wave span:nth-child(2){animation-delay:.1s;}   
+.hero-wave span:nth-child(3){animation-delay:.2s;}  
+@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}  
+footer{background:var(--card); text-align:center; padding:2rem 1rem; opacity:0; transform:translateY(40px); transition:0.8s;}  
+footer.reveal{opacity:1; transform:none;}  
+.tilt-card{perspective:1000px; margin-top:1rem;}  
+.tilt-inner{background:var(--card);padding:1.5rem;border-radius:14px;transition:transform 0.3s ease, box-shadow 0.3s ease;}  
+.tilt-inner:hover{transform:scale(1.05);box-shadow:0 20px 40px rgba(90,200,250,0.35),0 0 20px rgba(90,200,250,0.2) inset;}  
+[data-speed]{transition:transform 0.2s ease-out;}  
+</style>  
+</head>  
+<body>  <button class="dark-toggle" id="modeToggle"><i class="fas fa-moon"></i></button>
 
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x:hidden;
-      scroll-behavior:smooth;
-    }
-
-    /* Navbar */
-    .navbar {
-      position:fixed;top:0;left:0;width:100%;
-      display:flex;justify-content:center;gap:2rem;
-      background:rgba(0,0,0,0.4);
-      backdrop-filter:blur(10px);
-      padding:1rem;
-      z-index:1000;
-    }
-    .navbar a {
-      color:var(--text);text-decoration:none;font-weight:600;position:relative;
-    }
-    .navbar a.active::after {
-      content:"";position:absolute;left:0;bottom:-4px;
-      width:100%;height:2px;background:var(--highlight);
-    }
-
-    header {
-      min-height:100vh;
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;padding:4rem 1rem;
-    }
-    .wave-text span {display:inline-block;animation:wave 1s infinite;}
-    .wave-text span:nth-child(odd){animation-delay:0.2s;}
-    @keyframes wave {
-      0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}
-    }
-    .tagline{font-size:1.2rem;color:var(--muted);margin-top:0.5rem;}
-    .typing {border-right:2px solid var(--highlight);white-space:nowrap;overflow:hidden;}
-
-    /* Sections */
-    section{padding:6rem 1.5rem;max-width:1000px;margin:auto;}
-    h2{font-size:2rem;margin-bottom:2rem;position:relative;display:inline-block;}
-    h2::after{
-      content:"";position:absolute;bottom:-6px;left:0;width:60px;height:3px;
-      background:var(--highlight);animation:grow 0.8s ease forwards;
-    }
-    @keyframes grow{from{width:0;}to{width:60px;}}
-
-    /* Timeline */
-    .timeline{position:relative;margin:2rem 0;}
-    .timeline::before{
-      content:"";position:absolute;left:20px;top:0;bottom:0;width:2px;background:var(--highlight);
-    }
-    .timeline-item{position:relative;margin:2rem 0 2rem 60px;}
-    .timeline-item::before{
-      content:"";position:absolute;left:-40px;top:0;width:20px;height:20px;border-radius:50%;
-      background:var(--highlight);
-    }
-    .timeline-item h3{margin-bottom:0.2rem;}
-    .timeline-item p{color:var(--muted);}
-
-    /* Cards */
-    .card{
-      background:var(--card-bg);padding:1.5rem;border-radius:12px;margin:1rem 0;
-      transition:transform 0.2s;
-    }
-    .card:hover{transform:translateY(-5px);}
-
-    /* Skills Chips */
-    .skills{display:flex;flex-wrap:wrap;gap:0.8rem;}
-    .chip{padding:0.4rem 0.8rem;background:var(--highlight);color:#000;border-radius:20px;font-weight:600;position:relative;overflow:hidden;cursor:pointer;}
-
-    /* Ripple Effect */
-    .chip::after {
-      content:"";position:absolute;border-radius:50%;transform:scale(0);
-      width:100%;height:100%;top:0;left:0;background:rgba(255,255,255,0.4);opacity:0;transition:all 0.5s;
-    }
-    .chip:active::after {
-      transform:scale(2.5);opacity:0.6;transition:0s;
-    }
-
-    /* Reveal */
-    .reveal{opacity:0;transform:translateY(50px);transition:all 0.8s ease;}
-    .reveal.active{opacity:1;transform:translateY(0);}
-
-    /* Back to Top */
-    #backToTop {
-      position:fixed;bottom:30px;right:30px;
-      background:var(--highlight);color:#000;
-      padding:0.6rem 1rem;border-radius:8px;border:none;
-      cursor:pointer;display:none;font-weight:700;
-    }
-
-    /* Footer */
-    footer{text-align:center;padding:2rem;background:var(--card-bg);margin-top:3rem;}
-  </style>
-</head>
-<body>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#languages">Languages</a>
-    <a href="#narrations">Narrations</a>
-    <a href="#certificates">Certificates</a>
-    <a href="#resume">Resume</a>
-    <a href="#project">Project</a>
-  </nav>
-
-  <!-- Header -->
-  <header>
-    <h1 class="wave-text">
-      <span>M</span><span>o</span><span>h</span><span>a</span><span>m</span><span>e</span><span>d</span>
-      <span>&nbsp;</span>
-      <span>S</span><span>h</span><span>a</span><span>m</span><span>e</span><span>e</span><span>r</span>
-      <span>&nbsp;</span><span>S</span>
-    </h1>
-    <p class="typing tagline" id="typing"></p>
-    <div style="margin-top:2rem;">
-      <a class="chip" href="#resume">Resume</a>
-      <a class="chip" href="#project">Project</a>
-    </div>
-  </header>
-
-  <!-- About -->
-  <section id="about" class="reveal">
-    <h2>About Me</h2>
-    <div class="card tilt">
-      <p>I am Mohamed Shameer S, an Optometrist focused on integrating clinical optometry with optical retail. My interests include refractive error correction, binocular vision, and low vision rehabilitation. I also participate in clinical research and academic projects to contribute to evidence-based optometry.</p>
-    </div>
-  </section>
-
-  <!-- Experience Timeline -->
-  <section id="experience" class="reveal">
-    <h2>Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item tilt">
-        <h3>Internship - 2024</h3>
-        <p>Clinical exposure in refraction, contact lens fitting, binocular vision therapy, and community eye care.</p>
-      </div>
-      <div class="timeline-item tilt">
-        <h3>Academic Projects - 2025</h3>
-        <p>Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception and Performance in Real-World Scenarios.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="reveal">
-    <h2>Skills</h2>
-    <div class="skills">
-      <div class="chip">Refraction</div>
-      <div class="chip">Contact Lens Fitting</div>
-      <div class="chip">Binocular Vision Therapy</div>
-      <div class="chip">Low Vision Care</div>
-      <div class="chip">Optical Dispensing</div>
-      <div class="chip">Clinical Research</div>
-    </div>
-  </section>
-
-  <!-- Languages -->
-  <section id="languages" class="reveal">
-    <h2>Languages</h2>
-    <div class="skills">
-      <div class="chip">English - Fluent</div>
-      <div class="chip">Hindi - Professional Proficiency</div>
-      <div class="chip">Tamil - Native</div>
-    </div>
-  </section>
-
-  <!-- Narrations -->
-  <section id="narrations" class="reveal">
-    <h2>Narrations</h2>
-    <div class="card tilt">
-      <p>Through the Veil of Double Daylight – A case discussion on high myopia, post-LASIK complications, and persistent binocular diplopia.</p>
-    </div>
-  </section>
-
-  <!-- Certificates -->
-  <section id="certificates" class="reveal">
-    <h2>Certificates</h2>
-    <div class="skills">
-      <div class="chip">CME on Binocular Vision</div>
-      <div class="chip">Workshop on Low Vision Rehabilitation</div>
-      <div class="chip">Clinical Training Programs</div>
-    </div>
-  </section>
-
-  <!-- Resume -->
-  <section id="resume" class="reveal">
-    <h2>Resume</h2>
-    <a class="chip" href="MD SHAMEER Resume (1).pdf" download>Download Resume</a>
-  </section>
-
-  <!-- Project -->
-  <section id="project" class="reveal">
-    <h2>Project</h2>
-    <a class="chip" href="ABSTRACT.pdf" target="_blank">View Abstract</a>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Mohamed Shameer S | Optometrist</p>
-    <p>Email: mohamedshameer12345@gmail.com | Phone: 9345768563</p>
-  </footer>
-
-  <button id="backToTop">↑ Top</button>
-
-  <script>
-    // Typing Effect
-    const text = "Focused on advancing vision care & research";
-    let i=0;
-    function type(){
-      if(i<text.length){
-        document.getElementById("typing").textContent += text.charAt(i);
-        i++;setTimeout(type,80);
-      }
-    }
-    type();
-
-    // Back to Top + Navbar Highlight + Reveal
-    const backBtn=document.getElementById("backToTop");
-    window.addEventListener("scroll",()=>{
-      backBtn.style.display = window.scrollY>200?"block":"none";
-      document.querySelectorAll(".navbar a").forEach(link=>{
-        const section=document.querySelector(link.getAttribute("href"));
-        if(section){
-          const rect=section.getBoundingClientRect();
-          if(rect.top<=100 && rect.bottom>=100){
-            link.classList.add("active");
-          }else link.classList.remove("active");
-        }
-      });
-      document.querySelectorAll(".reveal").forEach(el=>{
-        const rect=el.getBoundingClientRect();
-        if(rect.top<window.innerHeight-100){el.classList.add("active");}
-      });
-    });
-    backBtn.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
-
-    // Tilt Effect
-    document.querySelectorAll(".tilt").forEach(card=>{
-      card.addEventListener("mousemove",e=>{
-        const rect=card.getBoundingClientRect();
-        const x=e.clientX-rect.left;
-        const y=e.clientY-rect.top;
-        const centerX=rect.width/2;
-        const centerY=rect.height/2;
-        const rotateX=(y-centerY)/20;
-        const rotateY=(x-centerX)/20;
-        card.style.transform=`rotateX(${ -rotateX }deg) rotateY(${ rotateY }deg)`;
-      });
-      card.addEventListener("mouseleave",()=>card.style.transform="rotateX(0) rotateY(0)");
-    });
-
-    // Dark/Light Theme Memory
-    const savedTheme=localStorage.getItem("theme");
-    if(savedTheme)document.body.setAttribute("data-theme",savedTheme);
-  </script>
-</body>
-</html>
+<div class="container">  
+  <header>  
+    <small class="hero-wave">  
+      <span>O</span><span>P</span><span>T</span><span>O</span><span>M</span><span>E</span><span>T</span><span>R</span><span>I</span><span>S</span><span>T</span>  
+    </small>  
+    <h1>Mohamed Shameer S</h1>  
+    <div>  
+      <a class="btn" href="#resume">View Resume</a>  
+      <a class="btn secondary" href="#project">View Project</a>  
+    </div>  
+    <div class="social-icons">  
+      <a href="mailto:mohamedshameer12345@gmail.com"><i class="fas fa-envelope"></i></a>  
+      <a href="tel:+919345768563"><i class="fas fa-phone"></i></a>  
+      <a href="https://www.instagram.com/duh.its_mohamed" target="_blank"><i class="fab fa-instagram"></i></a>  
+      <a href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a" target="_blank"><i class="fab fa-linkedin"></i></a>  
+    </div>  
+  </header>    <section id="about">  
+    <h2>About Me</h2>  
+    <div class="tilt-card" data-speed="0.05">  
+      <div class="tilt-inner">  
+        <p>I'm Mohamed Shameer S, a licensed Optometrist with expertise in eye care, refractive error correction, binocular vision, and optical dispensing. Committed to accurate outcomes and patient care.</p>  
+        <p>With a strong foundation in clinical and optical practice, I ensure high standards of care and contribute to advancing eye health services.</p>  
+        <div class="chips">  
+          <span class="chip">Patient-first care</span>  
+          <span class="chip">Optical retail integration</span>  
+          <span class="chip">Research-oriented</span>  
+        </div>  
+      </div>  
+    </div>  
+  </section>    <section id="experience">  
+    <h2>Experience</h2>  
+    <div class="tilt-card" data-speed="0.03">  
+      <div class="tilt-inner">  
+        <ul>  
+          <li>Contact Lens Practice: selection, fitting, dispensing, after-care counseling.</li>  
+          <li>Binocular Vision: assessment, vision therapy planning, follow-ups.</li>  
+          <li>Low Vision Care: evaluation, device trials, adaptation strategies.</li>  
+          <li>Clinical Assessment: refraction, ocular health screening, documentation.</li>  
+          <li>Patient Communication: counseling & adherence education.</li>  
+          <li>Teamwork: collaboration in clinical and research environments.</li>  
+        </ul>  
+      </div>  
+    </div>  
+  </section>    <section id="skills">  
+    <h2>Skills</h2>  
+    <div class="tilt-card" data-speed="0.05">  
+      <div class="tilt-inner">  
+        <div class="chips">  
+          <span class="chip">Contact Lenses</span>  
+          <span class="chip">Refraction</span>  
+          <span class="chip">Binocular Vision</span>  
+          <span class="chip">Low Vision Rehab</span>  
+          <span class="chip">Case Documentation</span>  
+          <span class="chip">Patient Counseling</span>  
+          <span class="chip">Research Methods</span>  
+        </div>  
+      </div>  
+    </div>  
+  </section>    <section id="resume">  
+    <h2>Resume</h2>  
+    <div class="tilt-card" data-speed="0.03">  
+      <div class="tilt-inner">  
+        <a class="btn" target="_blank" href="https://drive.google.com/file/d/135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9/view">View Resume</a>  
+        <a class="btn secondary" target="_blank" href="https://drive.google.com/uc?export=download&id=135ktIZpdcUQtip8xeE0qI90ZPcO0ZHi9">Download Resume</a>  
+      </div>  
+    </div>  
+  </section>    <section id="project">  
+    <h2>Project</h2>  
+    <div class="tilt-card" data-speed="0.04">  
+      <div class="tilt-inner">  
+        <p><strong>Title:</strong> Grading Visual Search Tasks Based on Task Characteristics, Subjective Perception, and Performance in Real-World Scenarios.</p>  
+        <a class="btn" target="_blank" href="https://docs.google.com/document/d/19p8-kQ85_XXMzGDDpZUpVK3wAnW_qQes/view">Request Access</a>  
+      </div>  
+    </div>  
+  </section>  
+</div>  <footer>  
+  <div>Email: <a href="mailto:mohamedshameer12345@gmail.com">mohamedshameer12345@gmail.com</a></div>  
+  <div>Phone: <a href="tel:+919345768563">+91 93457 68563</a></div>  
+  <div>Instagram: <a target="_blank" href="https://www.instagram.com/duh.its_mohamed">@duh.its_mohamed</a></div>  
+  <div>LinkedIn: <a target="_blank" href="https://www.linkedin.com/in/mohamed-shameer-s-72872436a">Profile</a></div>  
+</footer>  <script>  
+// Theme toggle  
+const toggleBtn = document.getElementById('modeToggle');  
+toggleBtn.addEventListener('click',()=>{  
+  document.body.classList.toggle('light-mode');  
+  toggleBtn.querySelector('i').classList.toggle('fa-moon');  
+  toggleBtn.querySelector('i').classList.toggle('fa-sun');  
+});  
+  
+// Scroll reveal  
+const sections = document.querySelectorAll('section, footer');  
+function reveal(){ sections.forEach(s=>{  
+  if(s.getBoundingClientRect().top < window.innerHeight*0.85){ s.classList.add('reveal'); }  
+}); }  
+window.addEventListener('scroll',reveal);  
+window.addEventListener('load',reveal);  
+  
+// Tilt effect  
+document.querySelectorAll('.tilt-card').forEach(card=>{  
+  const inner = card.querySelector('.tilt-inner');  
+  card.addEventListener('mousemove', e => {  
+    const rect = card.getBoundingClientRect();  
+    const x = e.clientX - rect.left;  
+    const y = e.clientY - rect.top;  
+    const cx = rect.width / 2;  
+    const cy = rect.height / 2;  
+    const dx = (x - cx)/cx;  
+    const dy = (y - cy)/cy;  
+    inner.style.transform=`rotateX(${-dy*10}deg) rotateY(${dx*10}deg) scale(1.05)`;  
+  });  
+  card.addEventListener('mouseleave', ()=> inner.style.transform='rotateX(0deg) rotateY(0deg) scale(1)');  
+});  
+  
+// Parallax scroll  
+window.addEventListener('scroll', ()=>{  
+  document.querySelectorAll('[data-speed]').forEach(el=>{  
+    const speed = el.getAttribute('data-speed');  
+    const offset = window.scrollY * speed;  
+    el.style.transform = `translateY(${offset}px)`;  
+  });  
+});  
+  
+// Touch button tap effect  
+document.querySelectorAll('.btn').forEach(btn=>{  
+  btn.addEventListener('touchstart',()=> btn.style.transform='scale(0.95)');  
+  btn.addEventListener('touchend',()=> btn.style.transform='scale(1)');  
+});  
+</script>  </body>  
+</html>  
